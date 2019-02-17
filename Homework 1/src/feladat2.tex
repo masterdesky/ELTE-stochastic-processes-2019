@@ -1,5 +1,7 @@
-\section{}
+\section{} \label{sec:2}
 \subsection*{A) feladatrész}
+\quest{Dobjuk fel az érmét kétszer. Milyen valószínűséggel kapunk két fejet (FF), illetve írás-fej (IF) sorrendet? Ugyanaz a két valószínűség?}
+\\ \\
 Számoljunk a $\frac{\text{kedvező}}{\text{összes}}$ szabállyal jelen esetben. Az első alkalommal azt mondhatjuk, hogy a FF dobás valószínűsége a követező:
 
 \begin{equation} \label{eq:1}
@@ -30,5 +32,7 @@ Ugyanígy a másik esetre:
 A két esemény tehát azonos valószínűséggel fordul elő.
 
 \subsection*{B) feladatrész}
+\quest{Játsszuk a következő játékot! Addig dobálunk, amíg vagy két fej (FF - én nyerek), vagy fej-írás (FI - te nyersz) jön ki. Igazságos ez a játék?}
+\\ \\
 A nyerés feltétele mindkét játékos számára, hogy az első dobás fej (F) legyen. Ezt követően akkor nyer vagy az egyik vagy a másik, ha vagy fej (F), vagy írás (I) a rá következő dobás. Itt is elmondhatjuk hogy az egymást követő dobások független események, így egy F eredmény követően mind egy F, mind pedig egy I azonosan $\frac{1}{2}$ valószínűséggel következik be. \\
 Azt mondhatjuk tehát, hogy igen, igazságos a játék, ugyanis mindkét fél nyerési esélye azonos. Azt feltételezni az ilyen események sorozatánál, hogy a második dobás függ az előtte levőtől (pl. hogy egy F után $\frac{1}{4}$ valószínűséggel következik be még egy F és így az írás előnyben van) szokás a \emph{szerencsejátékosok tévedésének}\cite{croson2005gambler}, vagy \emph{Monte Carlo tévedésnek} hívni. Ez arra a rossz meglátásra alapul, miszerint egy már (gyakran) előfordult eseményről intuitíve azt gondoljuk, hogy a jövőben kisebb valószínűséggel fog előfordulni. Ez független események esetén viszont nem igaz, lásd a fenti pénzdobás példája. Mindegy hányszor fordult elő már F, vagy I a dobások során, a következő esetében mind F, mind pedig I azonosan $P = \frac{1}{2}$ valószínűséggel következik be.

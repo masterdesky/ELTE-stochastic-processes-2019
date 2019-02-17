@@ -1,16 +1,19 @@
-\section{}
-\subsection{Szimmetrikus - driftmentes - rendszer}
-Ismert, hogy az $x_{t}$ elmozdulás várható értéke
+\section{} \label{sec:3}
+\subsection{Szimmetrikus - driftmentes - rendszer} \label{subsec:3.1}
+\quest{Egydimenziós mozgást végző részecske $\tau$ időközönként véletlen irányú erő hatására előző helyzetétől $l$ távolságra ugrik (egyenlő $p_{+} = p_{-} = \frac{1}{2}$ valószínűséggel jobbra vagy balra). A részecske az $x_{0} = 0$ pontból indul. \\
+Határozzuk meg a $t = N_{\tau}$ idő alatti elmozdulás és az elmozdulás négyzetének átlagát, $\left< x_{r} \right>$-t és $\left< x_{r}^{2} \right>$-t}
+\\ \\
+Ismert, hogy az $x_{r}$ elmozdulás várható értéke
 
 \begin{equation} \label{eq:6}
-    \left< x_{t} \right>
+    \left< x_{r} \right>
     =
     \int_{\ -\infty}^{\ \infty} x * P \left( x, t \right)\ dx.
 \end{equation}
 Míg az elmozdulás négyzet várható értéke
 
 \begin{equation} \label{eq:7}
-    \left< x_{t}^{2} \right>
+    \left< x_{r}^{2} \right>
     =
     \int_{\ -\infty}^{\ \infty} x^{2} * P \left( x, t \right)\ dx.
 \end{equation}
@@ -92,10 +95,10 @@ A (\ref{eq:17})-es differenciálegyenletet a $P \left( x, t=0 \right) = \delta \
 \begin{equation} \label{eq:18}
     P \left( x, t \right) = \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{x^{2}}{4Dt}}
 \end{equation}
-Ennek a felhasználásával pedig megadhatjuk a keresett $\left< x_{t} \right>$ és $\left< x_{t}^{2} \right>$ várható értékeket a (\ref{eq:6})-os és (\ref{eq:7})-es egyenletek alapján:
+Ennek a felhasználásával pedig megadhatjuk a keresett $\left< x_{r} \right>$ és $\left< x_{r}^{2} \right>$ várható értékeket a (\ref{eq:6})-os és (\ref{eq:7})-es egyenletek alapján:
 
 \begin{equation} \label{eq:19}
-    \left< x_{t} \right>
+    \left< x_{r} \right>
     =
     \int_{\ -\infty}^{\ \infty} x * \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{x^{2}}{4Dt}}\ dx
     =
@@ -103,7 +106,7 @@ Ennek a felhasználásával pedig megadhatjuk a keresett $\left< x_{t} \right>$ 
 \end{equation}
 
 \begin{equation} \label{eq:20}
-    \left< x_{t}^{2} \right>
+    \left< x_{r}^{2} \right>
     =
     \int_{\ -\infty}^{\ \infty} x^{2} * \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{x^{2}}{4Dt}}\ dx
     =
@@ -120,7 +123,7 @@ Végezzük el a következő változócserét:
 Majd helyettesítsünk be a fenti (\ref{eq:19})-es és (\ref{eq:20})-as egyenletekbe:
 
 \begin{align} \label{eq:21}
-    \left< x_{t} \right>
+    \left< x_{r} \right>
     &=
     \frac{1}{\sqrt{4 \pi D t}} * \int_{\ -\infty}^{\ \infty} y * \sqrt{4Dt} * e^{-y^{2}} * \sqrt{4Dt}\, dy = \nonumber \\
     &=
@@ -130,7 +133,7 @@ Majd helyettesítsünk be a fenti (\ref{eq:19})-es és (\ref{eq:20})-as egyenlet
 \end{align}
 
 \begin{align} \label{eq:22}
-    \left< x_{t}^{2} \right>
+    \left< x_{r}^{2} \right>
     &=
     \frac{1}{\sqrt{4 \pi D t}} * \int_{\ -\infty}^{\ \infty} \left( y * \sqrt{4Dt} \right)^{2} * e^{-y^{2}} * \sqrt{4Dt}\, dy = \nonumber \\
     &=
@@ -141,25 +144,52 @@ Majd helyettesítsünk be a fenti (\ref{eq:19})-es és (\ref{eq:20})-as egyenlet
     \doubleunderline{2Dt}
 \end{align}
 
-\subsection{Asszimetrikus - driftelő - rendszer}
+\subsection{Asszimetrikus - driftelő - rendszer} \label{subsec:3.2}
+\quest{Vizsgáljuk a fenti problémát $p_{+} = 4p_{-}$ esetre és számítsuk ki az $\left< x_{r} \right>$, $\left< x_{r}^{2} \right>$ és a $\left< x_{r}^{2} \right> - \left< x_{r} \right>$ átlagokat!}
+\\ \\
 Nézzük azt a helyzetet, amikor a rendszerben van drift, tehát $p_{-} \neq p_{+}$, ahol most $p_{-} = \frac{1}{5}$ és $p_{+} = \frac{4}{5}$. Ebben az esetben a (\ref{eq:8})-as egyenletet a következőképp alakul:
 
-\begin{equation}
+\begin{equation} \label{eq:23}
     P \left( x, t + \tau \right)
     =
     \frac{1}{5} * P \left( x - l, t \right) + \frac{4}{5} * P \left( x + l, t \right)
 \end{equation}
 Elvégezve a (\ref{eq:10})-(\ref{eq:15}) egyenletekhez hasonlóan a Kramer--Moyal-sorfejtést, az elsőrendű tagok utána már nem esnek ki. Ekvivalensen a (\ref{eq:15})-ös egyenletben szereplő lépés itt most így fest:
 
-\begin{equation}
+\begin{equation} \label{eq:24}
     \tau \frac{\partial P \left( x, t \right)}{\partial t}
     =
     \frac{1}{5} * \left[ -l \frac{\partial P \left( x, t \right)}{\partial x} + \frac{1}{2} l^{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} \right] + \frac{4}{5} * \left[ l \frac{\partial P \left( x, t \right)}{\partial x} + \frac{1}{2} l^{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} \right]
 \end{equation}
 Ezt az egyenletet rendezve a következő alakot kapjuk az előző alfejezet végén leírtak alapján:
 
-\begin{equation}
+\begin{equation} \label{eq:25}
     \frac{\partial P \left( x, t \right)}{\partial t}
     =
     \frac{3}{5} * \frac{l}{\tau} \frac{\partial P \left( x, t \right)}{\partial x} + \frac{l^{2}}{2 \tau} * \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}}
+    =
+    - v \frac{\partial P \left( x, t \right)}{\partial x} + D * \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}}
 \end{equation}
+A kapott differenciálegyenletet az előzőekhez hasonlóan, szintén a $P \left( x, t=0 \right) = \delta \left( x \right)$ kezdőfeltétellel oldjuk meg. Ennek megoldásához bevezetjük a következő változócserét:
+
+\begin{equation*}
+    y := x -vt
+    \quad \to \quad
+    P \left( x, t \right) = \tilde{P} \left( y, t \right) = \tilde{P} \left( x - vt, t \right)
+\end{equation*}
+Melyre a (\ref{eq:25})-ös egyenlet a következőképp módosul:
+
+\begin{align} \label{eq:26}
+    &\frac{\partial P \left( x, t \right)}{\partial t}
+    =
+    - v \frac{\partial P \left( x, t \right)}{\partial x} + D * \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} \quad \to \nonumber \\
+    \to \quad &
+    \frac{\partial \tilde{P} \left( y, t \right)}{\partial t}
+    =
+    - v \frac{\partial \tilde{P} \left( y, t \right)}{\partial x} + D * \frac{\partial^{2} \tilde{P} \left( y, t \right)}{\partial y^{x}} \quad \to \nonumber \\
+    \to \quad &
+    \frac{\partial \tilde{P} \left( x - vt, t \right)}{\partial t}
+    =
+    - v \frac{\partial \tilde{P} \left( x - vt, t \right)}{\partial x} + D * \frac{\partial^{2} \tilde{P} \left( x - vt, t \right)}{\partial y^{x}} \quad \to \nonumber \\
+    \to \quad &
+\end{align}

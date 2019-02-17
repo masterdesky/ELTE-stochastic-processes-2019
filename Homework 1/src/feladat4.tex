@@ -1,2 +1,24 @@
 \section{}
 \subsection*{A) feladatrész}
+\quest{Vizsgáljuk a Brown mozgás előadáson tárgyalt, Einstein-féle leírását, s legyen sodródás is a rendszerben (szél fúj a víz felett). \\
+Ekkor a $\tau$ időnként megtett ugrások hosszának ($\Delta$) valószínűségi eloszlása nem szimmetrikus $\Phi \left( - \Delta \right) \neq \Phi \left( \Delta \right)$, s várhatóan $\overline{\Delta} = \int{\Delta \Phi \left( \Delta \right)\, d \Delta} \neq 0$. \\
+Írjuk fel a Chapman-Kolmogorov egyenletet, s deriváljuk a részecske megtalálási valószínűségét, $P(x, t)$-t meghatározó Fokker-Planck egyenletet! Mennyiben különbözik ez az egyenlet az előadáson tárgyalt diffúziós egyenlettől?}
+\\ \\
+A feladat megoldása a \ref{subsec:3.2}-es fejezetben ismertetettekkel nagyrészt analóg. Az Brown-mozgás Einstein-féle leírásának feltételei sodródás esetén a következőek - ahogy többek között azok feladat szövegében is szerepelnek:
+
+\begin{enumerate}
+    \item $\int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta = 1$
+    \item $\Phi \left( - \Delta \right) \neq \Phi \left( \Delta \right)$
+    \item $\overline{\Delta} = \int_{- \infty}^{\infty} \Delta \Phi \left( \Delta \right)\, d \Delta \neq 0$
+\end{enumerate}
+Annak valószínűsége, hogy egy részecske $\tau$ idő múlva az $x$ és $x + dx$ közötti tartományban foglal helyet:
+
+\begin{equation}
+    P \left( x, t + \tau \right) = P \left( x, t \right) dx - \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta * P \left( x, t \right) dx + \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta * P \left( x - \Delta, t \right)
+\end{equation}
+
+
+\subsection*{B) feladatrész}
+\quest{Írjuk fel az egyenlet megoldását arra az esetre, ha a virágporszem az origóból indul!}
+\\ \\
+OK
