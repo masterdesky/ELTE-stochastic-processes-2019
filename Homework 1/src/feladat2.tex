@@ -1,0 +1,34 @@
+\section{}
+\subsection*{A) feladatrész}
+Számoljunk a $\frac{\text{kedvező}}{\text{összes}}$ szabállyal jelen esetben. Az első alkalommal azt mondhatjuk, hogy a FF dobás valószínűsége a követező:
+
+\begin{equation} \label{eq:1}
+    \frac{\text{\{FF\}}}{\{FF; IF; FI; II\}} = \frac{1}{4}
+\end{equation}
+Ugyanis összesen négy különböző eset lehetséges, ezekből mi az egyiket várjuk eredményül. Második esetben ugyanezt mondhatjuk el, hasonlóan írhatjuk fel az IF dobás valószínűségét:
+
+\begin{equation} \label{eq:2}
+    \frac{\text{\{IF\}}}{\{FF; IF; FI; II\}} = \frac{1}{4}
+\end{equation}
+Szintén egy lehetőséget választunk ki az összesen várható négy közül.
+\\ \\
+Másképp is leírhatjuk a helyzetet. Ismert, hogy mind a fej, mind az írás dobásának valószínűsége
+
+\begin{equation} \label{eq:3}
+    P \left( \text{fej (F)} \right) = P \left( \text{írás (I)} \right) = \frac{1}{2}
+\end{equation}
+Mivel a pénz második feldobása az első dobástól független esemény, ezért felírhatjuk, hogy:
+
+\begin{equation} \label{eq:4}
+    P \left( \text{FF} \right) = \frac{1}{2} * \frac{1}{2} = \frac{1}{4}
+\end{equation}
+Ugyanígy a másik esetre:
+
+\begin{equation} \label{eq:5}
+    P \left( \text{IF} \right) = \frac{1}{2} * \frac{1}{2} = \frac{1}{4}
+\end{equation}
+A két esemény tehát azonos valószínűséggel fordul elő.
+
+\subsection*{B) feladatrész}
+A nyerés feltétele mindkét játékos számára, hogy az első dobás fej (F) legyen. Ezt követően akkor nyer vagy az egyik vagy a másik, ha vagy fej (F), vagy írás (I) a rá következő dobás. Itt is elmondhatjuk hogy az egymást követő dobások független események, így egy F eredmény követően mind egy F, mind pedig egy I azonosan $\frac{1}{2}$ valószínűséggel következik be. \\
+Azt mondhatjuk tehát, hogy igen, igazságos a játék, ugyanis mindkét fél nyerési esélye azonos. Azt feltételezni az ilyen események sorozatánál, hogy a második dobás függ az előtte levőtől (pl. hogy egy F után $\frac{1}{4}$ valószínűséggel következik be még egy F és így az írás előnyben van) szokás a \emph{szerencsejátékosok tévedésének}\cite{croson2005gambler}, vagy \emph{Monte Carlo tévedésnek} hívni. Ez arra a rossz meglátásra alapul, miszerint egy már (gyakran) előfordult eseményről intuitíve azt gondoljuk, hogy a jövőben kisebb valószínűséggel fog előfordulni. Ez független események esetén viszont nem igaz, lásd a fenti pénzdobás példája. Mindegy hányszor fordult elő már F, vagy I a dobások során, a következő esetében mind F, mind pedig I azonosan $P = \frac{1}{2}$ valószínűséggel következik be.

@@ -1,0 +1,165 @@
+\section{}
+\subsection{Szimmetrikus - driftmentes - rendszer}
+Ismert, hogy az $x_{t}$ elmozdulás várható értéke
+
+\begin{equation} \label{eq:6}
+    \left< x_{t} \right>
+    =
+    \int_{\ -\infty}^{\ \infty} x * P \left( x, t \right)\ dx.
+\end{equation}
+Míg az elmozdulás négyzet várható értéke
+
+\begin{equation} \label{eq:7}
+    \left< x_{t}^{2} \right>
+    =
+    \int_{\ -\infty}^{\ \infty} x^{2} * P \left( x, t \right)\ dx.
+\end{equation}
+Jelölje az $P \left( x, t \right)$ az $x$ pontban való tartózkodás valószínűségét a keresett $t = N_\tau$ idő után. Ekkor felírhatjuk a következőket\cite{randwalk}:
+
+\begin{equation} \label{eq:8}
+    P \left( x, t + \tau \right)
+    =
+    p_{-} * P \left( x - l, t \right) + p_{+} * P \left( x + l, t \right)
+\end{equation}
+Kiinduló feltevéseink közé tartozik, hogy $p_{-} = p_{+} = \frac{1}{2}$, tehát a rendszer szimmetrikus. Ekkor a (\ref{eq:8})-as egyenlet a következőképp alakul:
+
+\begin{equation} \label{eq:9}
+    P \left( x, t + \tau \right)
+    =
+    \frac{1}{2} * P \left( x - l, t \right) + \frac{1}{2} * P \left( x + l, t \right)
+\end{equation}
+Ezt a differencia egyenletet a Kramers--Moyal-sorfejtés segítségével alakítjuk át a $P \left( x, t \right)$-re vonatkozó differenciálegyenletre, melyet Fokker--Planck-egyenletnek nevezünk\cite{2007cond.mat..1242G}. Első lépésben vonjunk ki mindkét oldalból $P \left( x, t \right)$, amiket aztán $\tau$ és $l$, $0$-hoz történő közelítésével sorbafejtünk $t$ és $x$ szerint:
+
+\begin{equation} \label{eq:10}
+    P \left( x, t + \tau \right) - P \left( x, t \right)
+    =
+    \frac{1}{2} * \left[ P \left( x - l, t \right) - P \left( x, t \right) \right] + \frac{1}{2} * \left[ P \left( x + l, t \right) - P \left( x, t \right) \right]
+\end{equation}
+A fentiek alapján alakítsuk át ezeket: a bal oldalt fejtsük sorba $t$, a jobb oldalt pedig $x$ szerint. A $t$ szerintinél az első, az $x$ szerintinél pedig a második rendig fejtsünk sorba:
+
+\begin{equation} \label{eq:11}
+    P \left( x, t + \tau \right) - P \left( x, t \right)
+    =
+    \tau \frac{\partial P \left( x, t \right)}{\partial t} + \mathcal{O} \left( \tau^{2} \right)
+\end{equation}
+
+\begin{equation} \label{eq:12}
+    P \left( x - l, t \right) - P \left( x, t \right)
+    =
+    -l \frac{\partial P \left( x, t \right)}{\partial x} + \frac{1}{2} l^{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} + \mathcal{O} \left( l^{3} \right)
+\end{equation}
+
+\begin{equation} \label{eq:13}
+    P \left( x + l, t \right) - P \left( x, t \right)
+    =
+    +l \frac{\partial P \left( x, t \right)}{\partial x} + \frac{1}{2} l^{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} + \mathcal{O} \left( l^{3} \right)
+\end{equation}
+A kapott eredményt helyettesítsük be az eredeti, (\ref{eq:10})-es egyenletbe:
+
+\begin{align} \label{eq:14}
+    &\tau \frac{\partial P \left( x, t \right)}{\partial t} + \mathcal{O} \left( \tau^{2} \right) = \nonumber \\
+    &=
+    \frac{1}{2} * \left[ -l \frac{\partial P \left( x, t \right)}{\partial x} + \frac{1}{2} l^{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} + \mathcal{O} \left( l^{3} \right) \right] + \nonumber \\
+    &+
+    \frac{1}{2} * \left[ l \frac{\partial P \left( x, t \right)}{\partial x} + \frac{1}{2} l^{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} + \mathcal{O} \left( l^{3} \right) \right]
+\end{align}
+A sorfejtés elhanyagolhatóan kicsi tagjait kihagyva:
+
+\begin{equation} \label{eq:15}
+    \tau \frac{\partial P \left( x, t \right)}{\partial t}
+    =
+    \frac{1}{2} * \left[ -l \frac{\partial P \left( x, t \right)}{\partial x} + \frac{1}{2} l^{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} \right] + \frac{1}{2} * \left[ l \frac{\partial P \left( x, t \right)}{\partial x} + \frac{1}{2} l^{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} \right]
+\end{equation}
+Rendezésnél az $x$-ben lineáris tagok kiesnek. A maradékot átosztva $\tau$-val, megkapjuk a Fokker--Planck-egyenletet:
+
+\begin{equation} \label{eq:16}
+    \tau \frac{\partial P \left( x, t \right)}{\partial t}
+    =
+    \frac{1}{2} * \left[ \cancel{-l \frac{\partial P \left( x, t \right)}{\partial x}} + \frac{1}{2} l^{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} + \cancel{l \frac{\partial P \left( x, t \right)}{\partial x}} + \frac{1}{2} l^{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} \right]
+\end{equation}
+
+\begin{equation} \label{eq:17}
+    \frac{\partial P \left( x, t \right)}{\partial t} 
+    =
+    \frac{l^{2}}{2 \tau} * \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}}
+    =
+    D * \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}}
+\end{equation}
+Az ebben az egyenletben megjelenő $\frac{l^{2}}{2 \tau} = D$ tagot nevezzük a rendszer \emph{diffúziós együtthatójának}. Olyan esetben, amikor $p_{-} \neq p_{+}$, akkor a első rendű tagok is bent maradnak, megszorozva egy $- \left( p_{-} - p_{+} \right) \frac{l}{\tau} = - v$ együtthatóval, melyet a rendszer \emph{driftjének}, vagy \emph{sodródásának} hívunk.
+\\ \\
+A (\ref{eq:17})-es differenciálegyenletet a $P \left( x, t=0 \right) = \delta \left( x \right)$ kezdőfeltétellel oldjuk meg. Ennek megoldása ismert, ez a Gauss függvény:
+
+\begin{equation} \label{eq:18}
+    P \left( x, t \right) = \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{x^{2}}{4Dt}}
+\end{equation}
+Ennek a felhasználásával pedig megadhatjuk a keresett $\left< x_{t} \right>$ és $\left< x_{t}^{2} \right>$ várható értékeket a (\ref{eq:6})-os és (\ref{eq:7})-es egyenletek alapján:
+
+\begin{equation} \label{eq:19}
+    \left< x_{t} \right>
+    =
+    \int_{\ -\infty}^{\ \infty} x * \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{x^{2}}{4Dt}}\ dx
+    =
+    \frac{1}{\sqrt{4 \pi D t}} * \int_{\ -\infty}^{\ \infty} x * e^{-\tfrac{x^{2}}{4Dt}}\ dx
+\end{equation}
+
+\begin{equation} \label{eq:20}
+    \left< x_{t}^{2} \right>
+    =
+    \int_{\ -\infty}^{\ \infty} x^{2} * \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{x^{2}}{4Dt}}\ dx
+    =
+    \frac{1}{\sqrt{4 \pi D t}} * \int_{\ -\infty}^{\ \infty} x^{2} * e^{-\tfrac{x^{2}}{4Dt}}\ dx
+\end{equation}
+Végezzük el a következő változócserét:
+
+\begin{equation*}
+    y := \frac{x}{\sqrt{4Dt}} \quad \to \quad x = y * \sqrt{4Dt}
+\end{equation*}
+\begin{equation*}
+    \frac{dy}{dx} = \frac{1}{\sqrt{4Dt}} \quad \to \quad dx = \sqrt{4Dt}\, dy
+\end{equation*}
+Majd helyettesítsünk be a fenti (\ref{eq:19})-es és (\ref{eq:20})-as egyenletekbe:
+
+\begin{align} \label{eq:21}
+    \left< x_{t} \right>
+    &=
+    \frac{1}{\sqrt{4 \pi D t}} * \int_{\ -\infty}^{\ \infty} y * \sqrt{4Dt} * e^{-y^{2}} * \sqrt{4Dt}\, dy = \nonumber \\
+    &=
+    \frac{4Dt}{\sqrt{4 \pi D t}} * \int_{\ -\infty}^{\ \infty} y * e^{-y^{2}}\, dy
+    =
+    \frac{4Dt}{\sqrt{4 \pi D t}} * 0 = \doubleunderline{0}
+\end{align}
+
+\begin{align} \label{eq:22}
+    \left< x_{t}^{2} \right>
+    &=
+    \frac{1}{\sqrt{4 \pi D t}} * \int_{\ -\infty}^{\ \infty} \left( y * \sqrt{4Dt} \right)^{2} * e^{-y^{2}} * \sqrt{4Dt}\, dy = \nonumber \\
+    &=
+    \frac{\left( 4Dt \right)^{\tfrac{3}{2}}}{\sqrt{4 \pi D t}} * \int_{\ -\infty}^{\ \infty} y^{2} * e^{-y^{2}}\, dy
+    =
+    \frac{4Dt}{\sqrt{\pi}} * \frac{\sqrt{\pi}}{2}
+    =
+    \doubleunderline{2Dt}
+\end{align}
+
+\subsection{Asszimetrikus - driftelő - rendszer}
+Nézzük azt a helyzetet, amikor a rendszerben van drift, tehát $p_{-} \neq p_{+}$, ahol most $p_{-} = \frac{1}{5}$ és $p_{+} = \frac{4}{5}$. Ebben az esetben a (\ref{eq:8})-as egyenletet a következőképp alakul:
+
+\begin{equation}
+    P \left( x, t + \tau \right)
+    =
+    \frac{1}{5} * P \left( x - l, t \right) + \frac{4}{5} * P \left( x + l, t \right)
+\end{equation}
+Elvégezve a (\ref{eq:10})-(\ref{eq:15}) egyenletekhez hasonlóan a Kramer--Moyal-sorfejtést, az elsőrendű tagok utána már nem esnek ki. Ekvivalensen a (\ref{eq:15})-ös egyenletben szereplő lépés itt most így fest:
+
+\begin{equation}
+    \tau \frac{\partial P \left( x, t \right)}{\partial t}
+    =
+    \frac{1}{5} * \left[ -l \frac{\partial P \left( x, t \right)}{\partial x} + \frac{1}{2} l^{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} \right] + \frac{4}{5} * \left[ l \frac{\partial P \left( x, t \right)}{\partial x} + \frac{1}{2} l^{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} \right]
+\end{equation}
+Ezt az egyenletet rendezve a következő alakot kapjuk az előző alfejezet végén leírtak alapján:
+
+\begin{equation}
+    \frac{\partial P \left( x, t \right)}{\partial t}
+    =
+    \frac{3}{5} * \frac{l}{\tau} \frac{\partial P \left( x, t \right)}{\partial x} + \frac{l^{2}}{2 \tau} * \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}}
+\end{equation}
