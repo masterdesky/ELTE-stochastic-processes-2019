@@ -9,16 +9,145 @@ A feladat megoldása a \ref{subsec:3.2}-es fejezetben ismertetettekkel nagyrész
 \begin{enumerate}
     \item $\int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta = 1$
     \item $\Phi \left( - \Delta \right) \neq \Phi \left( \Delta \right)$
-    \item $\overline{\Delta} = \int_{- \infty}^{\infty} \Delta \Phi \left( \Delta \right)\, d \Delta \neq 0$
+    \item $\overline{\Delta} = \left< \Delta \right> = \int_{- \infty}^{\infty} \Delta \Phi \left( \Delta \right)\, d \Delta \neq 0$
 \end{enumerate}
 Annak valószínűsége, hogy egy részecske $\tau$ idő múlva az $x$ és $x + dx$ közötti tartományban foglal helyet:
 
 \begin{equation}
-    P \left( x, t + \tau \right) = P \left( x, t \right) dx - \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta * P \left( x, t \right) dx + \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta * P \left( x - \Delta, t \right)
+    P \left( x, t + \tau \right) dx
+    =
+    P \left( x, t \right) dx
+    -
+    \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta * P \left( x, t \right) dx
+    +
+    \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta * P \left( x - \Delta, t \right) dx
 \end{equation}
+\begin{itemize}
+    \item[--] A jobb oldal első tagja ($P \left( x, t \right) dx$) annak a valószínűségét jelöli, hogy a részecske már $t$ időpillanatban is az $x + dx$ helyen tartózkodott.
+    \item[--] A második tag ($- \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta * P \left( x, t \right) dx$) ebből levonódik, ugyanis ez annak a valószínűségét adja meg, hogy a részecske $\tau$ idő alatt kidiffundál az $x + dx$ tartományból.
+    \item[--] A harmadik tag ($\int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta * P \left( x - \Delta, t \right)$) annak a valószínűségét jelenti, hogy egy részecske valahonnan pont a $d + dx$ tartományba ugrik bele $\tau$ időn belül.
+\end{itemize}
+
+Az egyenletet rendezzük, figyelve arra, hogy az integrálások $d \Delta$ szerint történnek. Emiatt minden tag, ami nem függ $\Delta$-tól, kiemelhető az integráljelek elé. A következőt kapjuk:
+
+\begin{equation}
+    P \left( x, t + \tau \right) dx
+    =
+    P \left( x, t \right) dx
+    -
+    P \left( x, t \right) dx * \left( \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta \right)
+    +
+    dx * \left( \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta * P \left( x - \Delta, t \right) \right)
+\end{equation}
+A $dx$ tagokkal az egyenlet leosztható, így:
+
+\begin{equation}
+    P \left( x, t + \tau \right)
+    =
+    P \left( x, t \right)
+    -
+    P \left( x, t \right) * \left( \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta \right)
+    +
+    \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta * P \left( x - \Delta, t \right)
+\end{equation}
+Alkalmazzunk a fent ismert három feltétel közül az első számút, miszerint $\int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta = 1$:
+
+\begin{equation}
+    P \left( x, t + \tau \right)
+    =
+    P \left( x, t \right)
+    -
+    P \left( x, t \right) * \underbrace{\left( \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta \right)}_{\text{\normalfont =1, az első feltétel szerint.}}
+    +
+    \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta * P \left( x - \Delta, t \right)
+\end{equation}
+\begin{equation}
+    P \left( x, t + \tau \right)
+    =
+    \underbrace{P \left( x, t \right)
+    -
+    P \left( x, t \right)}_{\text{\normalfont =0}}
+    +
+    \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta * P \left( x - \Delta, t \right)
+\end{equation}
+Mely után végül megkapjuk a \emph{Chapman--Kolmogorov-egyenletet}:
+
+\begin{equation}
+    \boxed{P \left( x, t + \tau \right)
+    =
+    \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta * P \left( x - \Delta, t \right)}
+\end{equation}
+Az egyenlet bal oldalát $\tau$-ban, a jobboldalt pedig kétszer $\Delta$-ban sorbafejtjük (\emph{Kramers--Moyal-sorfejtés}). Ekkor a következő formulát kapjuk:
+
+\begin{align}
+    P \left( x, t \right) + \tau \frac{\partial P \left( x, t \right)}{\partial t}
+    &=
+    P \left( x, t \right) * \int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta
+    -
+    \frac{\partial P \left( x, t \right)}{\partial x} * \int_{-\infty}^{\infty} \Delta \Phi \left( \Delta \right) d \Delta + \nonumber \\
+    &+
+    \frac{1}{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} * \int_{-\infty}^{\infty} \Delta^{2} \Phi \left( \Delta \right) d \Delta
+\end{align}
+Amit az első számú feltétel alapján újfent tovább tudunk egyszerűsíteni:
+
+\begin{align}
+    \cancel{P \left( x, t \right)} + \tau \frac{\partial P \left( x, t \right)}{\partial t}
+    &=
+    \cancel{P \left( x, t \right)} * \overbrace{\int_{-\infty}^{\infty} \Phi \left( \Delta \right) d \Delta}^{\text{\normalfont =1, az első feltétel szerint.}}
+    -
+    \frac{\partial P \left( x, t \right)}{\partial x} * \int_{-\infty}^{\infty} \Delta \Phi \left( \Delta \right) d \Delta + \nonumber \\
+    &+
+    \frac{1}{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} * \int_{-\infty}^{\infty} \Delta^{2} \Phi \left( \Delta \right) d \Delta
+\end{align}
+Így végül a következő alakot kapjuk:
+
+\begin{equation}
+    \tau \frac{\partial P \left( x, t \right)}{\partial t}
+    =
+    -
+    \frac{\partial P \left( x, t \right)}{\partial x} * \int_{-\infty}^{\infty} \Delta \Phi \left( \Delta \right) d \Delta
+    +
+    \frac{1}{2} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} * \int_{-\infty}^{\infty} \Delta^{2} \Phi \left( \Delta \right) d \Delta
+\end{equation}
+Ebben megjelenik két ismert tag, amiknek definícióját a (\ref{eq:6})-os és (\ref{eq:7})-es egyenletek adják meg:
+
+\begin{equation}
+    \left< \Delta \right> = \int_{-\infty}^{\infty} \Delta \Phi \left( \Delta \right) d \Delta
+\end{equation}
+\begin{equation}
+    \left< \Delta^{2} \right> = \int_{-\infty}^{\infty} \Delta^{2} \Phi \left( \Delta \right) d \Delta
+\end{equation}
+Ezeket behelyettesítve és $\tau$-val leosztva kapjuk a következő \emph{Fokker--Planck-egyenletet}:
+
+\begin{equation}
+    \boxed{\frac{\partial P \left( x, t \right)}{\partial t}
+    =
+    -
+    \frac{\left< \Delta \right>}{\tau} \frac{\partial P \left( x, t \right)}{\partial x}
+    +
+    \frac{1}{2} \frac{\left< \Delta^{2} \right>}{\tau} \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}}}
+\end{equation}
+Ez az egyenlet abban különbözik az - előadáson is megoldott - driftmentes változattól, hogy itt a második számú feltétel szerint $\left< \Delta \right> \neq 0$.
 
 
 \subsection*{B) feladatrész}
 \quest{Írjuk fel az egyenlet megoldását arra az esetre, ha a virágporszem az origóból indul!}
 \\ \\
-OK
+Az előző feladatban már ismertettük, hogy mit jelent egy rendszer \emph{driftje} és \emph{diffúziós együtthatója}, vezessük be itt is ugyanezeket a mennyiségeket:
+
+\begin{equation}
+    \frac{\left< \Delta \right>}{\tau} := v
+\end{equation}
+\begin{equation}
+    \frac{1}{2} \frac{\left< \Delta^{2} \right>}{\tau} := D
+\end{equation}
+Ez visszahelyettesítve a Fokker--Planck-egyenletbe:
+
+\begin{equation}
+    \frac{\partial P \left( x, t \right)}{\partial t}
+    =
+    -
+    v \frac{\partial P \left( x, t \right)}{\partial x}
+    +
+    D \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}}
+\end{equation}
