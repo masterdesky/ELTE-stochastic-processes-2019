@@ -127,7 +127,7 @@ Majd helyettesítsünk be a fenti (\ref{eq:19})-es és (\ref{eq:20})-as egyenlet
     &=
     \frac{1}{\sqrt{4 \pi D t}} * \int_{\ -\infty}^{\ \infty} y * \sqrt{4Dt} * e^{-y^{2}} * \sqrt{4Dt}\, dy = \nonumber \\
     &=
-    \frac{4Dt}{\sqrt{4 \pi D t}} * \int_{\ -\infty}^{\ \infty} y * e^{-y^{2}}\, dy
+    \frac{4Dt}{\sqrt{4 \pi D t}} * \underbrace{\int_{\ -\infty}^{\ \infty} y * e^{-y^{2}}\, dy}_{\text{\normalfont $= 0$}}
     =
     \frac{4Dt}{\sqrt{4 \pi D t}} * 0 = \doubleunderline{0}
 \end{align}
@@ -137,7 +137,7 @@ Majd helyettesítsünk be a fenti (\ref{eq:19})-es és (\ref{eq:20})-as egyenlet
     &=
     \frac{1}{\sqrt{4 \pi D t}} * \int_{\ -\infty}^{\ \infty} \left( y * \sqrt{4Dt} \right)^{2} * e^{-y^{2}} * \sqrt{4Dt}\, dy = \nonumber \\
     &=
-    \frac{\left( 4Dt \right)^{\tfrac{3}{2}}}{\sqrt{4 \pi D t}} * \int_{\ -\infty}^{\ \infty} y^{2} * e^{-y^{2}}\, dy
+    \frac{\left( 4Dt \right)^{\tfrac{3}{2}}}{\sqrt{4 \pi D t}} * \underbrace{\int_{\ -\infty}^{\ \infty} y^{2} * e^{-y^{2}}\, dy}_{\text{\normalfont $= \frac{\sqrt{\pi}}{2}$}}
     =
     \frac{4Dt}{\sqrt{\pi}} * \frac{\sqrt{\pi}}{2}
     =
@@ -166,7 +166,7 @@ Ezt az egyenletet rendezve a következő alakot kapjuk az előző alfejezet vég
 \begin{equation} \label{eq:25}
     \frac{\partial P \left( x, t \right)}{\partial t}
     =
-    \frac{3}{5} * \frac{l}{\tau} \frac{\partial P \left( x, t \right)}{\partial x} + \frac{l^{2}}{2 \tau} * \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}}
+    \frac{3}{5} * \frac{l}{\tau} \frac{\partial P \left( x, t \right)}{\partial x} + \frac{3 l^{2}}{10 \tau} * \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}}
     =
     - v \frac{\partial P \left( x, t \right)}{\partial x} + D * \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}}
 \end{equation}
@@ -192,7 +192,7 @@ Melyre a (\ref{eq:25})-ös egyenlet a következőképp módosul:
 \end{align}
 Bontsuk ki a parciális deriváltakat:
 
-\begin{align}
+\begin{align} \label{eq:27}
     &\frac{\partial y \left( x, t \right)}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
     +
     \frac{\partial t}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
@@ -204,7 +204,7 @@ Bontsuk ki a parciális deriváltakat:
     D * \partial_{x} \left( \frac{\partial y \left( x, t \right)}{\partial x} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y} \right)
 \end{align}
 \hrulefill
-\begin{align}
+\begin{align} \label{eq:28}
     &\frac{\partial y \left( x, t \right)}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
     +
     \frac{\partial t}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
@@ -216,7 +216,7 @@ Bontsuk ki a parciális deriváltakat:
     D * \partial_{x} \left( \frac{\partial \left( x - vt \right)}{\partial x} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y} \right)
 \end{align}
 \hrulefill
-\begin{align}
+\begin{align} \label{eq:29}
     &\frac{\partial \left( x - vt \right)}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
     +
     1 * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
@@ -228,7 +228,7 @@ Bontsuk ki a parciális deriváltakat:
     D * \frac{\partial \left( x - vt \right)}{\partial x} * \frac{\partial \left( x - vt \right)}{\partial x} * \frac{\partial^{2} \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y^{2}}
 \end{align}
 \hrulefill
-\begin{align}
+\begin{align} \label{eq:30}
     &\underbrace{\frac{\partial \left( x - vt \right)}{\partial t}}_{\text{\normalfont $= -v$}} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
     +
     1 * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
@@ -240,7 +240,7 @@ Bontsuk ki a parciális deriváltakat:
     D * \underbrace{\frac{\partial \left( x - vt \right)}{\partial x}}_{\text{\normalfont $= 1$}} * \underbrace{\frac{\partial \left( x - vt \right)}{\partial x}}_{\text{\normalfont $= 1$}} * \frac{\partial^{2} \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y^{2}}
 \end{align}
 \hrulefill
-\begin{equation}
+\begin{equation} \label{eq:31}
     \cancel{-v * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}}
     +
     \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
@@ -252,25 +252,25 @@ Bontsuk ki a parciális deriváltakat:
 \end{equation}
 Ezt követően pedig megkapjuk a végleges egyenletünket:
 
-\begin{equation}
+\begin{equation} \label{eq:32}
     \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
     =
     D * \frac{\partial^{2} \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y^{2}}
 \end{equation}
 Mely $\tilde{P}$-re vonatkozólag megegyezik a driftmentes leírás Fokker--Planck-egyenletével. Ennek megoldása $\tilde{P} \left( y, t = 0 \right) = \delta \left( y \right)$ keződfeltétellel (mely ekvivalens a $P \left( x, t = 0 \right) = \delta \left( x \right)$ feltétellel) a már ismert Gauss-függvény:
 
-\begin{equation}
+\begin{equation} \label{eq:33}
     \tilde{P} \left( y, t \right) = \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{y^{2}}{4Dt}}
 \end{equation}
 Melyet változócserével visszaalakítva megkapjuk az egyenletünk megoldását:
 
-\begin{equation}
+\begin{equation} \label{eq:34}
     \boxed{P \left( x, t \right) = \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{\left( x - vt \right)^{2}}{4Dt}}}
 \end{equation}
 
 A (\ref{eq:6})-os és (\ref{eq:7})-es egyenletek alapján megadhatjuk a keresett $\left< x_{r} \right>$ és $\left< x_{r}^{2} \right>$, valamint az $\left< x_{r}^{2} \right> - \left< x_{r} \right>$ értékeket:
 
-\begin{equation}
+\begin{equation} \label{eq:35}
     \left< x_{r} \right>
     =
     \int_{- \infty}^{\infty} x P \left( x, t \right)\, dx
@@ -279,7 +279,7 @@ A (\ref{eq:6})-os és (\ref{eq:7})-es egyenletek alapján megadhatjuk a keresett
     =
     \frac{1}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} x * e^{-\tfrac{\left( x - vt \right)^{2}}{4Dt}}\, dx
 \end{equation}
-\begin{equation}
+\begin{equation} \label{eq:36}
     \left< x_{r}^{2} \right>
     =
     \int_{- \infty}^{\infty} x^{2} P \left( x, t \right)\, dx
@@ -296,20 +296,79 @@ Vezessük be a következő változócserét:
 \begin{equation*}
     \frac{dy}{dx} = \frac{1}{\sqrt{4Dt}} \quad \to \quad dx = \sqrt{4Dt}\, dy
 \end{equation*}
-Ezt behelyettesítve a fentiekbe:
+Ezt behelyettesítve a fentiekbe, megkapjuk a keresett értékeket:
 
-\begin{equation}
+\begin{align} \label{eq:37}
+    \left< x_{r} \right>
+    &=
+    \frac{1}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} \left( y * \sqrt{4Dt} + vt \right) * e^{-y^{2}} \sqrt{4Dt}\, dy
+    =
+    \frac{\sqrt{4Dt}}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} \left( y * \sqrt{4Dt} + vt \right) * e^{-y^{2}}\, dy = \nonumber \\
+    &=
+    \frac{1}{\sqrt{\pi}} * \left( \int_{- \infty}^{\infty} \left( y * \sqrt{4Dt} \right) * e^{-y^{2}}\, dy + \int_{- \infty}^{\infty} \left( vt \right) * e^{-y^{2}}\, dy \right) = \nonumber \\
+    &=
+    \frac{1}{\sqrt{\pi}} * \left( \sqrt{4Dt} * \underbrace{\int_{- \infty}^{\infty} y * e^{-y^{2}}\, dy}_{\text{\normalfont $= 0$}} + vt * \underbrace{\int_{- \infty}^{\infty} e^{-y^{2}}\, dy}_{\text{\normalfont $= \sqrt{\pi}$}} \right)
+    =
+    \frac{\sqrt{\pi}}{\sqrt{\pi}} * vt = \boxed{vt}
+\end{align}
+
+\begin{align} \label{eq:38}
+    \left< x_{r}^{2} \right>
+    &=
+    \frac{1}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} \left( y * \sqrt{4Dt} + vt \right)^{2} * e^{-y^{2}} \sqrt{4Dt}\, dy
+    =
+    \frac{\sqrt{4Dt}}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} \left( y * \sqrt{4Dt} + vt \right)^{2} * e^{-y^{2}}\, dy = \nonumber \\
+    &=
+    \frac{1}{\sqrt{\pi}} * \left( \int_{- \infty}^{\infty} \left( y * \sqrt{4Dt} \right)^{2} * e^{-y^{2}}\, dy
+    +
+    \int_{- \infty}^{\infty} 2 * y * \sqrt{4Dt} * vt * e^{-y^{2}}\, dy
+    +
+    \int_{- \infty}^{\infty} \left( vt \right)^{2} * e^{-y^{2}}\, dy \right) = \nonumber \\
+    &=
+    \frac{1}{\sqrt{\pi}} * \left( 4Dt * \underbrace{\int_{- \infty}^{\infty} y^{2} * e^{-y^{2}}\, dy}_{\text{\normalfont $= \frac{\sqrt{\pi}}{2}$}}
+    +
+    2 * \sqrt{4Dt} * vt * \underbrace{\int_{- \infty}^{\infty} y * e^{-y^{2}}\, dy}_{\text{\normalfont $= 0$}}
+    +
+    \left( vt \right)^{2} * \underbrace{\int_{- \infty}^{\infty} e^{-y^{2}}\, dy}_{\text{\normalfont $= \sqrt{\pi}$}} \right) = \nonumber \\
+    &=
+    \frac{1}{\sqrt{\pi}} * \left( 4Dt * \frac{\sqrt{\pi}}{2}
+    +
+    \left( vt \right)^{2} * \sqrt{\pi} \right)
+    =
+    \boxed{2Dt + \left( vt \right)^{2}}
+\end{align}
+
+\begin{equation} \label{eq:39}
+    \left< x_{r}^{2} \right> - \left< x_{r} \right> = \boxed{2Dt + \left( vt \right)^{2} - vt}
+\end{equation}
+Ahol:
+
+\begin{equation*}
+    v = - \frac{3}{5} * \frac{l}{\tau}
+\end{equation*}
+\begin{equation*}
+    D = \frac{3 l^{2}}{10 \tau}
+\end{equation*}
+Így végül felírhatjuk, hogy:
+
+\begin{equation} \label{eq:40}
     \left< x_{r} \right>
     =
-    \frac{1}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} \left ( y * \sqrt{4Dt} + vt \right) * e^{y^{2}} \sqrt{4Dt}\, dy
+    vt
     =
-    \frac{\sqrt{4Dt}}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} \left ( y * \sqrt{4Dt} + vt \right) * e^{y^{2}}\, dy
+    - \frac{3}{5} * \frac{l}{\tau} t
 \end{equation}
-\\
-\begin{equation}
+\begin{align} \label{eq:41}
     \left< x_{r}^{2} \right>
+    &=
+    2Dt + \left( vt \right)^{2}
     =
-    \frac{1}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} \left ( y * \sqrt{4Dt} + vt \right)^{2} * e^{y^{2}} \sqrt{4Dt}\, dy
+    2 * \frac{3 l^{2}}{10 \tau} * t + \left( - \frac{3}{5} * \frac{l}{\tau} \right)^{2} * t^{2} = \nonumber \\
+    &=
+    \frac{3 l^{2}}{5 \tau} * t + \frac{9}{25} * \frac{l^{2}}{\tau^{2}} * t^{2}
     =
-    \frac{\sqrt{4Dt}}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} \left ( y * \sqrt{4Dt} + vt \right)^{2} * e^{y^{2}}\, dy
-\end{equation}
+    \frac{l^{2}}{\tau} * t * \left( \frac{3}{5} + \frac{9}{25} * \frac{t}{\tau} \right)
+\end{align}
+\begin{align} \label{eq:42}
+    \left< x_{r}^{2} \right> - \left< x_{r} \right> = 2Dt + \left( vt \right)^{2} - vt  = \frac{l^{2}}{\tau} * t * \left( \frac{3}{5} + \frac{9}{25} * \frac{t}{\tau} \right) + \frac{3}{5} * \frac{l}{\tau} t
+\end{align}
