@@ -173,9 +173,11 @@ Ezt az egyenletet rendezve a következő alakot kapjuk az előző alfejezet vég
 A kapott differenciálegyenletet az előzőekhez hasonlóan, szintén a $P \left( x, t=0 \right) = \delta \left( x \right)$ kezdőfeltétellel oldjuk meg. Ennek megoldásához bevezetjük a következő változócserét:
 
 \begin{equation*}
-    y := x -vt
-    \quad \to \quad
-    P \left( x, t \right) = \tilde{P} \left( y, t \right) = \tilde{P} \left( x - vt, t \right)
+    P \left( x, t \right)
+    :=
+    \tilde{P} \left( y \left( x, t \right), t \right)
+    =
+    \tilde{P} \left( x - vt, t \right)
 \end{equation*}
 Melyre a (\ref{eq:25})-ös egyenlet a következőképp módosul:
 
@@ -184,12 +186,130 @@ Melyre a (\ref{eq:25})-ös egyenlet a következőképp módosul:
     =
     - v \frac{\partial P \left( x, t \right)}{\partial x} + D * \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}} \quad \to \nonumber \\
     \to \quad &
-    \frac{\partial \tilde{P} \left( y, t \right)}{\partial t}
+    \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
     =
-    - v \frac{\partial \tilde{P} \left( y, t \right)}{\partial x} + D * \frac{\partial^{2} \tilde{P} \left( y, t \right)}{\partial y^{x}} \quad \to \nonumber \\
-    \to \quad &
-    \frac{\partial \tilde{P} \left( x - vt, t \right)}{\partial t}
-    =
-    - v \frac{\partial \tilde{P} \left( x - vt, t \right)}{\partial x} + D * \frac{\partial^{2} \tilde{P} \left( x - vt, t \right)}{\partial y^{x}} \quad \to \nonumber \\
-    \to \quad &
+    - v \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial x} + D * \frac{\partial^{2} \tilde{P} \left( y \left( x, t \right), t \right)}{\partial x^{2}}
 \end{align}
+Bontsuk ki a parciális deriváltakat:
+
+\begin{align}
+    &\frac{\partial y \left( x, t \right)}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    \frac{\partial t}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
+    = \nonumber \\
+    =&
+    -
+    v * \frac{\partial y \left( x, t \right)}{\partial x} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    D * \partial_{x} \left( \frac{\partial y \left( x, t \right)}{\partial x} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y} \right)
+\end{align}
+\hrulefill
+\begin{align}
+    &\frac{\partial y \left( x, t \right)}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    \frac{\partial t}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
+    = \nonumber \\
+    =&
+    -
+    v * \frac{\partial y \left( x, t \right)}{\partial x} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    D * \partial_{x} \left( \frac{\partial \left( x - vt \right)}{\partial x} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y} \right)
+\end{align}
+\hrulefill
+\begin{align}
+    &\frac{\partial \left( x - vt \right)}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    1 * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
+    = \nonumber \\
+    =&
+    -
+    v * \frac{\partial \left( x - vt \right)}{\partial x} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    D * \frac{\partial \left( x - vt \right)}{\partial x} * \frac{\partial \left( x - vt \right)}{\partial x} * \frac{\partial^{2} \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y^{2}}
+\end{align}
+\hrulefill
+\begin{align}
+    &\underbrace{\frac{\partial \left( x - vt \right)}{\partial t}}_{\text{\normalfont $= -v$}} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    1 * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
+    = \nonumber \\
+    =&
+    -
+    v * \underbrace{\frac{\partial \left( x - vt \right)}{\partial x}}_{\text{\normalfont $= 1$}} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    D * \underbrace{\frac{\partial \left( x - vt \right)}{\partial x}}_{\text{\normalfont $= 1$}} * \underbrace{\frac{\partial \left( x - vt \right)}{\partial x}}_{\text{\normalfont $= 1$}} * \frac{\partial^{2} \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y^{2}}
+\end{align}
+\hrulefill
+\begin{equation}
+    \cancel{-v * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}}
+    +
+    \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
+    =
+    \cancel{-
+    v * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}}
+    +
+    D * \frac{\partial^{2} \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y^{2}}
+\end{equation}
+Ezt követően pedig megkapjuk a végleges egyenletünket:
+
+\begin{equation}
+    \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
+    =
+    D * \frac{\partial^{2} \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y^{2}}
+\end{equation}
+Mely $\tilde{P}$-re vonatkozólag megegyezik a driftmentes leírás Fokker--Planck-egyenletével. Ennek megoldása $\tilde{P} \left( y, t = 0 \right) = \delta \left( y \right)$ keződfeltétellel (mely ekvivalens a $P \left( x, t = 0 \right) = \delta \left( x \right)$ feltétellel) a már ismert Gauss-függvény:
+
+\begin{equation}
+    \tilde{P} \left( y, t \right) = \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{y^{2}}{4Dt}}
+\end{equation}
+Melyet változócserével visszaalakítva megkapjuk az egyenletünk megoldását:
+
+\begin{equation}
+    \boxed{P \left( x, t \right) = \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{\left( x - vt \right)^{2}}{4Dt}}}
+\end{equation}
+
+A (\ref{eq:6})-os és (\ref{eq:7})-es egyenletek alapján megadhatjuk a keresett $\left< x_{r} \right>$ és $\left< x_{r}^{2} \right>$, valamint az $\left< x_{r}^{2} \right> - \left< x_{r} \right>$ értékeket:
+
+\begin{equation}
+    \left< x_{r} \right>
+    =
+    \int_{- \infty}^{\infty} x P \left( x, t \right)\, dx
+    =
+    \int_{- \infty}^{\infty} x \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{\left( x - vt \right)^{2}}{4Dt}}\, dx
+    =
+    \frac{1}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} x * e^{-\tfrac{\left( x - vt \right)^{2}}{4Dt}}\, dx
+\end{equation}
+\begin{equation}
+    \left< x_{r}^{2} \right>
+    =
+    \int_{- \infty}^{\infty} x^{2} P \left( x, t \right)\, dx
+    =
+    \int_{- \infty}^{\infty} x^{2} \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{\left( x - vt \right)^{2}}{4Dt}}\, dx
+    =
+    \frac{1}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} x^{2} * e^{-\tfrac{\left( x - vt \right)^{2}}{4Dt}}\, dx
+\end{equation}
+Vezessük be a következő változócserét:
+
+\begin{equation*}
+    y := \frac{x - vt}{\sqrt{4Dt}} \quad \to \quad x = y * \sqrt{4Dt} + vt
+\end{equation*}
+\begin{equation*}
+    \frac{dy}{dx} = \frac{1}{\sqrt{4Dt}} \quad \to \quad dx = \sqrt{4Dt}\, dy
+\end{equation*}
+Ezt behelyettesítve a fentiekbe:
+
+\begin{equation}
+    \left< x_{r} \right>
+    =
+    \frac{1}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} \left ( y * \sqrt{4Dt} + vt \right) * e^{y^{2}} \sqrt{4Dt}\, dy
+    =
+    \frac{\sqrt{4Dt}}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} \left ( y * \sqrt{4Dt} + vt \right) * e^{y^{2}}\, dy
+\end{equation}
+\\
+\begin{equation}
+    \left< x_{r}^{2} \right>
+    =
+    \frac{1}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} \left ( y * \sqrt{4Dt} + vt \right)^{2} * e^{y^{2}} \sqrt{4Dt}\, dy
+    =
+    \frac{\sqrt{4Dt}}{\sqrt{4 \pi D t}} * \int_{- \infty}^{\infty} \left ( y * \sqrt{4Dt} + vt \right)^{2} * e^{y^{2}}\, dy
+\end{equation}

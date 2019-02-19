@@ -151,3 +151,99 @@ Ez visszahelyettesítve a Fokker--Planck-egyenletbe:
     +
     D \frac{\partial^{2} P \left( x, t \right)}{\partial x^{2}}
 \end{equation}
+Ezt a differenciálegyenletet a $P \left( x, t = 0 \right) = \delta \left( x \right)$ kezdőfeltétellel oldjuk meg, ugyanis $t = 0$-ban a részecske az origóban tartózkodik. \\
+Vezessük be az előző feladatból már ismert változócserét:
+
+\begin{equation*}
+    P \left( x, t \right)
+    :=
+    \tilde{P} \left( y \left( x, t \right), t \right)
+    =
+    \tilde{P} \left( x - vt, t \right)
+\end{equation*}
+Ekkor a következőképp módosul a fenti Fokker--Planck-egyenlet:
+
+\begin{equation}
+    \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
+    =
+    -
+    v \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial x}
+    +
+    D \frac{\partial^{2} \tilde{P} \left( y \left( x, t \right), t \right)}{\partial x^{2}}
+\end{equation}
+Ez teljes mértékben megegyezik az előző feladatban megoldott, driftelő rendszert leíró egyenlettel. Az egyenlet megoldásához ugyanazokat a lépéseket kell elvégezzük:
+\begin{align}
+    &\frac{\partial y \left( x, t \right)}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    \frac{\partial t}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
+    = \nonumber \\
+    =&
+    -
+    v * \frac{\partial y \left( x, t \right)}{\partial x} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    D * \partial_{x} \left( \frac{\partial y \left( x, t \right)}{\partial x} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y} \right)
+\end{align}
+\hrulefill
+\begin{align}
+    &\frac{\partial y \left( x, t \right)}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    \frac{\partial t}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
+    = \nonumber \\
+    =&
+    -
+    v * \frac{\partial y \left( x, t \right)}{\partial x} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    D * \partial_{x} \left( \frac{\partial \left( x - vt \right)}{\partial x} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y} \right)
+\end{align}
+\hrulefill
+\begin{align}
+    &\frac{\partial \left( x - vt \right)}{\partial t} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    1 * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
+    = \nonumber \\
+    =&
+    -
+    v * \frac{\partial \left( x - vt \right)}{\partial x} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    D * \frac{\partial \left( x - vt \right)}{\partial x} * \frac{\partial \left( x - vt \right)}{\partial x} * \frac{\partial^{2} \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y^{2}}
+\end{align}
+\hrulefill
+\begin{align}
+    &\underbrace{\frac{\partial \left( x - vt \right)}{\partial t}}_{\text{\normalfont $= -v$}} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    1 * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
+    = \nonumber \\
+    =&
+    -
+    v * \underbrace{\frac{\partial \left( x - vt \right)}{\partial x}}_{\text{\normalfont $= 1$}} * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}
+    +
+    D * \underbrace{\frac{\partial \left( x - vt \right)}{\partial x}}_{\text{\normalfont $= 1$}} * \underbrace{\frac{\partial \left( x - vt \right)}{\partial x}}_{\text{\normalfont $= 1$}} * \frac{\partial^{2} \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y^{2}}
+\end{align}
+\hrulefill
+\begin{equation}
+    \cancel{-v * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}}
+    +
+    \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
+    =
+    \cancel{-
+    v * \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y}}
+    +
+    D * \frac{\partial^{2} \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y^{2}}
+\end{equation}
+Ezt követően pedig megkapjuk a végleges egyenletünket:
+
+\begin{equation}
+    \frac{\partial \tilde{P} \left( y \left( x, t \right), t \right)}{\partial t}
+    =
+    D * \frac{\partial^{2} \tilde{P} \left( y \left( x, t \right), t \right)}{\partial y^{2}}
+\end{equation}
+Mely $\tilde{P}$-re vonatkozólag természetesen itt is megegyezik a driftmentes leírás Fokker--Planck-egyenletével. Ennek megoldása $\tilde{P} \left( y, t = 0 \right) = \delta \left( y \right)$ keződfeltétellel (mely ekvivalens a $P \left( x, t = 0 \right) = \delta \left( x \right)$ feltétellel) a már ismert Gauss-függvény:
+
+\begin{equation}
+    \tilde{P} \left( y, t \right) = \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{y^{2}}{4Dt}}
+\end{equation}
+Melyet az előző feladatban is szereplő változócserével visszaalakítva, megkapjuk az egyenletünk megoldását:
+
+\begin{equation}
+    \boxed{P \left( x, t \right) = \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{\left(x - vt\right)^{2}}{4Dt}}}
+\end{equation}
