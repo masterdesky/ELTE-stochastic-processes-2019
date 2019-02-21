@@ -8,7 +8,6 @@
 \usepackage{fancyhdr}
 \usepackage{mathrsfs}
 \usepackage{xcolor}
-\usepackage{graphicx}
 \usepackage{cancel}
 
 % Hyperlinks
@@ -19,9 +18,14 @@
     filecolor=magenta,      
     urlcolor=cyan,
     citecolor = cyan,
-    pdftitle={Stochastic Processes - 1.},
+    pdftitle={Stochastic Processes - 2.},
     pdfpagemode=FullScreen,
 }
+
+% Images
+\usepackage{graphicx}
+\usepackage[font={small}, justification=centering]{caption}
+\graphicspath{{./images/}}
 
 % Section titles
 \usepackage{titlesec}
@@ -47,7 +51,7 @@
 \setlength{\parskip}{0.05in}
 
 \newcommand\course{Véletlen fizikai folyamatok}
-\newcommand\hwnumber{1}
+\newcommand\hwnumber{2}
 \newcommand\Name{Pál Balázs}
 \newcommand\Neptun{UXB26I}
 
@@ -55,7 +59,7 @@
 \headheight 35pt
 \lhead{\Name\\\Neptun} 
 \chead{\textbf{\Large Véletlen fizikai folyamatok\\\hwnumber. házifeladat}}
-\rhead{2019. február 19.}
+\rhead{\today}
 \lfoot{}
 \cfoot{\small\thepage}
 \rfoot{}
