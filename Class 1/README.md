@@ -23,4 +23,7 @@
 ### Movement of a pollen
 {IMAGE}
 - We're observing the position of a particle from time to time at $\tau$ intervals.
-- We assume, that the direction of the displacement is independent from the previous ones. 
+- We assume, that the direction of the displacement is independent from the previous ones.  
+  
+- We study the 1D random-walk of a particle in the following
+Let $P \left( x, t \right)\, dx$ indicates the probability, that after $t$ time from the starting position the particle is staying in the $\left[ x, x+dx \right]$ interval.
