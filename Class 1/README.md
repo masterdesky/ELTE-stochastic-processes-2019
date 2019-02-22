@@ -10,6 +10,8 @@
 - Main question: do fluctuations contain any information? -> A: Yes!! -> It's important to research them.
 - We're studying those systems (mostly), where fluctuations occure around their state of equilibrium.
 
+---
+
 ### History of Brownian-motion
 
 - The basic idea originates from [Robert Brown](https://en.wikipedia.org/wiki/Robert_Brown_(botanist,_born_1773)), 1827
@@ -20,10 +22,15 @@
 - Perrin, using these articles succesfully measures the Avogadro constant in the same year, in 1908.
 - These discoveries greatly strengthen the atomic theory of matter, which isn't recognized in that time.
 
+---
+
 ### Movement of a pollen
 {IMAGE}
-- We're observing the position of a particle from time to time at ![equation](https://latex.codecogs.com/gif.latex?%5Ctau) intervals.
+- We're observing the position of a particle from time to time at ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20tau) intervals.
 - We assume, that the direction of the displacement is independent from the previous ones.  
   
 - We study the 1D random-walk of a particle in the following
-Let ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%29%5C%2C%20dx) indicates the probability, that after $t$ time from the starting position the particle is staying in the ![equation](https://latex.codecogs.com/gif.latex?%5Cleft%5B%20x%2C%20x&plus;dx%20%5Cright%20%5D) interval.
+  
+Let ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%29%5C%2C%20dx) indicates the probability, that after ![equation](https://latex.codecogs.com/gif.latex?t) time from the starting position the particle is staying in the ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20left%5B%20x%2C%20x&plus;dx%20%5Cright%20%5D) interval.  
+We search the ![equation](https://latex.codecogs.com/gif.latex?P%20%5Cleft%28%20x%2C%20t%20&plus;%20%5Ctau%20%5Cright%20%29) probability, where the particle will stay in the ![equation](https://latex.codecogs.com/gif.latex?%5Cleft%5B%20x%2C%20x&plus;dx%20%5Cright%20%5D) interval, at ![equation](https://latex.codecogs.com/gif.latex?t%5Cinline%20&plus;%20%5Ctau) time.  
+If we assume, that a particle between two time intervals is "jumping" at ![equation](https://latex.codecogs.com/gif.latex?%5CDelta) distance from its previous location, we can introduce the following definition:
