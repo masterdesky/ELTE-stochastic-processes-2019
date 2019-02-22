@@ -47,8 +47,12 @@ We can summarize these cases in order as follows:
 ![equation](https://latex.codecogs.com/svg.latex?%5Csmall%20P%20%5Cleft%28%20x%2C%20t%20&plus;%20%5Ctau%20%5Cright%20%29%20dx%20%3D%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%20%29%20dx%20-%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20d%20%5CDelta%20%5Ccdot%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%20%29%20dx%20&plus;%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20d%20%5CDelta%20%5Ccdot%20P%20%5Cleft%28%20x%20-%20%5CDelta%2C%20t%20%5Cright%20%29%20dx)  
   
 We can divide by ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20%5Csmall%20dx) - because the intergrals are independent from ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20x) - and then re-order the equation:  
+  
 ![equation](https://latex.codecogs.com/svg.latex?P%20%5Cleft%28%20x%2C%20t%20&plus;%20%5Ctau%20%5Cright%20%29%20%5Ccancel%7Bdx%7D%20%3D%20%5C%5C%20%3D%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%20%29%20%5Ccancel%7Bdx%7D%20-%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%20%29%20%5Ccdot%20%5Cunderbrace%7B%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20d%20%5CDelta%7D_%7B%5Ctext%7B%5Cnormalfont%20%3D1%20because%20of%20first%20condition%7D%7D%20%5Ccancel%7Bdx%7D%20&plus;%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20d%20%5CDelta%20%5Ccdot%20P%20%5Cleft%28%20x%20-%20%5CDelta%2C%20t%20%5Cright%20%29%20%5Ccancel%7Bdx%7D)  
 ![equation](https://latex.codecogs.com/svg.latex?P%20%5Cleft%28%20x%2C%20t%20&plus;%20%5Ctau%20%5Cright%20%29%20%3D%20%5Ccancel%7BP%20%5Cleft%28%20x%2C%20t%20%5Cright%20%29%20-%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%20%29%20%5Ccdot%201%7D%20&plus;%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20%5Ccdot%20P%20%5Cleft%28%20x%20-%20%5CDelta%2C%20t%20%5Cright%20%29%5C%2C%20d%20%5CDelta)  
+  
 So we get the following equation at the end:  
+  
 ![equation](https://latex.codecogs.com/svg.latex?P%20%5Cleft%28%20x%2C%20t%20&plus;%20%5Ctau%20%5Cright%20%29%20%3D%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20%5Ccdot%20P%20%5Cleft%28%20x%20-%20%5CDelta%2C%20t%20%5Cright%20%29%5C%2C%20d%20%5CDelta)  
+  
 Which we call the *Chapman-Kolmogorov-equation*.
