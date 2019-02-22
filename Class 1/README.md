@@ -44,6 +44,7 @@ There is 3 different case, where a particle could be found or not in the interva
 - A particle jumps from ![equation](https://latex.codecogs.com/svg.latex?%5CDelta) distance into the interval.
 
 We can summarize these cases in order as follows:  
+  
 ![equation](https://latex.codecogs.com/svg.latex?%5Csmall%20P%20%5Cleft%28%20x%2C%20t%20&plus;%20%5Ctau%20%5Cright%20%29%20dx%20%3D%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%20%29%20dx%20-%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20d%20%5CDelta%20%5Ccdot%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%20%29%20dx%20&plus;%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20d%20%5CDelta%20%5Ccdot%20P%20%5Cleft%28%20x%20-%20%5CDelta%2C%20t%20%5Cright%20%29%20dx)  
   
 We can divide by ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20%5Csmall%20dx) - because the intergrals are independent from ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20x) - and then re-order the equation:  
