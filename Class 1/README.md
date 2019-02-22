@@ -22,8 +22,8 @@
 
 ### Movement of a pollen
 {IMAGE}
-- We're observing the position of a particle from time to time at $\tau$ intervals.
+- We're observing the position of a particle from time to time at ![equation](https://latex.codecogs.com/gif.latex?%5Ctau) intervals.
 - We assume, that the direction of the displacement is independent from the previous ones.  
   
 - We study the 1D random-walk of a particle in the following
-Let $P \left( x, t \right)\, dx$ indicates the probability, that after $t$ time from the starting position the particle is staying in the $\left[ x, x+dx \right]$ interval.
+Let ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%29%5C%2C%20dx) indicates the probability, that after $t$ time from the starting position the particle is staying in the ![equation](https://latex.codecogs.com/gif.latex?%5Cleft%5B%20x%2C%20x&plus;dx%20%5Cright%20%5D) interval.
