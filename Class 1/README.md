@@ -41,8 +41,8 @@ We have the following criterions for this system:
 There is 3 different case, where a particle could be found or not in the interval in question:
 - A particle is already in the ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20%5Cleft%20%5B%20x%2C%20x&plus;dx%20%5Cright%20%5D) interval at ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20t) and stays there.
 - A particle jumps from ![equation](https://latex.codecogs.com/svg.latex?%5CDelta) distance into the interval.
-- A particle jumps out the interval between the two observations in the ![equation](https://latex.codecogs.com/pdf.latex?%5Cleft%5B%20t%2C%20t%20&plus;%20%5Ctau%20%5Cright%20%5D) time interval.
+- A particle jumps out the interval between the two observations in the ![equation](https://latex.codecogs.com/svg.latex?%5Cleft%5B%20t%2C%20t%20&plus;%20%5Ctau%20%5Cright%20%5D) time interval.
 
 We can summarize these cases in as follows:  
-![equation](https://latex.codecogs.com/pdf.latex?P%20%5Cleft%28%20x%2C%20t%20&plus;%20%5Ctau%20%5Cright%20%29%20dx%20%3D%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%20%29%20dx%20-%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20d%20%5CDelta%20%5Ccdot%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%20%29%20dx%20&plus;%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20d%20%5CDelta%20%5Ccdot%20P%20%5Cleft%28%20x%20-%20%5CDelta%2C%20t%20%5Cright%20%29%20dx)  
+![equation](https://latex.codecogs.com/svg.latex?P%20%5Cleft%28%20x%2C%20t%20&plus;%20%5Ctau%20%5Cright%20%29%20dx%20%3D%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%20%29%20dx%20-%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20d%20%5CDelta%20%5Ccdot%20P%20%5Cleft%28%20x%2C%20t%20%5Cright%20%29%20dx%20&plus;%20%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20d%20%5CDelta%20%5Ccdot%20P%20%5Cleft%28%20x%20-%20%5CDelta%2C%20t%20%5Cright%20%29%20dx)  
 Where the first 
