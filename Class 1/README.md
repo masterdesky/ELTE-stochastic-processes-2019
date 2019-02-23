@@ -1,6 +1,6 @@
 # Stochastic Processes 2018-2019/2 @ ELTE
 
-## First class - lecture notes
+## First lecture notes
 
 ### Introduction
 
