@@ -1,2 +1,31 @@
 \section{} \label{sec:3}
 \quest{Használjuk a \ref{sec:2}. feladat eredményét, valamint a Brown mozgás Langevin féle leirásának eredményeképp kapott kifejezést a kolloidrészecskék diffúziós együtthatójára, s becsüljük meg az Avogadro számot! A kolloidrészecskék sűrűségét tekinthetjük vizhez közelinek, a hőmérsékletet pedig szobahőmérsékletnek.}
+\\ \\
+A diffúziós együtthatő Langevin-féle definíciója már szerepelt az előző feladat végén, azonban ezt tovább tudjuk alakítani, hogy az Avogadro szám kifejezésére alkalmas legyen.
+
+\begin{equation}
+    D
+    =
+    \frac{k_{B} T}{6 \pi \eta a}
+    =
+    \frac{\tfrac{R}{N_{A}} T}{6 \pi \eta a}
+\end{equation}
+Ebből pedig kifejezhetjük az Avogadro számot:
+
+\begin{equation}
+    N_{A} = \frac{R T}{6 D \pi \eta a}
+\end{equation}
+Számítsuk ki az $N_{A}$ különböző értékeit az összes fenti eredményre, amit $D$-re kaptunk:
+
+\begin{center}
+\captionof{table}{Az Avogadro szám értéke}\label{tab:7}
+\begin{tabular}{||c|c|c|c||}
+    \toprule
+                                             & 1. trajektória  & 2. trajektória  & 3. trajektória  \\ \hline \hline
+    $N_{A} \left( D \left( \left< r^{2} \right> \right) \right)$  & $2.08*10^{20}$  & $9.40*10^{19}$  & $3.65*10^{20}$ \\ \hline
+    $N_{A} \left( D \left( \left< x^{2} \right> \right) \right)$  & $3.45*10^{21}$  & $6.68*10^{21}$  & $5.76*10^{21}$ \\ \hline
+    $N_{A} \left( D \left( a \right) \right)$                     & $2.13*10^{20}$  & $3.34*10^{20}$  & $2.39*10^{20}$  \\ \hline
+    Irodalmi érték                                                & \multicolumn{3}{c||}{$6.023*10^{23}$} \\
+    \bottomrule
+\end{tabular}
+\end{center}

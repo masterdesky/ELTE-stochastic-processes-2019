@@ -9,46 +9,106 @@ Keressük az $\left< x_{t}^{2} \right>$ és az $\left< y_{t}^{2} \right>$ érté
 \begin{equation} \label{eq:1}
     \left< x_{t}^{2} \right>
     =
-    \int_{\ -\infty}^{\ \infty} x^{2} * P \left( x \right)\ dx
-    \equiv
     \int_{\ -\infty}^{\ \infty} x^{2} * P \left( x, t \right)\ dx
 \end{equation}
 \begin{equation} \label{eq:2}
     \left< y_{t}^{2} \right>
     =
-    \int_{\ -\infty}^{\ \infty} y^{2} * P \left( y \right)\ dy
-    \equiv
     \int_{\ -\infty}^{\ \infty} y^{2} * P \left( y, t \right)\ dy
 \end{equation}
-Jelen esetben a 2D Brown--mozgás leírását kell megadnunk, amely esetében egy részecske, az adott pontban történő tartózkodásának valószínűségét egy $P \left( x, y \right) \equiv P \left( x, y, t \right)$ mennyiség jellemzi. Ekkor az $\left< x^{2} * y^{2} \right>$ megadhatjuk a következő módon:
+Jelen esetben a 2D Brown--mozgás leírását kell megadnunk, amely esetében egy részecske, az adott pontban történő tartózkodásának valószínűségét egy $P_{12} \left( x, y, t \right)$ mennyiség jellemzi. Ekkor az $\left< x^{2} * y^{2} \right>$ megadhatjuk a következő módon:
 
 \begin{equation} \label{eq:3}
     \left< x^{2} * y^{2} \right>
     =
-    \iint{x^{2} * y^{2} * P \left( x, y \right)\, dx\, dy}
+    \iint{x^{2} * y^{2} * P_{12} \left( x, y, t \right)\, dx\, dy}
 \end{equation}
-Mivel $x$ és $y$ független események, ezért $P \left( x, y \right)$ felbontható egy $f_{1} \left( x \right)$ és egy $f_{2} \left( y \right)$ függvény szorzatára a következőek alapján:
+Mivel $x$ és $y$ független események, ezért $P_{12} \left( x, y, t \right)$ felbontható egy $P_{1} \left( x, t \right)$ és egy $P_{2} \left( y, t \right)$ függvény szorzatára a következőek alapján:
 
 \begin{equation}
-    P \left( x, y \right) = f_{1} \left( x \right) * f_{2} \left( y \right) \quad \text{ha $x$ és $y$ független}
+    P_{12} \left( x, y, t \right) = P_{1} \left( x, t \right) * P_{2} \left( y, t \right) \quad \quad \text{ha $x$ és $y$ független.}
 \end{equation}
 Ekkor a fenti (\ref{eq:3})-as egyenlet így alakul:
 
 \begin{equation} \label{eq:4}
-    \iint{x^{2} * y^{2} * P \left( x, y \right)\, dx\, dy}
+    \iint{x^{2} * y^{2} * P_{12} \left( x, y, t \right)\, dx\, dy}
     =
-    \iint{x^{2} * y^{2} * f_{1} \left( x \right) * f_{2} \left( y \right)\, dx\, dy}
+    \iint{x^{2} * y^{2} * P_{1} \left( x, t \right) * P_{2} \left( y, t \right)\, dx\, dy}
 \end{equation}
 Ezt azonos változók szerint ketté bonthatunk és bevezethetünk egy többi változótól független időfüggőséget is, mely végeredménye a következő:
 
-\begin{align} \label{eq:5}
-    &\left< x^{2} * y^{2} \right>
+\begin{equation} \label{eq:5}
+    \left< x^{2} * y^{2} \right>
     =
-    \iint{x^{2} * y^{2} * f_{1} \left( x \right) * f_{2} \left( y \right)\, dx\, dy} = \nonumber \\
+    \iint{x^{2} * y^{2} * P_{1} \left( x, t \right) * P_{2} \left( y, t \right)\, dx\, dy}
     =
-    \int x^{2} * f_{1} \left( x \right)\, &dx * \int{y^{2} * f_{2} \left( y \right)\, dy}
-    \equiv
-    \underbrace{\int{x^{2} * f_{1} \left( x, t \right)\, dx}}_{\text{\normalfont $\left< x^{2} \right>$}} * \underbrace{\int{y^{2} * f_{2} \left( y, t \right)\, dy}}_{\text{\normalfont $\left< y^{2} \right>$}}
-\end{align}
+    \underbrace{\int{x^{2} * P_{1} \left( x, t \right)\, dx}}_{\text{\normalfont $\left< x^{2} \right>$}} * \underbrace{\int{y^{2} * P_{2} \left( y, t \right)\, dy}}_{\text{\normalfont $\left< y^{2} \right>$}}
+\end{equation}
+Ez azt jelenti, hogy a probléma felbontható az $x$ és az $y$ irányú 1D Brown-mozgás problémájára, ahol az elmozdulási valószínűségek mindkét esetben azonosak:
 
-\subsection{}
+\begin{equation*}
+    p_{x_{+}} = \frac{1}{4} \quad p_{x_{-}} = \frac{1}{4}
+\end{equation*}
+\begin{equation*}
+    p_{y_{+}} = \frac{1}{4} \quad p_{y_{-}} = \frac{1}{4}
+\end{equation*}
+
+\subsection{Az átlagok vizsgálata}
+Megoldandó tehát a $p_{x_{+}} = \frac{1}{4},\ p_{x_{-}} = \frac{1}{4}$ és a $p_{y_{+}} = \frac{1}{4},\ p_{y_{-}} = \frac{1}{4}$ elmozdulási valószínűségekkel rendelkező 1D Brown-mozgás feladatai. Az első házifeladatban\cite{hazi1} már bebizonyítottuk, hogy ha 1D-ban a két irányba történő elmozdulás valószínűsége azonos, akkor a rendszer sodródása $0$, valamint
+
+\begin{equation}
+    \left< x_{t} \right> = \left< y_{t} \right> = 0 \quad \quad \text{ha $p_{+} = p_{-}$.}
+\end{equation}
+A Fokker--Planck-egyenlet(ek), driftmentes rendszerben, 1D diffúzió esetén a következőképp fest(enek), szintén az első házifeladat alapján\cite{hazi1}:
+
+\begin{equation}
+    \frac{\partial P_{1} \left( x, t \right)}{\partial t} 
+    =
+    \frac{l^{2}}{2 \tau} * \frac{\partial^{2} P_{1} \left( x, t \right)}{\partial x^{2}}
+    =
+    D * \frac{\partial^{2} P_{1} \left( x, t \right)}{\partial x^{2}}
+\end{equation}
+\begin{equation}
+    \frac{\partial P_{2} \left( y, t \right)}{\partial t} 
+    =
+    \frac{l^{2}}{2 \tau} * \frac{\partial^{2} P_{2} \left( y, t \right)}{\partial y^{2}}
+    =
+    D * \frac{\partial^{2} P_{2} \left( y, t \right)}{\partial y^{2}}
+\end{equation}
+Megjegyzendő, hogy a két egyenletben megjelenő $D$, diffúziós együttható egy és ugyanaz a mennyiség. A kezdőfeltétel mindkét esetben $x_{0} = 0$ és $y_{0} = 0$, amit felírhatunk a következőképpen:
+
+\begin{equation*}
+    P_{1} \left( x, t = 0 \right) = \delta \left( x \right)
+\end{equation*}
+\begin{equation*}
+    P_{2} \left( y, t = 0 \right) = \delta \left( y \right)
+\end{equation*}
+Ezeknek megoldása ismert módon a Gauss-függvény:
+
+\begin{equation}
+    P_{1} \left( x, t \right) = \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{x^{2}}{4Dt}}
+\end{equation}
+\begin{equation}
+    P_{2} \left( x, t \right) = \frac{1}{\sqrt{4 \pi D t}} * e^{-\tfrac{y^{2}}{4Dt}}
+\end{equation}
+A feladat megoldása végül a már egyszer megoldott, ugyanezen feladat alapján\cite{hazi1}:
+
+\begin{equation}
+    \left< x_{t}^{2} \right> = \left< y_{t}^{2} \right> = 2Dt
+\end{equation}
+Így ezen feladat megoldása ezek segítségével már megadható:
+
+\begin{equation}
+    \sqrt{\left< r_{t}^{2} \right>}
+    =
+    \sqrt{\left< x_{t}^{2} \right> + \left< y_{t}^{2} \right>}
+    =
+    \sqrt{2Dt + 2Dt}
+    =
+    \boxed{2 \sqrt{Dt}}
+\end{equation}
+Ami ismert módon a helyes eredmény a 2D diffúzió esetében. Általánosan azt mondhatjuk, hogy az elmozdulás négyzetének várható értéke az $n$ dimenziós izotróp diffúzió esetén\cite{diffusion}:
+
+\begin{equation}
+    \left< r_{t}^{2} \right> = 2nDt
+\end{equation}
