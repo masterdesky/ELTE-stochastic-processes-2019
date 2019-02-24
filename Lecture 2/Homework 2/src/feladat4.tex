@@ -1,2 +1,30 @@
 \section{} \label{sec:4}
-\quest{Tegyük fel, hogy a kolloidrészecskék diffúziós együtthatójára kapott kifejezés extrapolálható molekuláris szintre. Milyen értéket kapunk egy nem túlságosan nagy molekula vízben történő termális mozgásának diffúziós együtthatójára? Es egy biológiai molekulára (pl. DNS)?}
+\quest{Tegyük fel, hogy a kolloidrészecskék diffúziós együtthatójára kapott kifejezés extrapolálható molekuláris szintre. Milyen értéket kapunk egy nem túlságosan nagy molekula vízben történő termális mozgásának diffúziós együtthatójára? És egy biológiai molekulára (pl. DNS)?}
+
+\subsection{Mérettartományok}
+A (\ref{eq:18})-as egyenletben leírt definíció alapján, minél nagyobb egy részecske, annál kisebb a diffúziós együtthatója, ugyanis $D \sim \frac{1}{a}$. Mivel a molekulák nem tekinthetőek gömbszerű részecskéknek, hisz méretük közel megegyezik a környező anyag részecskéinek méretével, alakja pedig ténylegesen nem egy gömb, ezért az extrapoláció csak erős közelítés esetében lehetséges. Ha közelítésként feltesszük, hogy a molekulák és pl. a DNS is egy méretarányával megegyező sugarú gömb, akkor ezt az értéket felhasználhatjuk a további számításainkban. \\
+Egy nem szerves anyagmolekula nagysága pár \r{A}nsgtröm és pár tucat \r{A}ngström között változik. Átlagosan azt mondhatjuk tehát, hogy ezek a $10\ \text{\r{A}}$ nagyságrendjébe esnek, így ezzel az adattal fogunk számolni a továbbiakban. \\
+Egy szerves molekula ellenben ennél jóval nagyobb is lehet a szén láncképző (katenációs) tulajdonsága miatt (pl. maitotoxin (MTX), $\text{C}_{164}\text{H}_{256}\text{Na}_{2}\text{O}_{68}\text{S}_{2}$\cite{maitotoxin}), amik így már a $100\ \text{\r{A}}$ nagyságrendet is elérik, ahol szintén ezt az adatot használhatjuk majd a számításokban. \\
+A DNS, mint molekula értelmezése azonban nem magától értetődő. A DNS, vagy Dezoxiribonukleinsav egy különböző szerves molekulákból álló jobbkezes csavarodású kettős $\alpha$-hélix, amiket a kettő közötti nitrogéntartalmú nukleobázisok kapcsolnak össze. A kettős hélixen vertikális irányban haladva két bázispár között $3.4\ \text{\r{A}}$ távolság van, és kb. 10 bázispáronként következik be egy teljes hélix-fordulat\cite{watson1953molecular}. Ezek az emberi sejteken belül \emph{kromoszómákba} rendeződnek, melyek átmérője nagyjából $1400\ nm = 1.4\ \mu m$ és egyesével kb. $2\ m$ hosszú DNS láncot tartalmaznak\cite{chromosome}. Legalkalmasabban ezt a struktúrát értelmezhetjük úgy, mint a \q{DNS, mint biológiai molekula}, így ebben az esetben ezt fogjuk a számításokban használni.
+
+\subsection{Diffúziós együttható}
+A \ref{sec:2}. és \ref{sec:3}. feladatban szereplő pollenek sugara $a = 0.52\ \mu m$ volt. Ehhez képest a jelenleg vizsgált szervetlen és szerves molekulák nagyságrendileg jóval kisebbek, míg a DNS lánc kromoszómába rendeződve csak egy kicsivel nagyobb. Ha az eredményeket extrapoláljuk, akkor a lenti táblázatban található értéket kaphatjuk a mostani feladatban szereplő molekulák diffúziós együtthatójára, használva az alábbi összefüggést:
+
+\begin{equation}
+    D_{2} = D_{1} * \frac{a_{2}}{a_{1}}
+\end{equation}
+
+\newpage0
+
+\begin{center}
+\captionof{table}{Diffúziós együtthatók}\label{tab:8}
+\begin{tabular}{||c|c|c|c|c||}
+    \toprule
+                  & Pollen   & Szervetlen molekula   & Szerves molekula   & Kromoszóma (DNS) \\ \hline \hline
+    $\left< D \left( \left< r^{2} \right> \right) \right> $ & $7.33*10^{-13}$ & $1.41*10^{-16}$ & $1.41*10^{-15}$ & $1.97*10^{-12}$ \\ \hline
+    $\left< D \left( \left< x^{2} \right> \right) \right>$  & $2.05*10^{-14}$ & $3.95*10^{-18}$ & $3.95*10^{-17}$ & $5.53*10^{-14}$ \\
+    \bottomrule
+\end{tabular}
+\end{center}
+
+A táblázatban szereplő adatokat mind az $\left< r^{2} \right>$ és $\left< x^{2} \right>$-es számításból kapott diffúzióértékekre összehasonlítottam, ahogy ez az első oszlopban jelölve is van.

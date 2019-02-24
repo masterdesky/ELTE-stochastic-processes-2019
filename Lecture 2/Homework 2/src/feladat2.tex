@@ -181,7 +181,7 @@ Ezeket az eredményeket $\frac{1}{21.53\ px} * 3.125\ \mu m$ szorzó segítség�
 \newpage
 
 \subsection{Diffúziós együttható becslése}
-A diffúzió Langevin-féle tárgyalása esetén végeredményben a következőeket kapjuk elmozdulás négyzetének várható értékére:
+A diffúzió Langevin-féle tárgyalása esetén végeredményben a következőket kapjuk elmozdulás négyzetének várható értékére:
 
 \begin{equation} \label{eq:15}
     \left< r^{2} \right>
@@ -213,7 +213,7 @@ A (\ref{eq:16})-os egyenletben szereplő mennyiséget a \ref{tab:3}. táblázatb
 \end{center}
 A (\ref{eq:15}) és (\ref{eq:16}) egyenletekben ismertetett összefüggésből megkaphatjuk a diffúziós együttható értékének számítási módját:
 
-\begin{equation}
+\begin{equation} \label{eq:17}
     D
     =
     \frac{k_{B} T}{6 \pi \eta a}
@@ -229,10 +229,8 @@ Megfelelő mértékegységeket használva, a diffúziós együttható következ�
 \begin{tabular}{||c|c|c|c||}
     \toprule
                                              & 1. trajektória  & 2. trajektória  & 3. trajektória  \\ \hline \hline
-    $D \left( \left< r^{2} \right> \right)$  & $1.21*10^{-9}$  & $2.69*10^{-9}$  & $6.92*10^{-10}$ \\ \hline
-    $D \left( \left< x^{2} \right> \right)$  & $7.33*10^{-11}$ & $3.78*10^{-11}$ & $4.39*10^{-11}$ \\ \hline
-    $D \left( a \right)$                     & $1.18*10^{-9}$  & $7.56*10^{-10}$ & $1.06*10^{-9}$  \\
+    $D \left( \left< r^{2} \right> \right)$  & $4.30*10^{-13}$ & $1.49*10^{-12}$ & $2.75*10^{-13}$ \\ \hline
+    $D \left( \left< x^{2} \right> \right)$  & $2.60*10^{-14}$ & $1.85*10^{-14}$ & $1.70*10^{-14}$ \\
     \bottomrule
 \end{tabular}
 \end{center}
-Ahol az utolsó táblázatban a diffúziós együttható (\ref{eq:16})-os egyenletben szereplő definícióját alkalmaztam, a feladatban megadott $a = 0.52\ \mu m$ részecskesugár felhasználásával, szobahőmérsékletet és a közeget vízhez közeli viszkozitásúnak feltételezve.
