@@ -1,0 +1,73 @@
+\section{} \label{sec:2}
+\quest{Gondolkodjunk egy, a környezetünkben végbemenő véletlenszerűnek tűnő folyamaton, s írjuk fel a folyamat master egyenletét! Ha valakinek jobb nem jut az eszébe, akkor írja fel az előadáson tárgyalt Kukorica Jancsi történet általánosítását három lány esetére (de egyéb, az ELTE-n nem betiltott, politikailag korrekt általánosítások is elfogadhatók).}
+
+\subsection{A megoldandó probléma} \label{sub:2.1}
+Sajnos időhiányban nem tudtam kitalálni ötletesebb példát az órán szereplő Kukorica Jancsisnál, így azt oldottam meg ebben a feladatban három lány esetére. A továbbiakban minden konkrétum nélkül csak \q{esetek}-nek hívom a különböző állapotokat, melyek között a rendszer (Kukorica Jancsi) változik, ugyanis először egy saját, 3 állapotú példát szerettem volna hozni, azonban végül ennél maradtam.
+
+\subsection{A Master-egyenlet} \label{sub:2.2}
+Jelöljük a 3 különböző esetet $i,j,k$ indexekkel. Az órán is látottakhoz hasonlóan, próbáljuk meg felírni a Master-egyenletet! \\
+Keressük azt a $P_{i} \left( t + \Delta t \right)$ valószínűséget, amikor $t + \Delta t$ időpontban a rendszer az $i$ indexxel jelölt állapotban van. Jelölje $w_{ij} \Delta t$ a $j$-ből $i$ állapotba történő átmenetet leíró \emph{dinamikai mátrixot}, vagy másképp mondva \emph{átmeneti rátát}, míg $w_{ki}$ a $i$-ből $k$-ba történőt, és így tovább. (A második index az előző, az első pedig az új állapotot jelöli.) A $w_{ji} \Delta t$ ilyenkor az $i$-ből $j$-be történő, $\Delta t$ idő alatt végbement átmenet jelöli. Ezek segítségével felírhatjuk a keresett valószínűséget:
+
+\begin{align}
+    P_{i} \left( t + \Delta t \right)
+    &=
+    \underbrace{
+    P_{i} \left( t \right)}_{\text{I.}}
+    \underbrace{
+    -
+    \sum_{j} w_{ji} * \Delta t * P_{i} \left( t \right)
+    -
+    \sum_{k} w_{ki} * \Delta t * P_{i} \left( t \right)
+    }_{\text{II.}} + \nonumber \\
+    &\underbrace{+
+    \sum_{j} w_{ij} * \Delta t * P_{j} \left( t \right)
+    +
+    \sum_{k} w_{ik} * \Delta t * P_{k} \left( t \right)
+    }_{\text{III.}}
+\end{align}
+Ahol I. annak a valószínűségét jelöli, miszerint már $t$-ben is az $i$ állapotban volt a rendszer, II. annak a valószínűsége, hogy $\Delta t$ alatt a rendszer átugrik vagy a $j$, vagy a $k$ rendszerbe $i$-ből, míg III. a $j$-ből, vagy $k$-ból az $i$-be történő, $\Delta t$ alatt bekövetkező ugrás valószínűségéért áll. Vigyük át $P_{i} \left( t \right)$ valószínűséget a túl oldalra, majd fejtsünk sorba első rendig a bal oldalt $\Delta t$ szerint, analóg módon, ahogy a Chapman-Kolmogorov egyenletek esetében tettük:
+
+\begin{align}
+    P_{i} \left( t + \Delta t \right)
+    -
+    P_{i} \left( t \right)
+    &=
+    -
+    \sum_{j} w_{ji} * \Delta t * P_{i} \left( t \right)
+    -
+    \sum_{k} w_{ki} * \Delta t * P_{i} \left( t \right) + \nonumber \\
+    &+
+    \sum_{j} w_{ij} * \Delta t * P_{j} \left( t \right)
+    +
+    \sum_{k} w_{ik} * \Delta t * P_{k} \left( t \right)
+\end{align}
+
+\begin{align}
+    \cancel{\Delta t} \frac{\partial P_{i} \left( t + \Delta t \right)}{\partial t}
+    &=
+    -
+    \sum_{j} w_{ji} * \cancel{\Delta t} * P_{i} \left( t \right)
+    -
+    \sum_{k} w_{ki} * \cancel{\Delta t} * P_{i} \left( t \right) + \nonumber \\
+    &+
+    \sum_{j} w_{ij} * \cancel{\Delta t} * P_{j} \left( t \right)
+    +
+    \sum_{k} w_{ik} * \cancel{\Delta t} * P_{k} \left( t \right)
+\end{align}
+Miután megjelent a sorfejtés miatt egy $\Delta t$ szorzó a baloldalon, azzal leoszthatunk. Végérvényben az alábbi egyenletet kapjuk eredményül:
+
+\begin{equation}
+    \boxed{
+    \frac{\partial P_{i} \left( t + \Delta t \right)}{\partial t}
+    =
+    -
+    \sum_{j} w_{ji} * P_{i} \left( t \right)
+    -
+    \sum_{k} w_{ki} * P_{i} \left( t \right)
+    +
+    \sum_{j} w_{ij} * P_{j} \left( t \right)
+    +
+    \sum_{k} w_{ik} * P_{k} \left( t \right)
+    }
+\end{equation}
+Melyet a rendszer Master-egyenletének hívunk, és melyet a feladatban kerestünk.

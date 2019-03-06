@@ -1,0 +1,99 @@
+\section{} \label{sec:3}
+\quest{Egy részecske, amelynek tömege $m$, egydimenziós rácson ugrál úgy, hogy $\tau$ időközönként valamelyik szomszédos rácspontba ugrik (a rácsállandó $a$). A részecske az origóhoz van kötve egy rugalmas, tömeg nélküli gumiszállal, amelynek rugóállandója $k$, s a környezet hőmérséklete $T$.
+\begin{itemize}
+    \item Írjuk fel a részecske stochasztikus mozgását leíró Master egyenletet!
+    \item Használjuk a részletes egyensúly elvét konkrét, egyensúlyhoz vezető átmeneti ráták
+meghatározására!
+\end{itemize}
+}
+
+\subsection{A mozgás Master-egyenlete} \label{sub:3.1}
+A vizsgálat folyamán a részecskére a hozzákötött gumiszál folyamatosan erőt fejt ki. Ez az erő annál nagyobb, minél messzebb tartózkodik a részecske az origótól, viszont magában az origóban zérus. \\
+Mozgás közben a részecske diszkrét állapotok között ugrál. Egy pontból mindig pontosan két másikba mozdulhat el, ezek pedig mindig az aktuálisan vele szomszédos rácspontok. Ezen kettő pont közül minden lehetséges esetben az egyik a részecske aktuális tartózkodási helyéhez képest közelebb, a másik pedig távolabb lesz az origótól. Ez azt jelenti, hogy a részecske minden esetben vagy egy alacsonyabb, vagy egy magasabb energiaállapotba ugrik át, függetlenül attól, hogy aktuálisan épp hol tartózkodik. Az aktuális pozíciója kizárólag az energiállapotok pontos értékeit és így a feljebb ugrás dinamikai mátrixát fogja meghatározni.
+\\ \\
+Írjuk fel általánosan egy ilyen diszkrét rendszerben az $n$ energiaállapotban tartózkodás valószínűségét $t + \tau$ időpontban, az előző feladatban azonos jelölések (lásd \ref{sub:2.2}) felhasználásával:
+
+\begin{equation}
+    P_{n} \left( t + \tau \right)
+    =
+    P_{n} \left( t \right)
+    -
+    \sum_{n'} w_{n'n} * \tau * P_{n} \left( t \right)
+    +
+    \sum_{n'} w_{nn'} * \tau * P_{n'} \left( t \right)
+\end{equation}
+Ahol $n'$ egy másik, $n$-el szomszédos energiaszintet jelöl. Az első tag annak a valószínűsége, hogy a részecske már $t$ időpontban is $n$ állapotban tartózkodott és $\tau$ alatt ott is maradt. A második tag annak a valószínűségét jelöli, hogy a részecske a vizsgált $\tau$ idő alatt kiugrott a vizsgált rácspontból. A harmadik ezzel ellentétesen, azt az esetet írja le, mikor a részecske a vizsgált $\tau$ idő alatt beugrott az $n$ energiaállapotba. Sorbafejtve első rendig a bal oldalt $\tau$ szerint, majd rendezve az egyenletet, a következő alakot kapjuk:
+ 
+\begin{equation}
+    \boxed{
+    \frac{\partial P_{n}}{\partial t}
+    =
+    -
+    \sum_{n'} w_{n'n}\,P_{n} \left( t \right)
+    +
+    \sum_{n'} w_{nn'}\,P_{n'} \left( t \right)
+    }
+\end{equation}
+Mely a keresett diszkrét rendszer Master-egyenlete. Ebben az esetben mindkét $w$ értéke attól függ, hogy $n'$ állapothoz tartozó energiaszint magasabb-e, vagy alacsonyabb, mint az $n$-hez tartozó.
+
+\subsection{Egyensúly} \label{sub:3.2}
+Tegyük fel, hogy a fenti egyenletnek van olyan stacionárius megoldása, ahol teljesül az alábbi feltétel:
+
+\begin{equation}
+    \frac{\partial P_{n}^{\left( \text{e} \right)}}{\partial t}
+    =
+    -
+    \sum_{n'} w_{n'n}\,P_{n}^{\left( \text{e} \right)} \left( t \right)
+    +
+    \sum_{n'} w_{nn'}\,P_{n'}^{\left( \text{e} \right)} \left( t \right)
+    =
+    0
+\end{equation}
+Keressük azt a $P_{n}^{\left( \text{e} \right)} = \dfrac{1}{z} e^{- \beta E_{n}}$ értéket ($\beta = k_{B} T$), amiről feltesszük, hogy ez az egyetlen stacionárius megoldás. A rendszer ilyenkor minden esetben ehhez az állapothoz relaxál. \\
+Mivel egyensúlyi helyzetben nem történik a rendszerben időbeli változás, ezért ilyenkor nincs is benne kitüntetett időbeli irány. Ekkor a rendszert időinvariánsnak hívjuk, amire érvényesek ezen szimmetria ismert tulajdonságai\cite{hilhorst2011stabilisation}. Ez esetben felírhatjuk a Master-egyenlet egy megfelelő stacionárius megoldását az alábbi módon:
+
+\begin{equation}
+    w_{nn'}\,P_{n'}^{\left( \text{e} \right)}
+    =
+    w_{n'n}\,P_{n}^{\left( \text{e} \right)}
+\end{equation}
+Melyet a \emph{részletes egyensúly elvének} nevezünk. Ekkor a keresett $w$ dinamikai mátrixok esetén csak azok hányadosaira van megkötésünk, mely a $P_{n}^{\left( \text{e} \right)}$, általunk definiált kifejezésének segítségével felírható:
+
+\begin{equation}
+    \frac{w_{nn'}}{w_{n'n}}
+    =
+    \frac{P_{n}^{\left( \text{e} \right)}}{P_{n'}^{\left( \text{e} \right)}}
+    =
+    \frac{\frac{1}{z} e^{- \beta E_{n}}}{\frac{1}{z} e^{- \beta E_{n'}}}
+    =
+    \frac{e^{- \beta E_{n}}}{e^{- \beta E_{n'}}}
+    =
+    \frac{e^{- \beta \left( E_{n} - E_{n'} \right)}}{1}
+    =
+    \frac{e^{\beta \left( E_{n'} - E_{n} \right)}}{1}
+\end{equation}
+Ebből pedig kifejezhető mind $w_{nn'}$ és $w_{n'n}$ átmeneti ráták értéke, melyek az $E_{n'} - E_{n}$ érték előjelétől függően $2$-$2$ esetre bonthatók.
+\\ \\
+1. eset, ha $E_{n'} - E_{n} > 0$:
+
+\begin{align}
+    &\frac{w_{nn'}}{w_{n'n}}
+    =
+    \frac{e^{\beta \left| E_{n'} - E_{n} \right|}}{1} \nonumber \\
+    \to&
+    w_{nn'} = e^{\beta \left| E_{n'} - E_{n} \right|} \\
+    \to&
+    w_{n'n} = 1
+\end{align}
+2. eset, ha $E_{n'} - E_{n} < 0$:
+
+\begin{align}
+    &\frac{w_{nn'}}{w_{n'n}}
+    =
+    \frac{e^{- \beta \left| E_{n'} - E_{n} \right|}}{1} \nonumber \\
+    \to&
+    w_{nn'} = 1 \\
+    \to&
+    w_{n'n} = e^{\beta \left| E_{n'} - E_{n} \right|}
+\end{align}
+Amiből azt következtethetjük ki, hogy a rendszer az alacsonyabb energiaszint irányába mozdul el. Ezt abból láthatjuk, hogy mivel $\beta = \frac{1}{k_{B} T}$ egy nagyon nagy szám nem túl nagy $T$-re, ezért az $e$ados tagok mindig sokkal nagyobbak a másik $w = 1$ értékű tagoknál mindkét esetben. Tehát az alacsonyabb energiaszint felé történő elmozdulás mindig jóval nagyon súllyal jelenik meg a fenti Master-egyenletben.
