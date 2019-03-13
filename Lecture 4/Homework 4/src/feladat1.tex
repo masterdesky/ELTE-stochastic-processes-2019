@@ -1,0 +1,108 @@
+\section{} \label{sec:1}
+\quest{}
+Határozzuk meg Monte Carlo szimuláció segítségével az origóhoz gumiszállal kötött, $T$ hőmérsékletű hőtartállyal kapcsolatban levő részecske egyensúlyi tulajdonságait. A részecske egydimenziós rácson ugrál, energiája az állapotát meghatározó koordinátán keresztül ($a$ hosszúságú ugrásokat feltételezünk; $x = - \infty, \dots, -a, 0, a, \dots, na, \dots \infty$) a következőképpen fejezhető ki:
+
+\begin{equation*}
+    U \left( n \right)
+    =
+    \frac{1}{2} k \left( a n \right)^{2}
+\end{equation*}
+ahol $k$ a gumiszál rugóállandója. Válasszunk ugrási rátának olyan alakot, ami kielégíti a részletes egyensúly elvét. Ilyen lesz például a következő kifejezés:
+
+\begin{align*}
+    w \left( n \to n \pm 1 \right)
+    =
+    \begin{cases}
+        1 \quad \quad \quad \quad \text{ha}\ \Delta E < 0 \\
+        e^{- \beta \Delta E} \quad \quad \text{ha}\ \Delta E > 0
+    \end{cases}
+\end{align*}
+ahol
+
+\begin{equation*}
+    \Delta E
+    =
+    \frac{1}{2} k a^{2} * \left[ \left( n \pm 1 \right)^{2} - n^{2} \right]
+\end{equation*}
+Indítsuk a részecskét az origóból (az egyensúlyi átlagok nem függhetnek a kezdeti feltételtől, tehát eredményeink helyességét ellenőrizhetjük azzal, hogy az origótól távolabb indítjuk a részecskét, s megnézzük ugyanazt kapjuk-e). A szimulálás a következő lépésekből áll:
+
+\begin{enumerate}
+    \item Véletlenszerűen kiválasztunk egy irányt.
+    \item Megnézzük, hogy ha az adott irányba lép a részecske, akkor mennyit változik a rendszer energiája, azaz kiszámítjuk $\Delta E$-t.
+    \item Ha $\Delta E < 0$, akkor megtesszük a lépést.
+    \item Ha $\Delta E > 0$, akkor húzunk egy véletlen számot $P$-t a $\left[ 0, 1 \right]$ intervallumból, s ha\\$P < e^{- \beta \Delta E}$, akkor megtesszük a lépést, egyébként pedig megyünk az (1)-es ponthoz.
+\end{enumerate}
+Az (1)-(4) pontokat sokszor, N-szer elvégezve azt mondjuk, hogy $t = N * \tau_{0}$ idő telt el. Egy rendszernek van általában egy relaxációs ideje, $\tau$, s ha $t > \tau$, akkor a rendszer elérkezik az egyensúlyba, s attól kezdve a különböző mennyiségek, mint például a részecske koordinátájának átlagos értéke
+
+\begin{equation*}
+    \left< x \right>
+    =
+    \frac{1}{N} \sum_{k\ =\ 1}^{\infty} a n_{k}
+\end{equation*}
+vagy a koordináta fluktuációja, $\left< x^{2} \right> - \left< x \right>^{2}$, az egyensúlyi értéke körül fluktuál. Az egyensúlyi átlagokat tehát kiszámíthatjuk, mint időátlagokat. Ez azt jelenti, hogy $t_{1}$ időnként kiszámítjuk (megmérjük) az $x$ és az $x^{2}$ értékét, majd elég sok ilyen mérésből átlagokat számolunk, s ezek megadják a $T$ hőmérsékleti termodinamikai átlagokat, $\left< x \right>$-t és $\left< x^{2} \right>$-t.
+\\ \\
+Határozzuk meg az $\left< x \right> = a * \left< n \right>$, $\left< x^{2} \right> = a^{2} * \left< n^{2} \right>$ átlagokat az alábbiakban megadott egyéni $\beta k a^{2}$ értékeknek megfelelő hőmérsékleteken! Értelmezzük az eredményt! Határozzuk meg, hogy egyensúlyban hogy néz ki a $P^{(e)}_{n}$ eloszlásfüggvény! Ismerjük egzaktul a $P^{(e)}_{n}$ eloszlásfüggvényt?
+
+\section*{\bfseries\large\MakeUppercase{Megoldás}}
+
+\subsection*{A szimuláció kezdőfeltételei}
+A szimulációban mindenki számára adott volt négy darab kezdeti $A = \beta k a^{2}$ érték, melyeket a kezdőfeltételek megadásához kellett felhasználnunk. Ebben $\beta = \frac{1}{k_{B} T}$, tehát a rendszer hőmérséklete által meghatározott karakterisztikus mennyiség, míg $k$ a gumiszalag rugóállandója, $a$ pedig a rácsállandó volt. Mivel a számításokban több helyen is külön használtam $\beta$-t, így megadtam pár tetszőleges $a$ ás $k$ értékek kezdetben, melyekből $\beta = \frac{A}{k a^{2}}$ már meghatározható volt. \\
+Olyan értékeket választottam $k$ és $a$ számára, melyek a valódi anyagokkal (pl. egy kristályos anyag rácsállandójával) összemérhető nagyságrendű, valamint hogy $T = \left( k_{B} \beta \right)^{-1} = \left( k_{B} \tfrac{A}{k a^{2}} \right)^{-1}$ is érdekes (és értelmes) mérettartományban legyen. Így a számomra megadott $\beta k a^{2} = \left\{ 0.06,\ 0.24,\ 0.52,\ 1.35 \right\}$ értékeket felhasználva a rácsállandót $a = 5 * 10^{-10}$, míg a rugóállandót $k = 10^{-3}$ méretűnek választottam. Ekkor az általam vizsgált rendszerek a felsorolt $\beta k a^{2}$ értékeinek megfelelően rendre $T = \left\{ 301.790\ K,\ 75.448\ K,\ 34.822\ K,\ 13.413\ K \right\}$ hőmérsékletűek voltak. \\
+A számítások során a részecskével pontosan $10\,000$ (tízezer) lépést tettem meg, minden további eredmény erre a feltételre vonatkozik.
+
+\subsection*{A részecske időbeli mozgása}
+Első lépésben azt vizsgáltam meg, hogy a megadott $\beta$ különböző értékeire az $n \left( t \right)$ és $E \left( t \right)$ mennyiségek időfüggése hogyan viselkedik. Ezeket az (\ref{fig:fig1})-es és (\ref{fig:fig2})-es képeken ábrázoltam. Ezekről tisztán látszik, hogy a rendszer minden hőmérsékleten szinte maximális gyorsasággal az egyensúlyi állapot felé halad, majd miután elérte azt, a továbbiakban akörül oszcillál. Különböző kezdeti energiaszintek esetén a rendszer szintén ugyanígy működik. A (\ref{fig:fig3})-as és (\ref{fig:fig4})-es ábrákon adott hőmérsékleten, de $25$ db különböző $x(t = 0)$ kezdőpont esetében figyeltem a rendszer időfejlődését. Minden esetben pontosan ugyanazt a folyamatot figyelhettem meg, mint ami az előbb leírtakban is szerepel. A részecske erőteljesen törekszik az erőmentes állapot felé haladni, majd miután elérte azt, akörül oszcillál, melynek nagyságrendje független a kezdőpozíciótól.
+
+\subsection*{Az várható értékek diszkussziója}
+A továbbiakban az $\left< n \right>$, $\left< n^{2} \right>$ és a belőle konstans szorzással kapható $\left< x \right>$, $\left< x^{2} \right>$, valamint az ezektől valamivel eltérő képű $\left< E \right>$ és $\left< E^{2} \right>$ mennyiségeket vizsgáltam. Az ezeket bemutató grafikonokat a (\ref{fig:fig5})-ös, (\ref{fig:fig6})-os és (\ref{fig:fig7})-es képeken ábrázoltam. \\
+Hosszú idő után az összes várható érték az ábrákon is látható módon a $0$-hoz konvergál. Ez érthető, hisz eleve azt várjuk, hogy a rendszer az egyensúly felé törekszik, majd akörül véletlenszerűen oszcillál. Ezen oszcillációk várható értéke mindig $0$, melyek az idő előrehaladtával egyre nagyobb és nagyobb súllyal szólnak bele a $t = 0$ utáni értékek átlagának alakulásába. \\
+Utolsóként az $\left< n^{2} \right> - \left< n \right>^{2}$ és $\left< E^{2} \right> - \left< E \right>^{2}$ értékeket vizsgáltam, melyek jól leírják a rendszer relaxációs folyamatát, melyet a (\ref{fig:fig8})-as képen ábrázoltam. Megfigyelve a görbét - miután elért egy bizonyos $\tau$ relaxációs időt - ránézésre is egy $e^{-f \left( z \right)}$ függvényhez hasonlít, ahol a várható értékek számításához felhasznált mennyiségek alapján $f \left( z \right) \equiv f \left( \beta, E_{n}, t \right)$. Ebben $\beta$ és $\Delta E$ a görbe paramétereiként funcionálnak, míg $t$ függés egy folyamatos időfejlődést határoz meg. Ez a folyamat láthatóam $t = \infty$ időpontban eléri a nullát, ugyanis $e^{-f \left( z \right)} \to 0$ az idővel láthatóan is arányosan csökkenő értéke miatt.
+
+\subsection*{A $P_{n}^{\left( e \right)}$ mennyiség alakja}
+Az előző házifeladat alapján\cite{hw3} felírhatjuk a rendszer Master-egyenletét az egyensúlyi pozícióban a következő módon:
+
+\begin{equation}
+    \frac{\partial P_{n}^{\left( \text{e} \right)}}{\partial t}
+    =
+    -
+    \sum_{n'} w_{n'n}\,P_{n}^{\left( \text{e} \right)} \left( t \right)
+    +
+    \sum_{n'} w_{nn'}\,P_{n'}^{\left( \text{e} \right)} \left( t \right)
+    =
+    0
+\end{equation}
+
+
+Tehát egyensúlyban a rendszer stacionárius. Itt $w_{n'n}$ és $w_{nn'}$ az energiaszintek közötti átmeneti rátákat jelöli. Keressük azt a $P_{n}^{\left( e \right)} = \dfrac{1}{z} e^{- \beta E_{n}}$ függvényt, ami ténylegesen a fenti Master-egyenlet stacionárius megoldásával egyenlő. Szintén az előző házifeladat megoldásában\cite{hw3} megfogalmazottak alapján azt mondhatjuk, hogy a következő alak kielégíti az előbbiekben megfogalmazott kritériumot:
+
+\begin{equation}
+    w_{nn'}\,P_{n'}^{\left( \text{e} \right)}
+    =
+    w_{n'n}\,P_{n}^{\left( \text{e} \right)}
+\end{equation}
+
+
+Amit \emph{részletes egyensúly elvének} nevezünk. Ennek segítségével fel tudjuk írni a $w$ és $P$ értékek arányait, melyek közül a $w$ értékek a feladat kiírásából ismertek:
+
+\begin{equation}
+    \frac{w_{nn'}}{w_{n'n}}
+    =
+    \frac{P_{n}^{\left( \text{e} \right)}}{P_{n'}^{\left( \text{e} \right)}}
+    =
+    \frac{\frac{1}{z} e^{- \beta E_{n}}}{\frac{1}{z} e^{- \beta E_{n'}}}
+    =
+    \frac{e^{- \beta E_{n}}}{e^{- \beta E_{n'}}}
+    =
+    \frac{e^{- \beta \left( E_{n} - E_{n'} \right)}}{1}
+    =
+    \frac{e^{\beta \left( E_{n'} - E_{n} \right)}}{1}
+\end{equation}
+
+
+Így azt mondhatjuk, hogy igen a $P_{n}^{\left( \text{e} \right)}$ eloszlás ismert, és a következő módon írható fel:
+
+\begin{equation}
+    P_{n}^{\left( \text{e} \right)}
+    =
+    e^{\beta \left( E_{n'} - E_{n} \right)}
+\end{equation}
