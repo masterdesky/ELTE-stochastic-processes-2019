@@ -1,0 +1,51 @@
+\section{} \label{sec:1}
+\quest{Az atomreaktorokban keletkező, erősen sugárzó hulladékok tárolására a geológiailag stabil, gránit alapú ősmasszívumokat tekintik alkalmasak. Finnországban most épül egy ilyen, kb. $500$ m mélybe menő barlangrandszer\cite{wiki:onkalo}, amelybe kb. $100$ éven keresztül tervezik felhalmozni a hulladékot, ami után az egészet betemetik. Tegyük fel, hogy a terület geológiailag valóban stabil, s a rádioaktív magok csak a grániton keresztül történő diffúzión keresztül tudnak a felszínre jutni. Keressük ki gránit diffúziós együtthatóját nagyobb rendszámú atomokra és számítsuk ki, hogy mennyi idő elteltével fogunk rádioaktivitást észlelni a barlang felett a felszínen!}
+
+\subsection{Elméleti háttér}
+A diffúzió ilyen irányú számítását már az egyik beadandóban részleteztem, a továbbiakban annak az eredményére építek. Ismert, hogy a diffúzió definíció szerint az alábbi összefüggéssel írható le:
+
+\begin{equation} \label{eq:1}
+    D
+    =
+    \frac{\left( \Delta x \right)^{2}}{2 \tau}
+\end{equation}
+Ahol $D$ a diffúziós együttható, $\Delta x$ a megtett úthossz, $\tau$ pedig a diffundálás alatt megtett idő, míg a részecske $\Delta x$ távolságra eljutott. Ebből kifejezhető $\tau$ értéke $D$ és $\Delta x$ ismeretében:
+
+\begin{equation} \label{eq:2}
+    \tau
+    =
+    \frac{\left( \Delta x \right)^{2}}{2D}
+\end{equation}
+
+\subsection{Sugárzó anyagok diffúziója gránitban}
+A nagy rendszámú elemek diffúziós együtthatójának ismerete a feladatban körüljárt téma miatt egy fontos kutatási területnek számít. A sugárzó anyagok hosszú távú tárolásához mindenképp szükséges ismeretnek számít ezen anyagok vizsgálata. Ezen motiváció nyomán készült kutatások alapján megkaphatjuk a feladat megoldásához szükséges adatokat. Név szerint a nehezebb, első sorban a radioaktív hulladékban előforduló sugárzó elemek diffúziós együtthatóját porózus anyagok, pl. gránit esetében. Ez az érték egyes modellek szerint nem konstans és akár nagy szóráshatáron belül is változhat a valóságban pl. egy radioaktív hulladéktárolóból indulva egy vastag gránit rétegen áthaladva\cite{medvevd2018varying}. Itt ennek ellenére az egyszerűség kedvéért egy átlagos konstans értékkel fogom közelíteni a számításaimban használt együtthatókat. \\
+Az nagyobb méretű atomok/molekulák diffúziós együtthatója ezek alapján
+
+\begin{equation} \label{eq:3}
+    D
+    \approx
+    \left[ 5 * 10^{-15}, 5 * 10^{-14} \right]\ \frac{\text{m}^{2}}{\text{s}}
+\end{equation}
+nagyságrendbe esik\cite{idemitsu1991diffusivity}\cite{yamaguchi1997effective}. Szintén az előzőek alapján az $^{233}$U izotóp, gránitban történő diffúziójának együtthatója $D \approx 5 * 10^{-15}\ \frac{\text{m}^{2}}{\text{s}}$.\\
+Egyéb mérésekből az egyes sugárzó atomok Van der Waals sugarai ismertek, így pl. az urán esetén ez $r_{w} = 186\ \text{pm}$, így átmérőjének vehetjük az $a = 372\ \text{pm}$ értéket\cite{bondi1964van}. A $^{209}$Po esetén $r_{w} = 197\ \text{pm}$, míg a $^{222}$Ra Van der Waals sugara pedig $r_{w} = 283\ \text{pm}$\cite{mantina2009consistent}, tehát viszonylag széles mérettartományt fognak át, hiába közel azonos a rendszámuk. Egy sugárzó hulladékgyűjtőben nyilvánvalóan több féle különböző sugárzó izotóp is található, melyek diffúziójához szükséges időtartamot mind azonos módon számíthatjuk. Itt most csak a már említett $^{233}$U diffúziójára vonatkozó számítást végzem el.
+
+\subsection{A kívülre diffundálás ideje}
+A feladat szövege alapján azt kell kiszámítsuk, hogy a sugárzó részecske mennyi idő alatt várható, hogy keresztül diffundál az $500$ m vastag gránitrétegen. Az ismert adatokat behelyettesítve a (\ref{eq:2})-es egyenletbe meg is kaphatjuk a kérdéses időhosszt:
+
+\begin{equation}
+    \tau
+    =
+    \frac{\left( \Delta x \right)^{2}}{2D}
+    =
+    \frac{\left( 500\ \text{m} \right)^{2}}{2 * 5 * 10^{-15}\ \frac{\text{m}^{2}}{\text{s}}}
+    =
+    \frac{2.5 * 10^{4}\ \text{m}^{2}}{10 * 10^{-15}\ \frac{\text{m}^{2}}{\text{s}}}
+    =
+    \frac{1}{4} * \frac{10^{4}}{10^{-15}}\ \text{s}
+    =
+    \frac{1}{4} * 10^{19}\ \text{s}
+    =
+    79.275\ \text{milliárd év}
+\end{equation}
+Ami a világegyetem jelenlegi életkorának több, mint $5$-szöröse, tehát egy nagyon nagy szám.\\
+Az oka, hogy mégis csak $100$ évre előre tervezik ezt a hulladék lerakót az, hogy a sugárzó részecskék nem csak ilyen diffúzión keresztül juthatnak át a gránitrétegen. A részecskék bomláskor nagy kinetikus energiát szerezhetnek, és így jóval megnövelve a szabad úthosszukat, jóval rövidebb idő után már kijuthatnak a grániton túlra is.

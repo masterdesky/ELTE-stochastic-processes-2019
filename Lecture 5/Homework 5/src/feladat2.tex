@@ -1,0 +1,52 @@
+\section{} \label{sec:2}
+\quest{Vizsgáljuk az előadáson tárgyalt 2 Ising spinből álló rendszer relaxációjának problémáját! Az előadáson megkaptuk a rendszer dinamikai mátrixát, s meghatároztuk a sajátvektorokat és a megfelelő sajátértékeket (A számolás megtalálható a kurzus honlapján \q{Ising spinek dinamikája} cím alatt is).
+\begin{enumerate}
+    \item Ismerve az összes sajátvektort és sajátértékeket, határozzuk meg milyen valószínűséggel van a rendszer $t$ időpontban az $s_{1} = -1, s_{2} = -1$ állapotban, ha a kezdeti állapot $s_{1} = +1, s_{2} = -1$ volt.
+    \item Számítsuk ki a rendszer átlagos mágnesezettségének $M \left( t \right) = \left< s_{1} + s_{2} \right>$ időfejlődését, ha a kezdeti állapotban minden konfiguráció egyenlő $\left( \frac{1}{4} \right)$ valószínűséggel van jelen.
+\end{enumerate}
+}
+
+\subsection{Állapotok valószínűsége}
+Az órán is látott leírás alapján keressük a következő egyensúlyi helyzetet:
+
+\begin{equation}
+    P^{\left( e \right)} \left( s_{1}, s_{2} \right)
+    =
+    \frac{1}{z} e^{- \beta E \left( s_{1}, s_{2} \right)}
+    =
+    \frac{1}{z} e^{\beta \mathcal{J} s_{1} s_{2}}
+\end{equation}
+Ahol $- \mathcal{J} s_{1} s_{2} \equiv \mathscr{H} = E$ a kölcsönhatás energiája, amiben $\mathcal{J}$ a rendszer egy pozitív skálafaktora. Bevezetve $\beta \mathcal{J} \equiv K$ mennyiséget, a $z$ normálási faktort a következő feltétel alapján írhatjuk fel:
+
+\begin{equation}
+    \sum_{s_{1}\ =\ \pm 1} \sum_{s_{2}\ =\ \pm 1} P^{\left( e \right)} \left( s_{1}, s_{2} \right)
+    =
+    \frac{1}{z} \sum_{s_{1}\ =\ \pm 1} \sum_{s_{2}\ =\ \pm 1} e^{\beta \mathcal{J} s_{1} s_{2}}
+    =
+    1
+\end{equation}
+Így kifejezhetjük $z$-t:
+
+\begin{align}
+    z
+    &=
+    \sum_{s_{1}\ =\ \pm 1} \sum_{s_{2}\ =\ \pm 1} e^{- \beta E \left( s_{1}, s_{2} \right)}
+    \equiv
+    \sum_{s_{1}\ =\ \pm 1} \sum_{s_{2}\ =\ \pm 1} e^{\beta \mathcal{J} s_{1}, s_{2}}
+    =
+    \sum_{s_{1}\ =\ \pm 1} \sum_{s_{2}\ =\ \pm 1} e^{K s_{1}, s_{2}}
+    = \nonumber \\
+    &=
+    e^{K * 1 * 1} + e^{K * 1 * \left( -1 \right)} + e^{K \left( -1 \right) * 1} + e^{K \left( -1 \right) * \left( -1 \right)}
+    =
+    2 * \left( e^{K} + e^{-K} \right)
+\end{align}
+Ebből végül az adott állapot valószínűsége előáll az alábbi módon:
+
+\begin{equation}
+    P^{\left( e \right)} \left( s_{1}, s_{2} \right)
+    =
+    \frac{1}{z} e^{K s_{1} s_{2}}
+    =
+    \frac{e^{K s_{1} s_{2}}}{2 * \left( e^{K} + e^{-K} \right)}
+\end{equation}
