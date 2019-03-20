@@ -5,6 +5,106 @@ Feladatok:
     \item Írjuk fel az egyenletet, amely meghatározza, hogy a hegymászó milyen $P_{n}$ valószínűséggel van $nl$ magasságban!
     \item Használjuk a generátorfüggvény formalizmust a stacionárius eloszlás kiszámítására!
     \item Határozzuk meg, hogy átlagosan milyen magasra jut a hegymászó!
-    \item Van itt a hasonlóság a sorbanállás problémájával?
+    \item Van itt hasonlóság a sorbanállás problémájával?
 \end{enumerate}
 }
+
+\subsection{A Master-egyenlet}
+A rendszer időbeli fejlődését leíró Master-egyenletet felírhatjuk az órán is tanult módon, $w$ és $w_{0}$ rátákkal jelölve a fel- és lefelé haladás rátáját:
+
+\begin{equation} \label{eq:58}
+    \frac{d P_{n} \left( t \right)}{d t}
+    =
+    - \left( w + w_{0} \right) P_{n} \left( t \right)
+    +
+    w P_{n-1} \left( t \right)
+    +
+    w_{0} P_{n+1} \left( t \right),
+    \quad \quad
+    \text{ahol } t = nl
+\end{equation}
+Érdekes és fontos megfigyelni, hogy az egyenlet alakja megegyezik a sorbanállásnál látott Master-egyenlettel, ahol $w_{be}$ és $w_{ki}$ szimbolizálta a bemenő és kimenő rátákat. Itt a diszkrét kapaszkódó szinteket értelmezhetjük egy sorbanállásnál is látott kiszolgáló rendszerben tartózkodó igények számával. Így a feljebb lépés $w$ rátája analóg lesz a kiszolgálási rendszerbe érkező igények $w_{be}$, valamint a lefelé csúszás $w_{0}$ rátája a rendszerből távozó igények $w_{ki}$ rátájával. Hasonlóan az óraihoz, vezessük be a $q = \frac{w}{w_{0}}$ mennyiséget:
+
+\begin{equation} \label{eq:59}
+    \frac{1}{w_{0}} \frac{d P_{n} \left( t \right)}{d t}
+    =
+    - \left( q + 1 \right) P_{n} \left( t \right) + q P_{n-1} \left( t \right) + P_{n+1} \left( t \right)
+\end{equation}
+Ebben most $q < 1$, hiszen ez a feltétele annak, hogy a rendszer ne szálljon el a végtelenben és kialakulhasson valamilyen egyensúlyi helyzet is.
+
+\subsection{Generátorfüggvény formalizmus}
+Vezessük be a fenti $P_{n} \left( t \right)$ eloszlásfüggvény Laplace-transzformáltját:
+
+\begin{equation} \label{eq:60}
+    G \left( s, t \right)
+    =
+    \sum_{n\ =\ 0}^{\infty} e^{-sn} P_{n} \left( t \right)
+\end{equation}
+Melynek keressük stacionárius pontjait, amik az alábbi formában fogalmazhatóak meg:
+
+\begin{equation} \label{eq:61}
+    \frac{\partial G \left( s, t \right)}{\partial t}
+    =
+    \sum_{n\ =\ 0}^{\infty} e^{-sn} \frac{d}{dt} P_{n} \left( t \right)
+    \quad \to \quad
+    \frac{\partial G^{\left( \text{st.} \right)} \left( s, t \right)}{\partial t}
+    \overset{!}{=}
+    0
+\end{equation}
+Az órán megoldottuk az (\ref{eq:58})-as egyenletet, az egyszerűség kedvéért $w_{0} = 1$ értéket feltételezve, és megtaláltuk a $G^{\left( st. \right)}$ függvényt:
+
+\begin{equation} \label{eq:62}
+    G^{\left( st. \right)}
+    =
+    \frac{P_{0} \left( t \right)}{1 - e^{-s} q}
+\end{equation}
+Ahol $P_{0} \left( t \right)$ értéke megadható:
+
+\begin{equation}
+    G^{\left( st. \right)} \left( s = 0, t \right)
+    =
+    \frac{P_{0} \left( t \right)}{1 - q}
+    =
+    1
+    \quad \to \quad
+    P_{0} \left( t \right)
+    =
+    1 - q
+\end{equation}
+Tehát $P_{0}$ kostans. A generátorfüggvények ismert és tanult formalizmusa lehetővé teszi számunkra, hogy megadjuk a keresett $\left< n \right>$ mennyiséget, ami a mászó által elért átlagos magasságot jelöli. Ez a (\ref{eq:62}) generátorfüggvény első momentuma:
+
+\begin{align}
+    \left< n \right>
+    &=
+    - \left. \frac{\partial G^{\left( st. \right)} \left( s,t \right)}{\partial s} \right\rvert_{s\ =\ 0}
+    =
+    - \frac{d}{d s} \frac{1 - q}{1 - e^{-s} q}
+    =
+    - \left. (1 - q) \frac{e^{-s} q}{\left( 1 - e^{-s} q \right)^{2}}\right\rvert_{s\ =\ 0}
+    = \nonumber \\
+    &=
+    \frac{\left( 1 - q \right) q}{\left( 1 - q \right)^{2}}
+    =
+    \frac{q}{1 - q}
+\end{align}
+Mivel $q = \frac{w}{w_{0}}$, és $w_{0} = 1$, ezért ez a következő alakba írható:
+
+\begin{equation}
+    \boxed{
+    \left< n \right>
+    =
+    \frac{w}{1 - w}
+    }
+\end{equation}
+Tehát ilyen magasra jut a hegymászó átlagosan, mászás közben. Pl. $w = 0.9$ ráta esetén:
+
+\begin{equation}
+    \left< n \right>
+    =
+    \frac{0.9}{1 - 0.9}
+    =
+    \frac{0.9}{0.1}
+    =
+    9
+\end{equation}
+Tehát $9 * l$ magasságba.

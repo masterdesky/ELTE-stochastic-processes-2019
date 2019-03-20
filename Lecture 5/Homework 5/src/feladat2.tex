@@ -9,7 +9,7 @@
 \subsection{Állapotok valószínűsége}
 Az órán is látott leírás alapján keressük a következő egyensúlyi helyzetet:
 
-\begin{equation}
+\begin{equation} \label{eq:5}
     P^{\left( e \right)} \left( s_{1}, s_{2} \right)
     =
     \frac{1}{z} e^{- \beta E \left( s_{1}, s_{2} \right)}
@@ -18,7 +18,7 @@ Az órán is látott leírás alapján keressük a következő egyensúlyi helyz
 \end{equation}
 Ahol $- \mathcal{J} s_{1} s_{2} \equiv \mathscr{H} = E$ a kölcsönhatás energiája, amiben $\mathcal{J}$ a rendszer egy pozitív skálafaktora. Bevezetve $\beta \mathcal{J} \equiv K$ mennyiséget, a $z$ normálási faktort a következő feltétel alapján írhatjuk fel:
 
-\begin{equation}
+\begin{equation} \label{eq:6}
     \sum_{s_{1}\ =\ \pm 1} \sum_{s_{2}\ =\ \pm 1} P^{\left( e \right)} \left( s_{1}, s_{2} \right)
     =
     \frac{1}{z} \sum_{s_{1}\ =\ \pm 1} \sum_{s_{2}\ =\ \pm 1} e^{\beta \mathcal{J} s_{1} s_{2}}
@@ -27,7 +27,7 @@ Ahol $- \mathcal{J} s_{1} s_{2} \equiv \mathscr{H} = E$ a kölcsönhatás energi
 \end{equation}
 Így kifejezhetjük $z$-t:
 
-\begin{align}
+\begin{align} \label{eq:7}
     z
     &=
     \sum_{s_{1}\ =\ \pm 1} \sum_{s_{2}\ =\ \pm 1} e^{- \beta E \left( s_{1}, s_{2} \right)}
@@ -43,10 +43,551 @@ Ahol $- \mathcal{J} s_{1} s_{2} \equiv \mathscr{H} = E$ a kölcsönhatás energi
 \end{align}
 Ebből végül az adott állapot valószínűsége előáll az alábbi módon:
 
-\begin{equation}
+\begin{equation} \label{eq:8}
     P^{\left( e \right)} \left( s_{1}, s_{2} \right)
     =
     \frac{1}{z} e^{K s_{1} s_{2}}
     =
     \frac{e^{K s_{1} s_{2}}}{2 * \left( e^{K} + e^{-K} \right)}
 \end{equation}
+Ebből látható, hogy a rendszer energiája akkor alacsonyabb, ha a spinek azonos irányba állnak, míg magasabb, ha azok ellentétesek egymással:
+
+\begin{equation} \label{eq:9}
+    P^{\left( e \right)} \left( \uparrow \uparrow \right)
+    =
+    P^{\left( e \right)} \left( \downarrow \downarrow \right)
+    =
+    \frac{e^{K}}{z}
+\end{equation}
+\begin{equation} \label{eq:10}
+    P^{\left( e \right)} \left( \uparrow \downarrow \right)
+    =
+    P^{\left( e \right)} \left( \downarrow \uparrow \right)
+    =
+    \frac{e^{-K}}{z}
+\end{equation}
+Bevezetve egy $w_{1} \left( s_{1}, s_{2} \right)$ és egy $w_{2} \left( s_{1}, s_{2} \right)$ rátát, mellyel a két spin állapotváltozását jellemezzük, felírható a rendszer időfejlődését kifejező Master-egyenlet:
+
+\begin{align} \label{eq:11}
+    \frac{\partial P \left( s_{1}, s_{2}, t \right)}{\partial t}
+    &=
+    - \left[ w_{1} \left( s_{1}, s_{2} \right) + w_{2} \left( s_{1}, s_{2} \right) \right] P \left( s_{1}, s_{2}, t \right)
+    + \nonumber \\
+    &+
+    w_{1} \left( - s_{1}, s_{2} \right) P \left( - s_{1}, s_{2}, t \right) + w_{2} \left( s_{1}, - s_{2} \right) P \left( s_{1}, - s_{2}, t \right)
+\end{align}
+Feltételezve, hogy a rendszer az egyensúly felé tart, a Master-egyenlet egy stacionárius megoldása ismert módon felírható a részletes egyensúly elve alapján:
+
+\begin{equation} \label{eq:12}
+    w_{1} \left( s_{1}, s_{2} \right) P^{\left( e \right)} \left( s_{1}, s_{2} \right)
+    =
+    w_{1} \left( - s_{1}, s_{2} \right) P^{\left( e \right)} \left( - s_{1}, s_{2} \right)
+\end{equation}
+Ezzel megkaptuk az $w_{1}$ átmenetek arányát:
+
+\begin{equation} \label{eq:13}
+    \frac{w_{1} \left( s_{1}, s_{2} \right)}{w_{1} \left( - s_{1}, s_{2} \right)}
+    =
+    \frac{P^{\left( e \right)} \left( - s_{1}, s_{2} \right)}{P^{\left( e \right)} \left( s_{1}, s_{2} \right)}
+    =
+    \frac{e^{- K s_{1} s_{2}}}{e^{K s_{1} s_{2}}}
+    =
+    e^{- 2 K s_{1} s_{2}}
+\end{equation}
+Analóg módon a $w_{2}$-re is felírhatjuk a fentieket:
+
+\begin{equation} \label{eq:14}
+    w_{2} \left( s_{1}, s_{2} \right) P^{\left( e \right)} \left( s_{1}, s_{2} \right)
+    =
+    w_{2} \left( s_{1}, - s_{2} \right) P^{\left( e \right)} \left( s_{1}, - s_{2} \right)
+\end{equation}
+Ebből pedig ugyanúgy megkaphatjuk a $w_{2}$ ráták arányát:
+
+\begin{equation} \label{eq:15}
+    \frac{w_{2} \left( s_{1}, s_{2} \right)}{w_{2} \left( s_{1}, - s_{2} \right)}
+    =
+    \frac{P^{\left( e \right)} \left( s_{1}, - s_{2} \right)}{P^{\left( e \right)} \left( s_{1}, s_{2} \right)}
+    =
+    \frac{e^{- K s_{1} s_{2}}}{e^{K s_{1} s_{2}}}
+    =
+    e^{- 2 K s_{1} s_{2}}
+\end{equation}
+Ezen fentiek felhasználásával beláthatjuk, hogy az alábbi spin-kicserélődési ráták kielégítik a (\ref{eq:13}) és (\ref{eq:15}) egyenleteket:
+
+\begin{equation} \label{eq:16}
+    w_{1} \left( \uparrow \uparrow \right)
+    =
+    w_{2} \left( \uparrow \uparrow \right)
+    =
+    w_{1} \left( \downarrow \downarrow \right)
+    =
+    w_{2} \left( \downarrow \downarrow \right)
+    =
+    e^{-2 K}
+\end{equation}
+\begin{equation} \label{eq:17}
+    w_{1} \left( \uparrow \downarrow \right)
+    =
+    w_{2} \left( \uparrow \downarrow \right)
+    =
+    w_{1} \left( \downarrow \uparrow \right)
+    =
+    w_{2} \left( \downarrow \uparrow \right)
+    =
+    1
+\end{equation}
+Ezeknek a felhasználásával a Master-egyenlet az egyes esetekre felírható a következő formában:
+
+\begin{equation} \label{eq:18}
+    \frac{\partial P \left( \uparrow \uparrow, t \right)}{\partial t}
+    =
+    -2 e^{-2 K} P \left( \uparrow \uparrow, t \right)
+    +
+    1 * P \left( \downarrow \uparrow, t \right)
+    +
+    1 * P \left( \uparrow \downarrow, t \right)
+    +
+    0 * P \left( \downarrow \downarrow, t \right)
+\end{equation}
+\begin{equation} \label{eq:19}
+    \frac{\partial P \left( \downarrow \uparrow, t \right)}{\partial t}
+    =
+    e^{-2 K} * P \left( \uparrow \uparrow, t \right)
+    -
+    2 * P \left( \downarrow \uparrow, t \right)
+    +
+    0 * P \left( \uparrow \downarrow, t \right)
+    +
+    e^{-2 K} * P \left( \downarrow \downarrow, t \right)
+\end{equation}
+\begin{equation} \label{eq:20}
+    \frac{\partial P \left( \uparrow \downarrow, t \right)}{\partial t}
+    =
+    e^{-2 K} * P \left( \uparrow \uparrow, t \right)
+    +
+    0 * P \left( \downarrow \uparrow, t \right)
+    -
+    2 * P \left( \uparrow \downarrow, t \right)
+    +
+    e^{-2 K} * P \left( \downarrow \downarrow, t \right)
+\end{equation}
+\begin{equation} \label{eq:21}
+    \frac{\partial P \left( \downarrow \downarrow, t \right)}{\partial t}
+    =
+    0 * P \left( \uparrow \uparrow, t \right)
+    +
+    1 * P \left( \downarrow \uparrow, t \right)
+    +
+    1 * P \left( \uparrow \downarrow, t \right)
+    -
+    2 e^{-2 K} * P \left( \downarrow \downarrow, t \right)
+\end{equation}
+Ezeket a fenti egyenleteket egy $4 \times 4$ mátrix és egy $4$ elemű vektor szorzataként is megfogalamzhatjuk. Vezessük be az alábbi vektort (használva az alábbi papírban található jelölést: \cite{heatbath}):
+
+\begin{equation} \label{eq:22}
+    \vec{P} \left( t \right)
+    =
+    \begin{pmatrix}
+        P \left( \uparrow \uparrow, t \right) \\
+        P \left( \downarrow \uparrow, t \right) \\
+        P \left( \uparrow \downarrow, t \right) \\
+        P \left( \downarrow \downarrow, t \right)
+    \end{pmatrix}
+\end{equation}
+Valamint az alábbi mátrixot:
+
+\begin{equation} \label{eq:23}
+    \mathcal{A}
+    =
+    \begin{pmatrix}
+        -2 e^{-2 K}  &  1   &  1   &  0            \\
+        e^{-2 K}     &  -2  &  0   &  e^{-2 K}     \\
+        e^{-2 K}     &  0   &  -2  &  e^{-2 K}     \\
+        0            &  1   &  0   &  -2 e^{-2 K}  \\
+    \end{pmatrix}
+\end{equation}
+Így a Master-egyenlet a következő formára redukálódik:
+
+\begin{equation} \label{eq:24}
+    \partial_{t} \vec{P} \left( t \right)
+    =
+    \mathcal{A} \vec{P} \left( t \right)
+\end{equation}
+Az egyensúlyi állapotot leíró (\ref{eq:8}) stacionárius eset pedig a következő alakot ölti:
+
+\begin{equation} \label{eq:25}
+    \vec{P}^{\left( e \right)}
+    =
+    \vec{P}^{\left( 1 \right)}
+    =
+    \frac{1}{2 * \left( e^{K} + e^{-K} \right)}
+    \begin{pmatrix}
+        e^{K} \\
+        e^{-K} \\
+        e^{-K} \\
+        e^{K}
+    \end{pmatrix}
+\end{equation}
+Ez az $\mathcal{A}$ mátrix, $\lambda_{1} = 0$ sajátértékhez tartozó sajátvektora. A maradék sajátértéket és sajátvektort kiszámítva az órán látottak alapján már információval tudunk szolgálni az egyes állapotok időfejlődéséről. A sajátvektorok és sajátértékek a követekezők:
+
+\begin{equation} \label{eq:26}
+    \lambda_{2}
+    =
+    -2 * \left(e^{-2K} + 1 \right)
+    \quad \quad \quad
+    \vec{P}^{\left( 2 \right)}
+    =
+    \begin{pmatrix}
+        1 \\
+        -1 \\
+        -1 \\
+        1
+    \end{pmatrix}
+\end{equation}
+\begin{equation} \label{eq:27}
+    \lambda_{3}
+    =
+    -2 * e^{-2K}
+    \quad \quad \quad
+    \vec{P}^{\left( 3 \right)}
+    =
+    \begin{pmatrix}
+        1 \\
+        0 \\
+        0 \\
+        -1
+    \end{pmatrix}
+\end{equation}
+\begin{equation} \label{eq:28}
+    \lambda_{4}
+    =
+    -2
+    \quad \quad \quad
+    \vec{P}^{\left( 4 \right)}
+    =
+    \begin{pmatrix}
+        0 \\
+        1 \\
+        -1 \\
+        0
+    \end{pmatrix}
+\end{equation}
+Az egyes állapotok időfejlődése a fentiek segítségével megadható a következő módon:
+
+\begin{equation} \label{eq:29}
+    \vec{P}^{\left ( i \right)} \left ( t \right)
+    =
+    a_{i} * e^{\lambda_{i} t} \vec{P}^{\left ( i \right)}
+\end{equation}
+Ennek segítségével felírhatjuk az általános megoldás időfejlődését:
+
+\begin{equation} \label{eq:30}
+    \vec{P} \left ( t \right)
+    =
+    \vec{P}^{\left ( e \right)}
+    +
+    \sum_{i\ =\ 2}^{4} a_{i} * e^{\lambda_{i} t} \vec{P}^{\left ( i \right)}
+\end{equation}
+Melyekben az $a_{i}$ együtthatók meghatározhatóak az alábbi kezdőfeltételből:
+
+\begin{equation} \label{eq:31}
+    \vec{P} \left(0 \right)
+    =
+    \vec{P}^{\left ( e \right)}
+    +
+    \sum_{i\ =\ 2}^{4} a_{i} \vec{P}^{i}
+\end{equation}
+A feladat első részében meghatározandó a $P \left( \downarrow \downarrow, t \right)$, ha a kezdeti állatot $P \left( \uparrow \downarrow, 0 \right)$. Vektoros formában a kezdeti- és végállapot a következőképp írható fel:
+
+\begin{equation} \label{eq:32}
+    \vec{P} \left( t = 0 \right)
+    =
+    \begin{pmatrix}
+        0 \\
+        0 \\
+        1 \\
+        0
+    \end{pmatrix}
+    \quad \to \quad
+    \vec{P} \left( t \right)
+    =
+    \begin{pmatrix}
+        0 \\
+        0 \\
+        0 \\
+        1
+    \end{pmatrix}
+\end{equation}
+A (\ref{eq:31}) egyenletben leírtak alapján ki tudjuk fejezni az egyes komponenseket, felhasználva a (\ref{eq:25}) - (\ref{eq:28}) mennyiségeket:
+
+\begin{equation} \label{eq:33}
+    0
+    =
+    \frac{e^{K}}{z} a_{1} + 1 * a_{2} + 1 * a_{3} + 0 * a_{4}
+    =
+    \frac{e^{K}}{z} a_{1} + 1 * a_{2} + 1 * a_{3}
+\end{equation}
+\begin{equation} \label{eq:34}
+    0
+    =
+    \frac{e^{-K}}{z} a_{1} - 1 * a_{2} + 0 * a_{3} + 1 * a_{4}
+    =
+    \frac{e^{-K}}{z} a_{1} - 1 * a_{2} + 1 * a_{4}
+\end{equation}
+\begin{equation} \label{eq:35}
+    1
+    =
+    \frac{e^{-K}}{z} a_{1} - 1 * a_{2} + 0 * a_{3} - 1 * a_{4}
+    =
+    \frac{e^{-K}}{z} a_{1} - 1 * a_{2} - 1 * a_{4}
+\end{equation}
+\begin{equation} \label{eq:36}
+    0
+    =
+    \frac{e^{K}}{z} a_{1} + 1 * a_{2} - 1 * a_{3} + 0 * a_{4}
+    =
+    \frac{e^{K}}{z} a_{1} + 1 * a_{2} - 1 * a_{3}
+\end{equation}
+Kivonva (\ref{eq:33})-ból (\ref{eq:36})-ot, kapjuk a következőt:
+
+\begin{equation} \label{eq:37}
+    0 - 0
+    =
+    \frac{e^{K}}{z} a_{1} - \frac{e^{K}}{z} a_{1} + a_{2} - a_{2} + a_{3} - \left( - a_{3} \right)
+    \quad \to \quad
+    \boxed{0 = \cancel{2} * a_{3}}
+\end{equation}
+Euztán szintén kivonva (\ref{eq:34})-ből (\ref{eq:35})-öt, kapjuk a következőt:
+\begin{equation} \label{eq:38}
+    0 - 1
+    =
+    \frac{e^{-K}}{z} a_{1} - \frac{e^{-K}}{z} a_{1} - a_{2} - \left(- a_{2} \right) + a_{4} - \left( - a_{4} \right)
+    \quad \to \quad
+    \boxed{-\frac{1}{2} = a_{4}}
+\end{equation}
+Összeadva a (\ref{eq:33}) és (\ref{eq:34}) egyenleteket, felhasználva a fent kapott $a_{2}$ értékét, megkaphatjuk $a_{1}$-et:
+
+\begin{equation} \label{eq:39}
+    0 + 0
+    =
+    \frac{e^{K}}{z} a_{1} + \frac{e^{-K}}{z} a_{1} + a_{2} - a_{2} + 0 - \frac{1}{2}
+    \quad \to \quad
+    \frac{z}{2 \left( e^{K} + e^{-K} \right)}
+    =
+    a_{1}
+\end{equation}
+A (\ref{eq:7}) alapján azonban $z$ értékét behelyettesítve:
+
+\begin{equation} \label{eq:40}
+    \frac{z}{2 \left( e^{K} + e^{-K} \right)}
+    =
+    \frac{2 \left( e^{K} + e^{-K} \right)}{2 \left( e^{K} + e^{-K} \right)}
+    =
+    \boxed{
+    1
+    =
+    a_{1}}
+\end{equation}
+Míg az $a_{2}$ értéke egy tetszőleges, $a_{2}$-t tartalmazó egyenlet alapján meghatározható, legyen ez pl. a (\ref{eq:36})-os:
+
+\begin{equation} \label{eq:41}
+    0
+    =
+    \frac{e^{K}}{z} * 1 + 1 * a_{2} - 1 * 0
+    \quad \to \quad
+    -\frac{e^{K}}{z}
+    =
+    \boxed{
+    -\frac{e^{K}}{2 \left( e^{K} + e^{-K} \right)}
+    =
+    a_{2}}
+\end{equation}
+Ezek segítségével a (\ref{eq:30}) és (\ref{eq:32}) alapján a $P \left( \downarrow \downarrow, t \right)$ a következő lesz:
+
+\begin{align} \label{eq:42}
+    P \left( \downarrow \downarrow, t \right)
+    &=
+    \frac{e^{K}}{z} a_{1} * e^{\lambda_1 t} + 1 * a_{2} * e^{\lambda_2 t} - 1 * a_{3} * e^{\lambda_3 t}
+    = \nonumber \\
+    &=
+    \frac{e^{K}}{2 \left( e^{K} + e^{-K} \right)} * e^{0 * t}
+    -
+    \frac{e^{K}}{2 \left( e^{K} + e^{-K} \right)} * e^{-2 * \left( e^{-2 K} + 1 \right) t}
+    = \nonumber \\
+    &=
+    \boxed{
+    \left( 1 - e^{-2 * \left( e^{-2 K} + 1 \right) t} \right) * \frac{e^{K}}{2 \left( e^{K} + e^{-K} \right)}
+    }
+\end{align}
+
+\subsection{A mágnesezettség időfejlődése}
+A mágnesezettség időfüggése leírható az egyes állapotokra történő összegzéssel, magának a mágnesezettség $m\left( t \right) = \left< s_{1} + s_{2} \right>$ definíciója segítségével:
+
+\begin{equation} \label{eq:43}
+    m \left( t \right)
+    =
+    \sum_{s_{1}\ =\ \pm 1} \sum_{s_{2}\ =\ \pm 1} \left( s_{1} + s_{2} \right)P(s_{1}, s_{2}, t)
+\end{equation}
+A feladat szövegében szerepel, hogy $\vec{P}$ a következő alakú kezdetben:
+
+\begin{equation} \label{eq:44}
+    \vec{P} \left( t = 0 \right)
+    =
+    \begin{pmatrix}
+        1/4 \\
+        1/4 \\
+        1/4 \\
+        1/4
+    \end{pmatrix}
+\end{equation}
+A (\ref{eq:31}) egyenletben leírtak alapján ki tudjuk fejezni az egyes komponenseket, felhasználva a (\ref{eq:25}) - (\ref{eq:28}) mennyiségeket:
+
+\begin{equation} \label{eq:45}
+    \frac{1}{4}
+    =
+    \frac{e^{K}}{z} a_{1} + 1 * a_{2} + 1 * a_{3} + 0 * a_{4}
+    =
+    \frac{e^{K}}{z} a_{1} + 1 * a_{2} + 1 * a_{3}
+\end{equation}
+\begin{equation} \label{eq:46}
+    \frac{1}{4}
+    =
+    \frac{e^{-K}}{z} a_{1} - 1 * a_{2} + 0 * a_{3} + 1 * a_{4}
+    =
+    \frac{e^{-K}}{z} a_{1} - 1 * a_{2} + 1 * a_{4}
+\end{equation}
+\begin{equation} \label{eq:47}
+    \frac{1}{4}
+    =
+    \frac{e^{-K}}{z} a_{1} - 1 * a_{2} + 0 * a_{3} - 1 * a_{4}
+    =
+    \frac{e^{-K}}{z} a_{1} - 1 * a_{2} - 1 * a_{4}
+\end{equation}
+\begin{equation} \label{eq:48}
+    \frac{1}{4}
+    =
+    \frac{e^{K}}{z} a_{1} + 1 * a_{2} - 1 * a_{3} + 0 * a_{4}
+    =
+    \frac{e^{K}}{z} a_{1} + 1 * a_{2} - 1 * a_{3}
+\end{equation}
+Az előző feladtban látotakhoz hasonló módokon járhatunk el. Vonjuk ki a (\ref{eq:48})-ból (\ref{eq:45})-öt. Ekkor megkapjuk $a_{3}$ értékét:
+
+\begin{equation} \label{eq:49}
+    \frac{1}{4} - \frac{1}{4}
+    =
+    \frac{e^{K}}{z} a_{1} + 1 * a_{2} - 1 * a_{3} - \frac{e^{K}}{Z} a_{1} - 1 * a_{2} - 1 * a_{3}
+    \quad \to \quad
+    \boxed{0 = a_{3}}
+\end{equation}
+Ezután (\ref{eq:47})-ből vonjuk ki (\ref{eq:46})-ot:
+
+\begin{equation}  \label{eq:50}
+    \frac{1}{4} - \frac{1}{4}
+    =
+    \frac{e^{-K}}{z} a_{1} - 1 * a_{2} - 1 * a_{4} - \frac{e^{-K}}{z} a_{1} + 1 * a_{2} - 1 * a_{4}
+    \quad \to \quad
+    \boxed{0 = a_{4}}
+\end{equation}
+Most adjuk össze (\ref{eq:45})-öt és (\ref{eq:46})-ot:
+
+\begin{equation}  \label{eq:51}
+    \frac{1}{4} + \frac{1}{4}
+    =
+    \frac{e^{K}}{z} a_{1} + 1 * a_{2} + 1 * a_{3} + \frac{e^{-K}}{z} a_{1} - 1 * a_{2} + 1 * a_{4}
+    =
+    \frac{e^{K}}{z} a_{1} + \frac{e^{-K}}{Z} a_{1}
+\end{equation}
+Így $a_{1}$ értékére a következő kifejezést kapjuk:
+
+\begin{equation} \label{eq:52}
+    \frac{1}{2}
+    =
+    \left( \frac{e^{K}}{z} + \frac{e^{-K}}{Z} \right) a_{1}
+    \quad \to \quad
+    \frac{z}{2 * \left( e^{K} + e^{-K} \right)}
+    =
+    \frac{2 * \left( e^{K} + e^{-K} \right)}{2 * \left( e^{K} + e^{-K} \right)}
+    =
+    \boxed{
+    1
+    =
+    a_{1}}
+\end{equation}
+Végül pedig $a_{2}$ értékét határozzuk meg pl. a (\ref{eq:45}) egyeneltből:
+
+\begin{equation} \label{eq:53}
+    \frac{1}{4}
+    =
+    \frac{e^{K}}{z} a_{1} + 1 * a_{2} + 1 * a_{3}
+    =
+    \frac{e^{K}}{z} + a_{2}
+    \quad \to \quad
+    \boxed{
+    \frac{1}{4} - \frac{e^{K}}{z}
+    =
+    a_{2}}
+\end{equation}
+Ezen kapott értékek felhasználásával megkonstruálhatjuk a $\vec{P}$ vektort:
+
+\begin{equation} \label{eq:54}
+    \vec{P}
+    =
+    \begin{pmatrix}
+        \frac{e^{K}}{z}  * e^{\lambda_{1} t} +  \left( \frac{1}{4} - \frac{e^{K}}{z} \right) * e^{\lambda_2 t} \\
+        \frac{e^{-K}}{z} * e^{\lambda_{1} t} -  \left( \frac{1}{4} + \frac{e^{K}}{z} \right) * e^{\lambda_2 t} \\
+        \frac{e^{-K}}{z} * e^{\lambda_{1} t} -  \left( \frac{1}{4} + \frac{e^{K}}{z} \right) * e^{\lambda_2 t} \\
+        \frac{e^{K}}{z}  * e^{\lambda_{1} t} +  \left( \frac{1}{4} - \frac{e^{K}}{z} \right) * e^{\lambda_2 t}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \frac{e^{K}}{z}   +  \left( \frac{1}{4} - \frac{e^{K}}{z} \right) * e^{-2 * \left(e^{-2K} + 1 \right) t} \\
+        \frac{e^{-K}}{z}  -  \left( \frac{1}{4} + \frac{e^{K}}{z} \right) * e^{-2 * \left(e^{-2K} + 1 \right) t} \\
+        \frac{e^{-K}}{z}  -  \left( \frac{1}{4} + \frac{e^{K}}{z} \right) * e^{-2 * \left(e^{-2K} + 1 \right) t} \\
+        \frac{e^{K}}{z}   +  \left( \frac{1}{4} - \frac{e^{K}}{z} \right) * e^{-2 * \left(e^{-2K} + 1 \right) t}
+    \end{pmatrix}
+\end{equation}
+Az (\ref{eq:43})-as összefüggés alapján most már felírhatjuk a keresett $m \left( t \right)$ mágnesezettséget:
+
+\begin{align} \label{eq:55}
+    m \left( t \right)
+    &=
+    \sum_{s_{1}\ =\ \pm 1} \sum_{s_{2}\ =\ \pm 1} \left( s_{1} + s_{2} \right)P(s_{1}, s_{2}, t)
+    = \nonumber \\
+    &=
+    \left( 1 + 1 \right) * \left( \frac{e^{K}}{z} + \left( \frac{1}{4} - \frac{e^{K}}{z} \right) * e^{-2 * \left(e^{-2K} + 1 \right) t} \right)
+    +
+    \overbrace{\left( 1 - 1 \right) * \vec{P}^{\left( 2 \right)}}^{=\ 0}
+    +
+    \overbrace{\left( -1 + 1 \right) * \vec{P}^{\left( 3 \right)}}^{=\ 0}
+    + \nonumber \\
+    &+
+    \left( -1 + -1 \right) * \left( \frac{e^{K}}{z} + \left( \frac{1}{4} - \frac{e^{K}}{z} \right) * e^{-2 * \left(e^{-2K} + 1 \right) t} \right)
+\end{align}
+Ebben ahogy jelöltem is, csak a $\vec{P}^{1} = P \left( \uparrow \uparrow \right)$ és $\vec{P}^{4} = P \left( \downarrow \downarrow \right)$ spinállapotok adnak járulékot. Tovább oldva az egyenletet:
+
+\begin{align} \label{eq:56}
+    m \left( t \right)
+    &=
+    2 * \left( \frac{e^{K}}{z} + \left( \frac{1}{4} - \frac{e^{K}}{z} \right) * e^{-2 * \left(e^{-2K} + 1 \right) t} \right)
+    -
+    2 * \left( \frac{e^{K}}{z} + \left( \frac{1}{4} - \frac{e^{K}}{z} \right) * e^{-2 * \left(e^{-2K} + 1 \right) t} \right)
+    = \nonumber \\
+    &=
+    2 * \left[
+    \underbrace{\left( \frac{e^{K}}{z} + \left( \frac{1}{4} - \frac{e^{K}}{z} \right) * e^{-2 * \left(e^{-2K} + 1 \right) t} \right)
+    -
+    \left( \frac{e^{K}}{z} + \left( \frac{1}{4} - \frac{e^{K}}{z} \right) * e^{-2 * \left(e^{-2K} + 1 \right) t} \right)}_{=\ 0}
+    \right]
+\end{align}
+Tehát általánosan feltételezhetjük, hogy az azonos valószínűségű konfigurációkkal induló rendszerben:
+
+\begin{equation} \label{eq:57}
+    \boxed{
+    m \left( t \right)
+    =
+    2 * \left[ P \left( \uparrow \uparrow, t \right) - P \left( \downarrow \downarrow, t \right) \right]
+    =
+    0
+    }
+\end{equation}
+Ha ez nem csak elszámolás, akkor ennek egy lehetséges magyarázatát könnyű megadni. A $\left( \uparrow \downarrow \right)$ és $\left( \downarrow \uparrow \right)$ spinállapotok random mozgás hatására mindig a kisebb energiájú $\left( \uparrow \uparrow \right)$ és $\left( \downarrow \downarrow \right)$ állapotok felé mozognak. Mivel a rendszer teljesen szimmetrikus, így mind a $\left( \uparrow \uparrow \right)$ és $\left( \downarrow \downarrow \right)$ állapotok számának növekedési rátája megegyezik. Mivel a mágnesezettséget ezen kettő utóbbi határozza meg a (\ref{eq:57}) összefüggésnek megfelelően, így érthető, hogy ez a mennyiség $0$ lesz, ugyanis állandóan azonos számú $\left( \uparrow \uparrow \right)$ és $\left( \downarrow \downarrow \right)$ lesz a rendszerben.
