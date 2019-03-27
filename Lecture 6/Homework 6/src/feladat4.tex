@@ -43,7 +43,7 @@ Hasonlóan az óraihoz, vezessük be a $q = \frac{w}{w_{0}}$ mennyiséget, melly
     +
     \sum_{i=1}^{\infty} P_{i} \left( t \right)
 \end{align}
-Ebben most $q < 1$, hiszen ez a feltétele annak, hogy a rendszer ne szálljon el a végtelenben és kialakulhasson valamilyen egyensúlyi helyzet is.
+Ebben most $q < 1$, hiszen ez a feltétele annak, hogy a rendszer biztosan ne szálljon el a végtelenben és kialakulhasson valamilyen egyensúlyi helyzet is.
 
 \subsection{Generátorfüggvény formalizmus}
 Vezessük be a fenti $P_{n} \left( t \right)$ eloszlásfüggvény Laplace-transzformáltját:
@@ -81,10 +81,10 @@ Az egyszerűség kedvéért normáljuk a fejlődési rátákat úgy, hogy $w_{0}
     \sum_{i=1}^{\infty} P_{i} \left( t \right)}_{[1]}
     \underbrace{
     -
-    \left( q + 1 \right)\sum_{n\ =\ 0}^{\infty} e^{-sn} \frac{d}{dt} P_{n} \left( t \right)}_{[2]}
+    \left( q + 1 \right)\sum_{n\ =\ 0}^{\infty} e^{-sn} P_{n} \left( t \right)}_{[2]}
     \underbrace{
     +
-    q \sum_{n\ =\ 0}^{\infty} e^{-sn} \frac{d}{dt} P_{n-1} \left( t \right)}_{[3]}
+    q \sum_{n\ =\ 0}^{\infty} e^{-sn} P_{n-1} \left( t \right)}_{[3]}
 \end{align}
 Egyesével felírhatjuk a tagok értékét:
 
@@ -122,7 +122,7 @@ Visszahelyettesítve az eredeti egyenletbe:
 A \ref{eq:}-ban megfogalmazott stacionaritási feltétel miatt felírhatjuk a kövekezőket:
 
 \begin{equation}
-    G^{\left( st. \right)} \left( s, t \right)
+    G^{\left( \text{st.} \right)} \left( s, t \right)
     =
     \frac{- q P_{0} \left( t \right)
     +
@@ -134,7 +134,7 @@ A \ref{eq:}-ban megfogalmazott stacionaritási feltétel miatt felírhatjuk a k�
 Hogy a számláló értékét meg tudjuk határozni $q$-val kifejezve, felhaaználjuk a követekező normálási feltételt:
 
 \begin{equation}
-    G^{\left( st. \right)} \left( s = 0, t \right)
+    G^{\left( \text{st.} \right)} \left( s = 0, t \right)
     =
     \frac{- q P_{0} \left( t \right)
     +
@@ -158,7 +158,7 @@ Amiből a következő összefüggést kapjuk:
 Tehát a generátorfüggvény végleges alakja:
 
 \begin{equation}
-    G^{\left( st. \right)} \left( s, t \right)
+    G^{\left( \text{st.} \right)} \left( s, t \right)
     =
     \frac{2q + 1}
     {\left( q + 1 \right)
@@ -171,7 +171,7 @@ A generátorfüggvények ismert és tanult formalizmusa lehetővé teszi számun
 \begin{align}
     \left< n \right>
     &=
-    - \left. \frac{\partial G^{\left( st. \right)} \left( s,t \right)}{\partial s} \right\rvert_{s\ =\ 0}
+    - \left. \frac{\partial G^{\left( \text{st.} \right)} \left( s,t \right)}{\partial s} \right\rvert_{s\ =\ 0}
     =
     - \frac{d}{d s} \frac{2q + 1}{\left( q + 1 \right) + q e^{-s}}
     =
@@ -202,4 +202,4 @@ Tehát ilyen magasra jut a hegymászó átlagosan, mászás közben. Pl. $w = 0.
     \approx
     0.32
 \end{equation}
-Tehát átlagosan sosem túl magasra... Ez várható is volt, hisz érezhetően sokkal kisebb az esélye a magasabb pontok elérésének az itteni, minden alkalommal $0$ szintre zuhanás feltételével, mint az előző házifeladatban szereplő csak $1$ szintet visszazuhanó mászás esetében.
+Tehát átlagosan sosem túl magasra... Ez várható is volt, hisz érezhetően sokkal kisebb az esélye a magasabb pontok elérésének az itteni, minden alkalommal $0$ szintre zuhanás feltételével, mint az előző házifeladatban szereplő csak $1$ szintet visszazuhanó mászás esetében. Az elején a $q < 1$ feltétel melyet kiszabtunk arra hivatkozva, hogy biztosítsuk a rendszer konvergenciáját valamilyen egyensúlyi pontba, láthatóan nem volt fontos. Ugyanis $w = w_{0} = 1$ esetén is várható érték bőven $1$ alatt marad. Sőt, tulajdonképpen bármekkora értéket választhatunk $w$ számára, $\left< n \right>$ nevezője mindig nagyobb lesz, mint annak számlálója, sosem fog elszállni a végtelenbe.

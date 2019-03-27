@@ -10,23 +10,119 @@
 
 \subsection{A Master-egyenlet} \label{sub:2.1}
 
-Értelmezhetjük a feladatot úgy, hogy egy időben fejlődő, diszkrét rendszer négy különböző állapotban tud tartózkodni. Mikor az utolsó szintet is eléri, onnan csak az első szintre tud $w$ rátával visszaugrani. Ennek fényében írjuk fel az egyes valószínűségeket:
+Értelmezhetjük a feladatot úgy, hogy egy időben fejlődő, diszkrét rendszer négy különböző állapotban tud tartózkodni. Mikor az utolsó szintet is eléri, onnan csak az első szintre tud $w$ rátával visszaugrani. Értelmezhetjük $w_{0}$ visszacsúszási rátát is, hogy a sorbanállás példájához hasonló formájú egyeneltek kapjunk, azonban $w_{0} = 0$ ebben az esetben. Ennek fényében írjuk fel az egyes valószínűségeket:
 
-\begin{align}
+\begin{equation} \label{eq:4}
+    \frac{\partial P_{1} \left( t \right)}{\partial t}
+    =
+    - \left( w - w_{0} \right) P_{1} \left( t \right) + w P_{4} \left( t \right)
+    =
+    - w P_{1} \left( t \right) + w P_{4} \left( t \right)
+\end{equation}
+\begin{equation} \label{eq:5}
+    \frac{\partial P_{2} \left( t \right)}{\partial t}
+    =
+    - \left( w - w_{0} \right) P_{2} \left( t \right) + w P_{1} \left( t \right)
+    =
+    - w P_{2} \left( t \right) + w P_{1} \left( t \right)
+\end{equation}
+\begin{equation} \label{eq:6}
+    \frac{\partial P_{3} \left( t \right)}{\partial t}
+    =
+    - \left( w - w_{0} \right) P_{3} \left( t \right) + w P_{2} \left( t \right)
+    =
+    - w P_{3} \left( t \right) + w P_{2} \left( t \right)
+\end{equation}
+\begin{equation} \label{eq:7}
+    \frac{\partial P_{4} \left( t \right)}{\partial t}
+    =
+    - \left( w - w_{0} \right) P_{4} \left( t \right) + w P_{3} \left( t \right)
+    =
+    - w P_{4} \left( t \right) + w P_{3} \left( t \right)
+\end{equation}
+Ezeket általánosan felírhatjuk a következő két egyenlet segítségével:
+
+\begin{align} \label{eq:8}
+    &\frac{\partial P_{n} \left( t \right)}{\partial t}
+    =
+    - w P_{n} \left( t \right) + w P_{n-1} \left( t \right)
+    \quad \quad
+    \text{ahol $n > 1$}
+    \\ \nonumber \\\label{eq:9}
     &\frac{\partial P_{1} \left( t \right)}{\partial t}
     =
-    P_{1} \left( t \right) + w P_{4} \left( t \right)
-    \\
-    &\frac{\partial P_{2} \left( t \right)}{\partial t}
-    =
-    P_{2} \left( t \right) + w P_{1} \left( t \right)
-    \\
-    &\frac{\partial P_{3} \left( t \right)}{\partial t}
-    =
-    P_{3} \left( t \right) + w P_{2} \left( t \right)
-    \\
-    &\frac{\partial P_{4} \left( t \right)}{\partial t}
-    =
-    P_{4} \left( t \right) + w P_{3} \left( t \right)
+    - w P_{1} \left( t \right) + w P_{4} \left( t \right)
 \end{align}
-Asd
+Ennek megoldására és a stacionárius pont megkeresésére felhasználhatjuk a generátorfüggvényeket.
+
+\subsection{Generátorfüggvény formalizmus} \label{sub:2.2}
+Vezessük be a fenti $P_{n} \left( t \right)$ eloszlásfüggvény Laplace-transzformáltját:
+
+\begin{equation} \label{eq:10}
+    G \left( s, t \right)
+    =
+    \sum_{n\ =\ 0}^{\infty} e^{-sn} P_{n} \left( t \right)
+\end{equation}
+Melynek keressük stacionárius pontjait, amik az alábbi formában fogalmazhatóak meg:
+
+\begin{equation} \label{eq:11}
+    \frac{\partial G \left( s, t \right)}{\partial t}
+    =
+    \sum_{n\ =\ 0}^{\infty} e^{-sn} \frac{d}{dt} P_{n} \left( t \right)
+    \quad \to \quad
+    \frac{\partial G^{\left( \text{st.} \right)} \left( s, t \right)}{\partial t}
+    \overset{!}{=}
+    0
+\end{equation}
+A fenti (\ref{eq:8}) és (\ref{eq:9}) egyenletek felhasználásával fejezzük ki a generátorfüggvény (\ref{eq:11})-es összefüggésben szereplő deriváltját:
+
+\begin{equation} \label{eq:12}
+    \frac{\partial G \left( s, t \right)}{\partial t}
+    =
+    -
+    w P_{1} \left( t \right) + w P_{4} \left( t \right)
+    -
+    w \sum_{n\ =\ 2}^{4} e^{-sn} P_{n} \left( t \right)
+    +
+    w \sum_{n\ =\ 2}^{4} e^{-sn} P_{n-1} \left( t \right)
+\end{equation}
+Jelen esetben a generátorfüggvény fenti alakja az $\left] 1,\ 4 \right]$ intervallumon lesz értelmezve, ugyanis a rendszer összesen 4 szintből áll, értéke minden máshol $0$. Ekkor a (\ref{eq:12})-es egyenlet átírható a következő formába:
+
+\begin{equation} \label{eq:13}
+    \frac{\partial G^{\left( \text{st.} \right)} \left( s, t \right)}{\partial t}
+    =
+    -
+    w P_{1} \left( t \right) + w P_{4} \left( t \right)
+    -
+    w G \left( s, t \right)
+    +
+    w e^{-s} G \left( s, t \right)
+    =
+    0
+\end{equation}
+Mely a stacionárius esetben $0$ értéket kell adjon. Ennek felhasználásával kifejezhetjük $G^{\left( \text{st.} \right)} \left( s, t \right)$-t:
+
+\begin{equation} \label{eq:14}
+    G^{\left( \text{st.} \right)} \left( s, t \right)
+    =
+    \frac{\cancel{w} P_{1} \left( t \right) - \cancel{w} P_{4} \left( t \right)}{\cancel{w} e^{-s} - \cancel{w}}
+    =
+    \frac{P_{1} \left( t \right) - P_{4} \left( t \right)}{e^{-s} - 1}
+\end{equation}
+Tehát a továbbadás rátájától nem fog függeni a rendszer stacionárius helyzete! Ez valamilyen módon logikus is. A gyerekek egymásnak adogatják körbe a gyűrűt, folyamatosan, de mindegyikük azonos sebességgel. Mindegy, hogy milyen gyorsan halad a gyűrű, a mozgása időben lelassítva, vagy felgyorsítva pontosan ugyanolyan karakterisztika szerint fog történni. A $G^{\left( \text{st.} \right)} \left( s, t \right)$-re vonatkozó normálási feltételből kifejezhetjük végül annak értékét, valószínűségektől mentes formában:
+
+\begin{equation}
+    G^{\left( \text{st.} \right)} \left( s=0, t \right)
+    =
+    1
+    \quad \to \quad
+    P_{1} \left( t \right) - P_{4} \left( t \right) = 1 - 1 = 0
+    \quad \to \quad
+    \boxed{
+    G^{\left( \text{st.} \right)} \left( s, t \right)
+    =
+    0}
+\end{equation}
+Az eredmény mindenképp elemzésre szorul. Egy lehetséges értelmezés az lehet, hogy a rendszer soha nem lesz nyugalomban, annak nincsen valódi egyensúlyi helyzete. Ez a felállás természetéből várható is. A gyerekek egymásnak adogatják sorrendben a gyűrűt, valamilyen $w$ rátával. Ez így a végtelenségig járhat körbe, sehol nem fognak az egyes valószínűségek értékei csökkenni, egyik gyermek pozíciója sem értelmezhető magasabb, vagy alacsonyabb energiaszintnek. Így a rendszernek a relaxációs ideje is végtelennek mondható, hisz nincs egyensúlyi pozíciója.
+\\ \\
+Persze minden fenti számítás és magyarázat csak abban az esetben helyes, ha jól értelmeztem a \q{csön-csön-gyűrű} nevű gyerekjáték lényegét, amiben egyáltalán nem vagyok biztos...
