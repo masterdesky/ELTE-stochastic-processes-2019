@@ -1,0 +1,205 @@
+\section{} \label{sec:4}
+\quest{Meredek hegyoldalban függőlegesen $l$ távolságra vannak a kapaszkodók. A hegymászó $w$ rátával lép felfelé, s $w_{0}$ annak a rátája, hogy lecsúszik a 0 szintre, ahonnan újra kezdi a mászást. \\
+Feladatok:
+\begin{enumerate}
+    \item Írjuk fel az egyenletet, amely meghatározza, hogy a hegymászó milyen $P_{n}$ valószínűséggel van $nl$ magasságban!
+    \item Használjuk a generátorfüggvény formalizmust a stacionárius eloszlás kiszámítására!
+    \item Határozzuk meg, hogy átlagosan milyen magasra jut a hegymászó!
+    \item Határozzuk meg az átlagos magasságot úgy, hogy származtatjuk az átlagos magasságra vonatkozó differenciálegyenletet, majd meghatározzuk a stacionárius megoldását?
+\end{enumerate}
+}
+
+\subsection{A Master-egyenlet}
+A rendszer időbeli fejlődését leíró Master-egyenletet felírhatjuk az órán is tanult módon, $w$ és $w_{0}$ rátákkal jelölve a fel- és lefelé haladás rátáját. Az egyszerű sorbanállás példájához képest a különbség, hogy itt a rendszerből való távozás esetén a bent maradt igények száma nem egyel csökken, hanem 0-ra zuhan vissza. Ezt a következő módon írhatjuk fel:
+
+\begin{align}
+    &\frac{d P_{n} \left( t \right)}{d t}
+    =
+    - \left( w + w_{0} \right) P_{n} \left( t \right)
+    +
+    w P_{n-1} \left( t \right)
+    \quad \quad
+    \text{ahol } t = nl
+    \\ \nonumber \\
+    &\frac{d P_{0} \left( t \right)}{d t}
+    =
+    - w P_{0} \left( t \right)
+    +
+    \sum_{i=1}^{\infty} w_{0} P_{i} \left( t \right)
+    \quad \quad \quad \quad \ \
+    \text{ahol } t = nl
+\end{align}
+A konkrét különbség a sorbanállás példájához képest, hogy itt $\frac{d P_{n} \left( t \right)}{d t}$ értéke nem függhet $w_{0} P_{n+1} \left( t \right)$ mennyiségtől, ugyanis nincs egy szinttel történő visszacsúszás. Emellett viszont a $0$ szintre akárhonnan visszazuhanhat a hegymászó, így egészen a végtelenig kell összegeznünk a $\frac{d P_{0} \left( t \right)}{d t}$ értékét meghatározó $w_{0}$ visszacsúszási rátákkal súlyozott valószínűségeket. \\
+Hasonlóan az óraihoz, vezessük be a $q = \frac{w}{w_{0}}$ mennyiséget, mellyel átfogalmazhatóak az egyenletek:
+
+\begin{align}
+    &\frac{1}{w_{0}} \frac{d P_{n} \left( t \right)}{d t}
+    =
+    - \left( q + 1 \right) P_{n} \left( t \right) + q P_{n-1} \left( t \right)
+    \\ \nonumber \\
+    &\frac{1}{w_{0}} \frac{d P_{0} \left( t \right)}{d t}
+    =
+    - q P_{0} \left( t \right)
+    +
+    \sum_{i=1}^{\infty} P_{i} \left( t \right)
+\end{align}
+Ebben most $q < 1$, hiszen ez a feltétele annak, hogy a rendszer ne szálljon el a végtelenben és kialakulhasson valamilyen egyensúlyi helyzet is.
+
+\subsection{Generátorfüggvény formalizmus}
+Vezessük be a fenti $P_{n} \left( t \right)$ eloszlásfüggvény Laplace-transzformáltját:
+
+\begin{equation}
+    G \left( s, t \right)
+    =
+    \sum_{n\ =\ 0}^{\infty} e^{-sn} P_{n} \left( t \right)
+\end{equation}
+Melynek keressük stacionárius pontjait, amik az alábbi formában fogalmazhatóak meg:
+
+\begin{equation}
+    \frac{\partial G \left( s, t \right)}{\partial t}
+    =
+    \sum_{n\ =\ 0}^{\infty} e^{-sn} \frac{d}{dt} P_{n} \left( t \right)
+    \quad \to \quad
+    \frac{\partial G^{\left( \text{st.} \right)} \left( s, t \right)}{\partial t}
+    \overset{!}{=}
+    0
+\end{equation}
+Az egyszerűség kedvéért normáljuk a fejlődési rátákat úgy, hogy $w_{0} = 1$ értéket vegyen fel. Ennek segítségével megoldhatjuk könnyen a stacionaritási problémát:
+
+\begin{align}
+    \frac{\partial G \left( s, t \right)}{\partial t}
+    &=
+    - q P_{0} \left( t \right)
+    +
+    \sum_{i=1}^{\infty} P_{i} \left( t \right)
+    -
+    \left( q + 1 \right) P_{n} \left( t \right) + q P_{n-1} \left( t \right)
+    = \nonumber \\
+    &=
+    \underbrace{- q P_{0} \left( t \right)
+    +
+    \sum_{i=1}^{\infty} P_{i} \left( t \right)}_{[1]}
+    \underbrace{
+    -
+    \left( q + 1 \right)\sum_{n\ =\ 0}^{\infty} e^{-sn} \frac{d}{dt} P_{n} \left( t \right)}_{[2]}
+    \underbrace{
+    +
+    q \sum_{n\ =\ 0}^{\infty} e^{-sn} \frac{d}{dt} P_{n-1} \left( t \right)}_{[3]}
+\end{align}
+Egyesével felírhatjuk a tagok értékét:
+
+\begin{align}
+    &[1] = - q P_{0} \left( t \right)
+    +
+    \sum_{i=1}^{\infty} P_{i} \left( t \right)
+    \\
+    &[2] = - \left( q + 1 \right) G \left( s, t \right)
+    \\ \nonumber \\
+    &[3] = q e^{-s} G \left( s, t \right)
+\end{align}
+Visszahelyettesítve az eredeti egyenletbe:
+
+\begin{align}
+    \frac{\partial G \left( s, t \right)}{\partial t}
+    &=
+    - q P_{0} \left( t \right)
+    +
+    \sum_{i=1}^{\infty} P_{i} \left( t \right)
+    -
+    \left( q + 1 \right) G \left( s, t \right)
+    +
+    q e^{-s} G \left( s, t \right)
+    = \nonumber \\
+    &=
+    - q P_{0} \left( t \right)
+    +
+    \sum_{i=1}^{\infty} P_{i} \left( t \right)
+    -
+    \left[ \left( q + 1 \right)
+    +
+    q e^{-s} \right] G \left( s, t \right)
+\end{align}
+A \ref{eq:}-ban megfogalmazott stacionaritási feltétel miatt felírhatjuk a kövekezőket:
+
+\begin{equation}
+    G^{\left( st. \right)} \left( s, t \right)
+    =
+    \frac{- q P_{0} \left( t \right)
+    +
+    \sum_{i=1}^{\infty} P_{i} \left( t \right)}
+    {\left( q + 1 \right)
+    +
+    q e^{-s}}
+\end{equation}
+Hogy a számláló értékét meg tudjuk határozni $q$-val kifejezve, felhaaználjuk a követekező normálási feltételt:
+
+\begin{equation}
+    G^{\left( st. \right)} \left( s = 0, t \right)
+    =
+    \frac{- q P_{0} \left( t \right)
+    +
+    \sum_{i=1}^{\infty} P_{i} \left( t \right)}
+    {\left( q + 1 \right)
+    +
+    q}
+    =
+    1
+\end{equation}
+Amiből a következő összefüggést kapjuk:
+
+\begin{equation}
+    - q P_{0} \left( t \right)
+    +
+    \sum_{i=1}^{\infty} P_{i} \left( t \right)
+    =
+    2q + 1
+\end{equation}
+
+Tehát a generátorfüggvény végleges alakja:
+
+\begin{equation}
+    G^{\left( st. \right)} \left( s, t \right)
+    =
+    \frac{2q + 1}
+    {\left( q + 1 \right)
+    +
+    q e^{-s}}
+\end{equation}
+
+A generátorfüggvények ismert és tanult formalizmusa lehetővé teszi számunkra, hogy megadjuk a keresett $\left< n \right>$ mennyiséget, ami a mászó által elért átlagos magasságot jelöli. Ez a (\ref{eq:62}) generátorfüggvény első momentuma:
+
+\begin{align}
+    \left< n \right>
+    &=
+    - \left. \frac{\partial G^{\left( st. \right)} \left( s,t \right)}{\partial s} \right\rvert_{s\ =\ 0}
+    =
+    - \frac{d}{d s} \frac{2q + 1}{\left( q + 1 \right) + q e^{-s}}
+    =
+    - \left. \left( 2q + 1 \right) \frac{q e^{-s}}{\left( \left( q + 1 \right) + q e^{-s} \right)^{2}} \right\rvert_{s\ =\ 0}
+    = \nonumber \\
+    &=
+    \frac{\left( 2q + 1 \right) q}{\left( 2q + 1 \right)^{2}}
+    =
+    \frac{q}{2q + 1}
+\end{align}
+Mivel $q = \frac{w}{w_{0}}$, és $w_{0} = 1$, ezért ez a következő alakba írható:
+
+\begin{equation}
+    \boxed{
+    \left< n \right>
+    =
+    \frac{w}{2w + 1}
+    }
+\end{equation}
+Tehát ilyen magasra jut a hegymászó átlagosan, mászás közben. Pl. $w = 0.9$ ráta esetén:
+
+\begin{equation}
+    \left< n \right>
+    =
+    \frac{0.9}{2 * 0.9 + 1}
+    =
+    \frac{0.9}{2.8}
+    \approx
+    0.32
+\end{equation}
+Tehát átlagosan sosem túl magasra... Ez várható is volt, hisz érezhetően sokkal kisebb az esélye a magasabb pontok elérésének az itteni, minden alkalommal $0$ szintre zuhanás feltételével, mint az előző házifeladatban szereplő csak $1$ szintet visszazuhanó mászás esetében.

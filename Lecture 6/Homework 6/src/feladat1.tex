@@ -1,0 +1,46 @@
+\section{} \label{sec:1}
+\quest{Kétségbeesett telefon érkezik a rendőrségre. A közelben levő erdőség közepén egy család táborozott. Este 9-kor lefeküdtek, s reggel hétkor arra ébredtek, hogy 3 éves gyerekük eltűnt. Feltéve, hogy nem egy farkas, vagy egy emberrabló az eltűnés oka, határozzuk meg, hogy a rendőrség prioritása mekkora terület gyors átkutatása kell legyen!
+}
+
+\subsection{A Brown-mozgás elméletével} \label{sub:3.1}
+A feladat megoldásához egyértelműen a Brown-mozgás Langevin-féle elméletét használhatjuk fel, ahol most a kisgyereket, mint bolyongó részecskét képzelhetjük el. Ismert, hogy egy bolyongó részecske várható eltávolodási távolsága a kezdőállapottól a következő módon adható meg:
+
+\begin{equation}
+    \left( \Delta x \right)^{2}
+    =
+    2 \tau D
+\end{equation}
+Ahol $\tau$ a mozgás vizsgált időhossza, míg $D$ a közegre vonatkoztatott karakterisztikus mennyiség, a diffúziós együttható. Ez megadható a kinetikus szóráselmélet felhasználásával a következő módon:
+
+\begin{equation}
+    D
+    =
+    \frac{1}{3} l \left< v \right>
+\end{equation}
+Ebben $l$ a részecske szabad úthossza, $\left< v \right>$ pedig sebességének várható értéke. Ha meg tudjuk becsülni valahogy ezen két értéket a jelenlegi példában, azzal megkaphatjuk a gyermek, erdőre vonatkoztatott diffúziós együtthatóját. Ebből pedig egyenes úton kiszámíthatjuk a sátortól való eltávolodás várható távolságát. Mivel a mozgás - feltételezhetően - csak a Föld felszínén történt, azonban ott bármilyen irányban, ezért az átvizsgálandó terület egy körív által határolt felületrész, melynek sugara a kiszámolt $\Delta x$ távolság lesz.
+\\ \\
+\subsection{A keresett mennyiségek becslése} \label{sub:3.2}
+Az emberek optimális, preferált haladási sebessége széles határok között változik, mindenki számára ez az érték más és más. Egy 3 éves gyermek számára több kutatás alapján az optimális sebesség $0.5\ \frac{\text{m}}{\text{s}}$ és kb. $1\ \frac{\text{m}}{\text{s}}$ között változik\cite{dejaeger2001energy}\cite{larusdottir2011evacuation}\cite{cavagna1983mechanics}. Én itt közel a felső határt, a $0.9\ \frac{\text{m}}{\text{s}}$ értéket fogom használni, ennek okára a következő \ref{sub:3.3} részben térek ki. \\
+A 3 éves gyeremekek szabad úthosszának, azok lépéseinek hosszával közelíthetjük. Ezt egyéb kutatások alapján kb. $30$-$45\ \text{cm}$ értékűre becsülhetjük\cite{gill2016relationship}. Maximális értékként a $45\ \text{cm} = 0.45\ \text{m}$ lépéshosszt fogom a számításokban használni.\\
+Ezen két érték becslésével adhatunk egy közelítést az átvizsgálandó terület sugarára, ha $\tau$ időhosszt a feladtban is szereplő maximális időhossznak vesszük. Ez este 9 és reggel 7 között eltelt idő: $\tau = 10\ \text{óra}$. Ekkor az átvizsgálandó terület sugara:
+
+\begin{align}
+    \Delta x
+    &=
+    \sqrt{2 \tau * \frac{1}{3} l \left< v \right>}
+    =
+    \sqrt{2 * 10\ \text{óra} * \frac{1}{3} * 0.45\ \text{m} * 0.9\ \frac{\text{m}}{\text{s}}}
+    =
+    \sqrt{2 * 36000\ \text{s} * \frac{1}{3} * 0.45\ \text{m} * 0.9\ \frac{\text{m}}{\text{s}}}
+    = \nonumber \\
+    &=
+    \sqrt{24000\ \text{s} * 0.45\ \text{m} * 0.9\ \frac{\text{m}}{\text{s}}}
+    =
+    \sqrt{9720\ \text{m}^{2}}
+    =
+    \boxed{98.59\ \text{m}}
+\end{align}
+Magyarán nagyjából $100m$ sugarú területet kell gyorsan átvizsgálnia a rendőrségnek.
+
+\subsection{A valódi értékek} \label{sub:3.3}
+A valóságban egy 3 éves gyermek nem véletlen módon bolyong, ahogy a Brown-mozgás során mozgó részecskék. Sokkal hosszabb szabad úthosszal képes lineárisan egy irányba tartani, mint amivel fentebb is számoltam. Ellenben nem is képes folyamatosan $10$ órán át tartó mozgásra, sokkal gyorsabban, akár $1$-$1.5$ km megtétele után is elfárad. Nem beszélve arról a tényről, hogy éjszaka van, hideg. Ezek mind olyan tényezők, melyeket egy valódi helyzetben bele kell majd kalkulálni a számításainkba.

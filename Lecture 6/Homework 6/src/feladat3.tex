@@ -1,0 +1,128 @@
+\section{} \label{sec:3}
+K: \textit{Legyen egy sztochasztikus változó, $x$, momentum-generátor függvénye $G \left( s \right)$. A normalizációból következik, hogy $G  \left( 0 \right) = 1$, s tudjuk, hogy az $x$ momentumai $G$ deriváltjain keresztül kifejezhetők:}
+
+\begin{equation*}
+    \left< x \right>
+    =
+    - \left. \frac{d G \left( s \right)}{d s} \right\rvert_{s = 0}
+    \quad \text{,} \dots \text{,} \quad
+    \left< x^{k} \right>
+    =
+    \left( -1 \right)^{k} \left. \frac{d^{k} G \left( s \right)}{d s^{k}} \right\rvert_{s = 0}
+\end{equation*}
+\textit{A kumuláns generátor függvény a momentum-generátor függvény logaritmusa, $\Phi \left( s \right) = \ln \left( G \left( s \right) \right)$, s a kumulánsokat a következőképpen kapjuk:}
+
+\begin{equation*}
+    \left< \kappa_{1} \right>
+    =
+    - \left. \frac{d \Phi \left( s \right)}{d s} \right\rvert_{s = 0}
+    \quad \text{,} \dots \text{,} \quad
+    \left< \kappa_{k} \right>
+    =
+    \left( -1 \right)^{k} \left. \frac{d^{k} \Phi \left( s \right)}{d s^{k}} \right\rvert_{s = 0}
+\end{equation*}
+\textit{Az első kumulánsokat könnyű kiszámolni, s egyszerű értelmük van:}
+
+\begin{equation*}
+    \left< \kappa_{1} \right>
+    =
+    \left< x \right>
+    \quad \text{,} \quad
+    \left< \kappa_{2} \right>
+    =
+    \left< x^{2} \right> - \left< x \right>^{2}
+\end{equation*}
+\textit{Feladat: Számítsuk ki a 3. kumulánst $\left( \kappa_{3} \right)$ a momentumokon keresztül! Mi lesz $\kappa_{3}$ értéke, ha $x$ eloszlásfüggvénye szimmetrikus $\left[ P \left( -x \right) = P \left( x \right) \right]$?}
+
+\subsection{A 3. kumuláns kiszámítása}
+
+A harmadik kumuláns definícióját a feladat szövegében is leírt általános definíció segítségével fogalamzhatjuk:
+
+\begin{align}
+    \kappa_{3}
+    &=
+    \left( -1 \right)^{3} \left. \frac{d^{3} \Phi \left( s \right)}{d s^{3}} \right\rvert_{s = 0}
+    =
+    - \left. \frac{d^{3} \Phi \left( s \right)}{d s^{3}} \right\rvert_{s = 0}
+    =
+    - \left. \frac{d^{3} \ln \left( G \left( s \right) \right)}{d s^{3}} \right\rvert_{s = 0}
+    = \nonumber \\
+    &=
+    - \left. \frac{d^{2}}{d s^{2}}
+    \left(
+    \frac{1}{G \left( s \right)} \frac{d G \left( s \right)}{d s}
+    \right) \right\rvert_{s = 0}
+    =
+    - \left. \frac{d}{d s}
+    \left[
+    \frac{1}{G \left( s \right)} \frac{d^{2} G \left( s \right)}{d s^{2}}
+    -
+    \frac{1}{G^{2} \left( s \right)} \left( \frac{d G \left( s \right)}{d s} \right)^{2}
+    \right] \right\rvert_{s = 0}
+    = \nonumber \\
+    &=
+    - \left[
+    \frac{1}{G \left( s \right)} \frac{d^{3} G \left( s \right)}{d s^{3}}
+    -
+    \frac{1}{G^{2} \left( s \right)} \frac{d G \left( s \right)}{d s} \frac{d^{2} G \left( s \right)}{d s^{2}}
+    \right.
+    + \nonumber \\
+    &+
+    \left. \left.
+    2 \frac{1}{G^{3} \left( s \right)} \left( \frac{d G \left( s \right)}{d s} \right)^{3}
+    -
+    2 \frac{1}{G^{2} \left( s \right)} \frac{d G \left( s \right)}{d s} \frac{d^{2} G \left( s \right)}{d s^{2}}
+    \right] \right\rvert_{s = 0}
+    = \nonumber \\
+    &=
+    \underbrace{-
+    \left. \frac{1}{G \left( s \right)} \frac{d^{3} G \left( s \right)}{d s^{3}}\right\rvert_{s = 0}
+    }_{\left< x^{3} \right>}
+    \underbrace{
+    +
+    \left. 3 \frac{1}{G^{2} \left( s \right)} \frac{d G \left( s \right)}{d s} \frac{d^{2} G \left( s \right)}{d s^{2}} \right\rvert_{s = 0}
+    }_{- 3 * \left< x^{2} \right> * \left< x \right>}
+    \underbrace{
+    -
+    \left. 2 \frac{1}{G^{3} \left( s \right)} \left( \frac{d G \left( s \right)}{d s} \right)^{3} \right\rvert_{s = 0}
+    }_{2 * \left< x \right>^{3}}
+    = \nonumber \\
+    &=
+    \boxed{\left< x^{3} \right> - 3 * \left< x^{2} \right> * \left< x \right> + 2 * \left< x \right>^{3}}
+\end{align}
+Mely eredmény valóban a harmadik kumuláns értéke.
+\\ \\
+Ha a kérdéses $x$ valószínűségi változó eloszlásfüggvénye azonban szimmetrikus, ennek értéke $0$, ahogy minden másik, páratlan rendű kumuláns értéke is. Ez megindokolható a várható értékek elemzésével. Ha egy $x$ valószínűségi változó eloszlása szimmetrikus, az azt jelenti, hogy $x$ és $-x$ eloszlása megegyezik, tehát minden $f$ függvényre:
+
+\begin{equation}
+    \left< f \left( x \right) \right>
+    =
+    \left< f \left( -x \right) \right>
+\end{equation}
+Bővítsük ki ezt arra az esetre, amikor $f \left( x \right) = x^{n}$:
+
+\begin{equation}
+    \left< \left( x \right)^{n} \right>
+    =
+    \left< \left( -x \right)^{n} \right>
+    =
+    \left< \left( -1 \right)^{n} \left( x \right)^{n} \right>
+\end{equation}
+Minden esetben, amikor $n$ páratlan, akkor ez a következő alakot ölti:
+
+\begin{equation}
+    \left< \left( x \right)^{n} \right>
+    =
+    \left< - \left( x \right)^{n} \right>
+    =
+    -\left< \left( x \right)^{n} \right>
+\end{equation}
+Ami kizárólag akkor lehetséges, ha
+
+\begin{equation}
+    \boxed{\left< \left( x \right)^{n} \right>
+    =
+    0}
+    \quad \quad
+    \text{ha $n$ páratlan}
+\end{equation}

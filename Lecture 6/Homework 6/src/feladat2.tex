@@ -1,0 +1,32 @@
+\section{} \label{sec:2}
+\quest{Csön-csön gyűrűt játszanak négyen. A gyűrűt a körben álló játékosok az óramutató járásával egy irányban adják tovább. Az 1-es gyereknél indul a gyűrű, s a továbbadás rátája $w$.
+\begin{enumerate}
+    \item Írjuk fel az egyenletet annak a valószínűségére, hogy a gyűrű az i-edik gyereknél van!
+    \item Határozzuk meg a stacionárius megoldást!
+    \item Határozzuk meg a rendszer relaxációs idejét (először próbáljuk megbecsülni az értékét)!
+\end{enumerate}
+}
+
+
+\subsection{A Master-egyenlet} \label{sub:2.1}
+
+Értelmezhetjük a feladatot úgy, hogy egy időben fejlődő, diszkrét rendszer négy különböző állapotban tud tartózkodni. Mikor az utolsó szintet is eléri, onnan csak az első szintre tud $w$ rátával visszaugrani. Ennek fényében írjuk fel az egyes valószínűségeket:
+
+\begin{align}
+    &\frac{\partial P_{1} \left( t \right)}{\partial t}
+    =
+    P_{1} \left( t \right) + w P_{4} \left( t \right)
+    \\
+    &\frac{\partial P_{2} \left( t \right)}{\partial t}
+    =
+    P_{2} \left( t \right) + w P_{1} \left( t \right)
+    \\
+    &\frac{\partial P_{3} \left( t \right)}{\partial t}
+    =
+    P_{3} \left( t \right) + w P_{2} \left( t \right)
+    \\
+    &\frac{\partial P_{4} \left( t \right)}{\partial t}
+    =
+    P_{4} \left( t \right) + w P_{3} \left( t \right)
+\end{align}
+Asd
