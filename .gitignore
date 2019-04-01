@@ -1,3 +1,4 @@
 *.ipynb_checkpoints
 StP-hf*
 [Vv]ideos*/
+*.npy
