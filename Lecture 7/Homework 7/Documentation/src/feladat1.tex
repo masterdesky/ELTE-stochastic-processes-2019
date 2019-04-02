@@ -1,0 +1,166 @@
+\section{} \label{sec:1}
+K:\ Végezzünk szimulációkat az egy-dimenziós Ising modellre. A rendszer állapotát egydimenziós rács pontjaiban $\left( i = 1, 2,\ \dots, N \right)$ ülő $s_{i} = \pm 1$ spinek határozzák meg. A spinek szomszédjaikkal ferromágnesesen hatnak kölcsön, azaz egy állapot energiája a következő
+
+\begin{equation*}
+    E \left( s_{1}, s_{2},\ \dots,\ s_{N} \right)
+    =
+    - J \sum_{1}^{N-1} s_{i} s_{i+1}
+    \quad , \quad
+    J\ >\ 0
+\end{equation*}
+A spinek $T$ hőmérsékletű környezettel vannak kölcsönhatásban, s ennek eredményeképpen átbillenhetnek egyik állapotukból a másikba $\left( s_{i} \to -s_{i} \right)$. \\
+Válasszunk spin-flip rátának olyan alakot, ami kielégíti a részletes egyensúly elvét. Ilyen lesz például, ha az $i$-edik spin forgatásának $\left( s_{i} \to -s_{i} \right)$ rátája a következő ($1/\text{s}$ egységben):
+
+\begin{equation*}
+    w_{i} \left( s_{1},\ \dots,\ s_{i-1}, s_{i}, s_{i+1},\ \dots,\ s_{N} \right)
+    =
+    \begin{cases}
+        1   &\text{ha } \Delta E < 0 \\
+        1/2 &\text{ha } \Delta E = 0 \\
+        e^{- \beta T} &\text{ha } \Delta E > 0
+    \end{cases}
+\end{equation*}
+ahol, mint könnyen belátható
+
+\begin{equation*}
+    \Delta E
+    =
+    2 J s_{i} \left( s_{i-1} + s_{i+1} \right)
+\end{equation*}
+Legyen $N = 100$, s kezdjük a rendszer szimulálását teljesen véletlenszerű állapotból, ahol
+$1/2$ valószínűséggel $s_{i} = \pm 1$ (az egyensúlyi átlagok nem függhetnek a kezdeti feltételtől, tehát
+eredményeink helyességét ellenőrizhetjük azzal, hogy teljesen rendezett állapotból indítjuk a
+rendszert, s megnézzük ugyanazt kapjuk-e).
+\\ \\
+A szimulálás a következő lépésekből áll:
+
+\begin{enumerate}
+    \item \label{enum_obj:1}Véletlenszerűen kiválasztunk egy spint.
+    \item \label{enum_obj:2}Megnézzük, hogy ha megforgatjuk, akkor mennyit változik a rendszer energiája, azaz kiszámítjuk $\Delta E$-t.
+    \item \label{enum_obj:3}Ha $\Delta E < 0$, akkor megforgatjuk a spint, s megyünk az (\ref{enum_obj:1})-es ponthoz.
+    \item \label{enum_obj:4}Ha $\Delta E = 0$, akkor húzunk egy véletlen számot $P$-t a $\left[ 0, 1 \right]$ intervallumból, s ha $P < 1/2$, akkor megforgatjuk a spint, s megyünk az (\ref{enum_obj:1})-es ponthoz. Ha $P > 1/2$, akkor forgatás nélkül megyünk az (\ref{enum_obj:1})-es ponthoz.
+    \item \label{enum_obj:5}Ha $\Delta E > 0$, akkor húzunk egy véletlen számot $P$-t a $\left[ 0, 1 \right]$ intervallumból, s ha $P < e^{-\beta \Delta E}$, akkor megforgatjuk a spint, egyébként megyünk az (\ref{enum_obj:1})-es ponthoz.
+\end{enumerate}
+Az (\ref{enum_obj:1})-(\ref{enum_obj:5}) pontokat sokszor, $N * t$-szer elvégezve azt mondjuk, hogy $t$ idő telt el. Minden rendszernek van általában egy relaxációs ideje, $\tau$, s ha $t > \tau$, akkor a rendszer elérkezik az egyensúlyba, s attól kezdve a különböző mennyiségek, mint például a mágnesezettség
+
+\begin{equation*}
+    m
+    =
+    \frac{1}{N} \sum_{i=1}^{N} s_{i}
+\end{equation*}
+vagy a mágnesezettség fluktuációja $m^{2}$, az egyensúlyi értéke körül fluktuál. Az egyensúlyi átlagokat ($\left< m \right>$, $q\left< m^{2} \right>$) tehát megbecsülhetjük mint időátlagokat. Ez azt jelenti, hogy t1 időnként kiszámítjuk (megmérjük) az m és az m2 értékét, majd elég sok ilyen mérésből átlagokat számolunk, s ezek megadják a $T$ hőmérsékleti termodinamikai átlagokat, $\left< m \right>$-t és $\left< m^{2} \right>$-t. \\
+Határozzuk meg az $\left< m \right>$ és az $\left< m^{2} \right>$ átlagokat az alábbiakban megadott egyéni $\beta J$ értékeknek megfelelő hőmérsékleteken. Próbáljuk megmagyarázni az eredményt! Mentsünk el egyegy egyensúlyi spinkonfigurációt $\left\{ s_{1},\ \dots, s_{i-1}, s_{i} , s_{i+1},\ \dots, s_{100} \right\}$ mind a négy $\beta J$ értéknél, egy későbbi feladatban szükség lesz rájuk.
+
+\section*{\bfseries\large\MakeUppercase{Megoldás}}
+
+\subsection{Elméleti alapok}
+Az Ising-modell egy, a ferromágnességet statisztikus fizikai szempontból leíró matematikai modell. Vizsgálatának tárgyát olyan diszkrét elemek képezik, melyek atomi mágneses momentumokat/spineket szimbolizálnak. Ezen elemek $+1$, vagy $-1$ értéket vehetnek fel, melyek mindegyike a szomszédjával hathat kölcsön. Jelentősége, hogy ezen rendszer 2-dimenziós változata szolgáltatja az egyik legegyszerűbb statisztikus modellt a fázisátalakulások vizsgálatához. A feladat során egy ilyen rendszer időfejlődését kellett vizsgálnunk.
+\\ \\
+Vizsgáljuk $N$ darab atom viselkedését egy $z$-irányú $H$ mágneses térben. Ha a fenti definíció alapján a spinek $+1$ és $-1$ értéket vehetnek fel, akkor rendszer aktuális állapotának Hamilton-függvényéből kapott teljes energiája a következő formában írható:
+
+\begin{equation} \label{eq:1}
+    E \left( s_{1}, s_{2},\ \dots,\ s_{N} \right)
+    =
+    - J \sum_{\left< i,j \right>} s_{i} s_{j}
+    -
+    \mu H \sum_{i = 1}^{N} s_{i}
+\end{equation}
+Az eredeti leírás alapján a jelenlegi feladat egyik közelítése, hogy az általunk vizsgált rendszerben most $H = 0$, tehát a második tag zérus. Így a teljes energia a leírásban is látható módon fejezhető ki:
+
+\begin{equation} \label{eq:2}
+    E \left( s_{1}, s_{2},\ \dots,\ s_{N} \right)
+    =
+    - J \sum_{\left< i,j \right>} s_{i} s_{j}
+\end{equation}
+Ahol $J$ az ún. \emph{kicserélődési energia}, ${\left< i,j \right>}$ pedig a szomszédos elemeken végigfutó összegzést jelenti. Az 1-dimenziós esetben ez a fenti $\sum_{i=1}^{N-1} s_{i} s_{i+1}$ alakot veszi fel. Megjegyzendő, hogy ez az alak azt takarja, hogy minden párt csupán egyetlen egyszer veszünk bele a teljes energiába, triviális módon. Két dimenziós, zárt határfeltételű rendszer esetében pedig az energiát a $\sum_{i=1}^{N-1}\sum_{j=1}^{N-1} s_{i,j} \left( s_{i+1,j} + s_{i,j+1} + s_{i+1,j+1} \right)$ alakba írhatjuk át, biztosítva az 1-dimenziós esetben is használt feltételt, miszerint minden párt csak egyszer számolunk.
+\\ \\
+Feladataink közé tartozott monitorozni a mágnesezettség $m$ fejlődését, valamint vizsgálni annak és négyzetének várható értékét, mint időátlagot. Valójában az $\left< m \right>$ és $\left< m^{2} \right>$ átlagolás sokaságátlag, több különböző véletlen futtatás eredménye, azonban ezt egyensúlyban jól közelíti az időátlag. Célunk tehát egy olyan rendszert létrehozni, melyet tetszőleges pontból indítva az eléri a - kezdőfeltételektől  független - egyensúlyi állapotát, majd akörül fluktuál és így vizsgálhatóvá válnak az egyes mennyiségek várható értékei.
+\\ \\
+Az $\left< m \right>$ és $\left< m^{2} \right>$ elméletileg várt értékét könnyen kiszámíthatjuk. Írjuk fel ezen két mennyiséget a várható érték és a $P$ állapot-valószínűség definíciója alapján:
+
+\begin{equation} \label{eq:3}
+    \left< m \right>
+    =
+    \sum_{\sigma} m \left( s_{1},\ \dots, s_{i-1}, s_{i} , s_{i+1},\ \dots, s_{N} \right)
+    *
+    P_{\beta} \left( s_{1},\ \dots, s_{i-1}, s_{i} , s_{i+1},\ \dots, s_{N} \right)
+\end{equation}
+\begin{equation} \label{eq:4}
+    \left< m^{2} \right>
+    =
+    \sum_{\sigma} m^{2} \left( s_{1},\ \dots, s_{i-1}, s_{i} , s_{i+1},\ \dots, s_{N} \right)
+    *
+    P_{\beta} \left( s_{1},\ \dots, s_{i-1}, s_{i} , s_{i+1},\ \dots, s_{N} \right)
+\end{equation}
+Ahol a szummázás az összes spinkonfiguráción fut végig, $\sigma$-val jelölve azokat. Itt a $P_{\beta}$ valószínűséget a következő módon definiáljuk:
+
+\begin{equation} \label{eq:5}
+    P_{\beta} \left( s_{1},\ \dots, s_{i-1}, s_{i} , s_{i+1},\ \dots, s_{N} \right)
+    =
+    \frac{1}{Z_{\beta}} e^{- \beta E \left( s_{1},\ \dots, s_{i-1}, s_{i} , s_{i+1},\ \dots, s_{N} \right)}
+\end{equation}
+Jelöljük $\left( s_{1},\ \dots, s_{i-1}, s_{i} , s_{i+1},\ \dots, s_{N} \right)$ tagot az egyszerűség kedvéért a többi helyen is alakítsuk át a fentebb használt $\left( \sigma \right)$-vá. Ekkor felírhatjuk a következőt:
+
+\begin{equation} \label{eq:6}
+    \left< m \right>
+    =
+    \sum_{\sigma} m \left( \sigma \right) * \frac{1}{Z_{\beta}} e^{- \beta E \left( \sigma \right)}
+    =
+    \sum_{\sigma} m \left( \sigma \right) * \frac{1}{Z_{\beta}} e^{+ \beta J \sum_{\left< i,j \right>} s_{i} s_{j}}
+\end{equation}
+\begin{equation} \label{eq:7}
+    \left< m^{2} \right>
+    =
+    \sum_{\sigma} m^{2} \left( \sigma \right) * \frac{1}{Z_{\beta}} e^{- \beta E \left( \sigma \right)}
+    =
+    \sum_{\sigma} m^{2} \left( \sigma \right) * \frac{1}{Z_{\beta}} e^{+ \beta J \sum_{\left< i,j \right>} s_{i} s_{j}}
+\end{equation}
+Ezen egyenletek, a szimuláció során felvett értékét illesztés segítségével meghatározhatjuk. Várakozásaink szerint az energia egyensúlyi állapotban $0$ körül fluktuál, így $\beta J \sum_{\left< i,j \right>} s_{i} s_{j}$ értéke szintén $0$ várható értékkel rendelkezik. Így $\left< m \right>$ és $\left< m^{2} \right>$ értékek kvázi csak $Z_{\beta}$ és $m$, valamint $m^{2}$ menetétől fognak függeni.
+
+\subsection{Megvalósítás}
+A szimulációt az 1D esetre kellett megírnunk, majd abban vizsgálni a fentebb tárgyalt mennyiségek időfejlődését is. Az ellenőrzés és az esetleges mélyebb megértés kedvéért én a szimulációban a 2D esetet is implementáltam. A programkódot egy Jupyter Notebook-ban futó Python 3.7 kernel alatt írtam, az ezen jegyzőkönyvhöz készült ábrákat pedig szintén abban a notebook-ban készítettem. Minden felhasznált kód, és maga a dokumentáció is elérhető GitHub-on\cite{github}. A 2D esetben készült időfejlődésről animációt is készítettem, melyet elérhetővé tettem a YouTube-on\cite{yt}. \\
+Minden szimulációt homogén kezdeti feltétellel, egyaránt minden spin értékét $+1$-nek választva indítottam és úgy vizsgáltam annak időbeli alakulását. Ennek oka az volt, hogy így le tudtam ellenőrizni, hogy egy szélső feltételből is az egyensúlyi helyzetbe propagál idővel a rendszer és ott is marad-e.
+
+\subsection{1D Ising-modell}
+Az 1D Ising-modellről készült grafikonokat az (\ref{fig:1}) - (\ref{fig:10}) ábrákon közöltem. Az (\ref{fig:1})-es ábra az egyes $\beta$ értékekkel futtatott végállapotokat mutatja, $N = 10000$ szimulációs lépés után, $1000$ db spinre. Míg a (\ref{fig:2}) ábrán ugyanezen szimulációk soránt mért energia időbeli változását ábrázoltam. \\
+A kapott eredmények egyértelműen mutatják több futtatás után is, hogy az egyensúlyi helyzet akkor áll be, amikor a spinek tökéletesen össze vannak keveredve, egyenlő számban tartalmazva $+1$ és $-1$ spineket. A rendszer ezt az állapotot elérve ekörül oszcillál. A mágnesezettség ebben az állapotban szintén $0$ körül oszcillál, ami a (\ref{fig:3})-as ábráról olvasható le. \\
+Összefoglalva úgy fogalmazhatjuk meg, hogy tér nélkül egy anyag nem szeret mágnesezett állapotban maradni. Ha a spinek egymással kölcsönhatva, de szabadon elfordulhatnak, a mágnesezettség minden esetben $0$-hoz fog tartani, így biztosítva az egyensúlyt.
+\\ \\
+A (\ref{fig:5}) és (\ref{fig:6}) ábrákon sorrendben a mágnesezettség és a mágnesezettség négyzetének időátlagának változását ábrázoltam a lépéshossz függvényében, melyet ezen értékek várható értékének megbecsüléséhez használok. Első körben a mágnesezettségek teljes szimulációra vett időátlagát vizsgáltam. A (\ref{eq:6}) - (\ref{eq:7}) egyenletekben is láthatóan, ilyen esetben ez a két érték egy lecsengő $e$-ados függvényt követ, a mágnesezettség időben tehát folyamatosan csökken, várható értéke egy adott értékhez propagál. Optimálisan végtelenül hosszú futásidő esetén a függvény legutolsó pontja mutatná $\left< m \right>$ és $\left< m^{2} \right>$ pontos értékét. Ezt illesztéssel határoztam meg, amihez egy $A * e^{B * N} + C$ paraméteres függvényt használtam. Ezen függvény értéke $N = \infty$-ben $A * 0 + C = C$. Így kezdő illesztési paraméternek $C$-t, mint az megillesztendő görbe utolsó pontját vehetjük. $N = 0$-ban a függvény $A * e^{0} + C = A + C$ értéket vesz fel, melyből $A$-t az ismert $C$ alapján kifejezhetünk úgy, hogy az illesztendő függvény első pontjából vonjuk ki $C$-t. Az illesztett görbe értéke végtelenben lesz az $\left< m \right>$, valamint második esetben $\left< m^{2} \right>$ értékre adott becslésünk. Ez végtelenben $C$. Az illesztett görbék a (\ref{fig:7}) és (\ref{fig:8}) ábrákon láthatóak.
+\\ \\
+Az illesztések elégzése után az alábbi értékeket kaptam eredményül:
+
+\begin{center}
+\begin{tabular}{c||c|c|c}
+\hline
+\multicolumn{4}{c}{Fitted parameters for $\left< m \right>$} -- 1D\\ \hline \hline
+Cases          & A         & B     & C = $\left< m \right>$ \\ \hline
+$T=603.581\ $K & 0.9589 & -0.00051 & 0.0391                 \\ \hline
+$T=301.791\ $K & 0.9527 & -0.00049 & 0.0453                 \\ \hline
+$T=96.573\ $K  & 0.9607 & -0.00052 & 0.0373                 \\ \hline
+$T=45.269\ $K  & 0.9492 & -0.00056 & 0.0488                 \\ \hline
+\end{tabular}
+\end{center}
+\captionof{table}{\normalfont Az $\left< m \right>$ egyik futtatásának és illesztésének paraméterei és eredményei}\label{tab:1}
+
+\begin{center}
+\begin{tabular}{c||c|c|c}
+\hline
+\multicolumn{4}{c}{Fitted parameters for $\left< m^{2} \right>$ -- 1D}\\ \hline \hline
+Cases          & A         & B     & C = $\left< m^{2} \right>$ \\ \hline
+$T=603.581\ $K & 0.9704 & -0.00063 & 0.0256                 \\ \hline
+$T=301.791\ $K & 0.9688 & -0.00063 & 0.0272                 \\ \hline
+$T=96.573\ $K  & 0.9709 & -0.00064 & 0.0251                 \\ \hline
+$T=45.269\ $K  & 0.9703 & -0.00063 & 0.0258                 \\ \hline
+\end{tabular}
+\end{center}
+\captionof{table}{\normalfont Az $\left< m^{2} \right>$ egyik futtatásának és illesztésének paraméterei és eredményei}\label{tab:2}
+\hfill \break
+Második variációban a feladat leírásában is szereplő megjegyzést is figyelembe vettem, miszerint a mágnesezettség értéke csak az egyensúlyi helyzetben értelmezett. Egy manuálisan választott pontot kijelöltem az egyensúlyi helyzet alsó határának, és csupán az időben utána következő értékeket használtam fel a mágnesezettség és annak négyzetének időátlagát megadó számításokban. Ilyen esetben ezen görbék már nem voltak illeszthetők, így szimplán az utolsó pontjukat vettem az $\left< m \right>$ és $\left< m^{2} \right>$ értékeinek. Ezekről készült grafikonok a (\ref{fig:9}) és (\ref{fig:10}) ábrákon láthatóak.
+\\ \\
+Ezen utóbbi, egyensúlyi helyzet beállta után vizsgált esetre megvizsgáltam az $\left< m^{2} \right> - \left< m \right>^{2}$ értékét is. Ennek eredményét a (\ref{fig:11})-es ábrán közöltem.
+
+\subsection{2D Ising-modell}
+A feladat elvégzése után a 2D Ising-modellt is megvizsgáltam, csupán érdekesség gyanánt. Ebben egy 2D rács pontjaiba szórtam le diszkrét, kezdetben teljesen homogén módon $+1$ spinértékeket, és azok időfejlődését vizsgáltam a fentiekhez hasonló módon, mindenféle mágneses tér jelenléte nélkül. Az ebben az esetben készült grafikonok megtekinthetőek a (\ref{fig:12}) - (\ref{fig:22}) ábrákon, az 1D Ising-modellel megegyező sorrendben és azonos vizsgálati módszerek szerint. Az egyensúlyi helyzet itt is akkor állt be, amikor a spinállapot nagyjából egyenlő arányban $+1$ és $-1$ spinekből tevődött össze, és ekkor a mágnesezettség is $0$ körül oszcillált.
+\\ \\
+Az erről készült animációt\cite{yt} homogén $+1$ értékű spinekkel teli állapotból indítottam, és $10000$ lépés hosszan futtattam. Végeredményben vizuálisan is a fent tárgyalt eredmények látszódnak a videón.

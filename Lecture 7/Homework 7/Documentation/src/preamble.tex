@@ -1,0 +1,86 @@
+\usepackage[utf8]{inputenc}
+\usepackage[english,magyar]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{fullpage}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{cancel}
+\usepackage{booktabs}
+
+% Unicode chars
+\DeclareUnicodeCharacter{1EF3}{\`y}
+
+% Hyperlinks
+\usepackage[unicode]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor = cyan,
+    pdftitle={Stochastic Processes - 7.},
+    pdfpagemode=FullScreen,
+}
+
+% enumerate labels
+\usepackage{enumitem}
+
+\renewlist{enumerate}{enumerate}{10} %% <- set the max depth to 10
+\newcommand*\parenthesize[1]{(#1)}
+\setlist[enumerate]{label*=.\arabic*,format=\bfseries\parenthesize,leftmargin=2em}
+\setlist[enumerate,1]{label=\arabic*} %% <- set the base level label separately
+
+% Images
+\usepackage{graphicx}
+\usepackage[font={small}, justification=centering]{caption}
+\graphicspath{{./images/}}
+
+% Two columns
+\usepackage{multicol}
+\setlength\columnsep{40pt}
+
+% Section titles
+\usepackage{titlesec}
+\titleformat{\section}{\bfseries\large}{\MakeUppercase{\thesection. Feladat}}{0em}{}
+\titleformat{\subsection}{\bfseries\small}{\thesubsection. }{0em}{}
+ 
+% Quotes
+\usepackage[autostyle=false]{csquotes}
+\newcommand{\q}[1]{„#1''} % Redefine quotations
+
+% \cdot instead of asterisk (*) symbol
+\mathcode`\*="8000
+{\catcode`\*\active\gdef*{\cdot}}
+
+% Double underline
+\def\doubleunderline#1{\underline{\underline{#1}}}
+
+% Question
+\def\quest#1{K: \emph{#1}}
+
+% Headers/footers
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+\newcommand\course{Véletlen fizikai folyamatok}
+\newcommand\hwnumber{7}
+\newcommand\Name{Pál Balázs}
+\newcommand\Neptun{UXB26I}
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\Name\\\Neptun} 
+\chead{\textbf{\Large Véletlen fizikai folyamatok\\\hwnumber. házifeladat}}
+\rhead{\today}
+\lfoot{}
+\cfoot{\small\thepage}
+\rfoot{}
+\headsep 1.5em
+
+% Biblography
+\usepackage[defernumbers=true,backend=biber,sorting=none]{biblatex}
+\addbibresource{bibliography.bib}
