@@ -99,7 +99,7 @@ Ahol a szummázás az összes spinkonfiguráción fut végig, $\sigma$-val jelö
     =
     \frac{1}{Z_{\beta}} e^{- \beta E \left( s_{1},\ \dots, s_{i-1}, s_{i} , s_{i+1},\ \dots, s_{N} \right)}
 \end{equation}
-Jelöljük $\left( s_{1},\ \dots, s_{i-1}, s_{i} , s_{i+1},\ \dots, s_{N} \right)$ tagot az egyszerűség kedvéért a többi helyen is alakítsuk át a fentebb használt $\left( \sigma \right)$-vá. Ekkor felírhatjuk a következőt:
+Ahol $Z_{\beta}$ a $\beta$ inverzhőmérsékletű rendszer állapotösszege. Jelöljük $\left( s_{1},\ \dots, s_{i-1}, s_{i} , s_{i+1},\ \dots, s_{N} \right)$ tagot az egyszerűség kedvéért a fentebb is már használt $\left( \sigma \right)$-val. Ekkor felírhatjuk a következőt:
 
 \begin{equation} \label{eq:6}
     \left< m \right>
@@ -115,52 +115,59 @@ Jelöljük $\left( s_{1},\ \dots, s_{i-1}, s_{i} , s_{i+1},\ \dots, s_{N} \right
     =
     \sum_{\sigma} m^{2} \left( \sigma \right) * \frac{1}{Z_{\beta}} e^{+ \beta J \sum_{\left< i,j \right>} s_{i} s_{j}}
 \end{equation}
-Ezen egyenletek, a szimuláció során felvett értékét illesztés segítségével meghatározhatjuk. Várakozásaink szerint az energia egyensúlyi állapotban $0$ körül fluktuál, így $\beta J \sum_{\left< i,j \right>} s_{i} s_{j}$ értéke szintén $0$ várható értékkel rendelkezik. Így $\left< m \right>$ és $\left< m^{2} \right>$ értékek kvázi csak $Z_{\beta}$ és $m$, valamint $m^{2}$ menetétől fognak függeni.
+Várakozásaink szerint az energia egyensúlyi állapotban $0$ körül fluktuál, így $\beta J \sum_{\left< i,j \right>} s_{i} s_{j}$ értéke szintén $0$ várható értékkel rendelkezik, és így $\left< m \right>$ is tartani fog $0$-hoz. A mágnesezettségek négyzetének várható értéke, $\left< m^{2} \right>$ viszont kvázi csak $\beta$ értékétől $Z_{\beta}$-n keresztül, valamint $m^{2}$ menetétől fognak függeni. Mivel $m^{2}$ gyorsan eléri a nullát és azon érték felett \q{pattog}, ezért $\left< m^{2} \right>$ egy valamivel $0$ feletti érték lesz hosszú idő után. Ez azt jelenti, hogy ha ezen átlag időfejlődését vizsgáljuk, akkor az egy konstans görbéhez fog tartani.
+\\ \\
+A kiszámolt átlagértékek pontosságát az átlagértékek standard hibájának számításával definiáltam, mely a következő mennyiség:
+
+\begin{equation} \label{eq:8}
+    \sigma_{\left< x \right>}
+    =
+    \frac{\sigma_{x}}{\sqrt{n}}
+\end{equation}
+Ahol $\sigma_{x}$ az $x$ adat szórása, $n$ pedig az adatpontok száma.
 
 \subsection{Megvalósítás}
 A szimulációt az 1D esetre kellett megírnunk, majd abban vizsgálni a fentebb tárgyalt mennyiségek időfejlődését is. Az ellenőrzés és az esetleges mélyebb megértés kedvéért én a szimulációban a 2D esetet is implementáltam. A programkódot egy Jupyter Notebook-ban futó Python 3.7 kernel alatt írtam, az ezen jegyzőkönyvhöz készült ábrákat pedig szintén abban a notebook-ban készítettem. Minden felhasznált kód, és maga a dokumentáció is elérhető GitHub-on\cite{github}. A 2D esetben készült időfejlődésről animációt is készítettem, melyet elérhetővé tettem a YouTube-on\cite{yt}. \\
-Minden szimulációt homogén kezdeti feltétellel, egyaránt minden spin értékét $+1$-nek választva indítottam és úgy vizsgáltam annak időbeli alakulását. Ennek oka az volt, hogy így le tudtam ellenőrizni, hogy egy szélső feltételből is az egyensúlyi helyzetbe propagál idővel a rendszer és ott is marad-e.
+Minden szimulációt homogén kezdeti feltétellel, minden spin értékét egyaránt $+1$-nek választva indítottam és úgy vizsgáltam annak időbeli alakulását. Ennek oka az volt, hogy így le tudtam ellenőrizni, hogy egy szélső feltételből is az egyensúlyi helyzetbe propagál idővel a rendszer és ott is marad-e.
 
 \subsection{1D Ising-modell}
-Az 1D Ising-modellről készült grafikonokat az (\ref{fig:1}) - (\ref{fig:10}) ábrákon közöltem. Az (\ref{fig:1})-es ábra az egyes $\beta$ értékekkel futtatott végállapotokat mutatja, $N = 10000$ szimulációs lépés után, $1000$ db spinre. Míg a (\ref{fig:2}) ábrán ugyanezen szimulációk soránt mért energia időbeli változását ábrázoltam. \\
-A kapott eredmények egyértelműen mutatják több futtatás után is, hogy az egyensúlyi helyzet akkor áll be, amikor a spinek tökéletesen össze vannak keveredve, egyenlő számban tartalmazva $+1$ és $-1$ spineket. A rendszer ezt az állapotot elérve ekörül oszcillál. A mágnesezettség ebben az állapotban szintén $0$ körül oszcillál, ami a (\ref{fig:3})-as ábráról olvasható le. \\
-Összefoglalva úgy fogalmazhatjuk meg, hogy tér nélkül egy anyag nem szeret mágnesezett állapotban maradni. Ha a spinek egymással kölcsönhatva, de szabadon elfordulhatnak, a mágnesezettség minden esetben $0$-hoz fog tartani, így biztosítva az egyensúlyt.
+Az 1D Ising-modellről készült grafikonokat az (\ref{fig:1}) - (\ref{fig:10}) ábrákon közöltem. Az (\ref{fig:1})-es ábra az egyes $\beta$ értékekkel futtatott végállapotokat mutatja, $N = 200\,000$ szimulációs lépés után, $300$ db spinre. Míg a (\ref{fig:2}) ábrán ugyanezen szimulációk során mért energia időbeli változását ábrázoltam. \\
+A kapott eredmények egyértelműen mutatják több futtatás után is, hogy az egyensúlyi helyzet akkor áll be, amikor a spinek tökéletesen össze vannak keveredve, tehát egyenlő számban tartalmazva $+1$ és $-1$ spineket. A rendszer ezt az állapotot elérve ekörül oszcillál. A mágnesezettség ebben az állapotban szintén $0$ körül fluktuál, ami a (\ref{fig:3})-as ábráról olvasható le. A (\ref{fig:4})-es ábrán ez a fluktuáció látható kiemelve. \\
+Összefoglalva úgy fogalmazhatjuk meg, hogy tér nélkül egy anyag nem szeret mágnesezett állapotban maradni. Ha a spinek egymással kölcsönhatva, de szabadon elfordulhatnak, a mágnesezettség minden esetben $0$-hoz fog tartani, így biztosítva az egyensúlyt. \\
+Ennek megfelelően - szintén a várakozásainkkal megegyező módon - az $m^{2}$ érték valamivel a $0$ felett fluktuál, melyek a (\ref{fig:5}) és (\ref{fig:6}) ábrákon láthatóak. A (\ref{fig:6})-os ábrán a (\ref{fig:5})-ösön is látható nulla feletti fluktuáció van kiemelve.
 \\ \\
-A (\ref{fig:5}) és (\ref{fig:6}) ábrákon sorrendben a mágnesezettség és a mágnesezettség négyzetének időátlagának változását ábrázoltam a lépéshossz függvényében, melyet ezen értékek várható értékének megbecsüléséhez használok. Első körben a mágnesezettségek teljes szimulációra vett időátlagát vizsgáltam. A (\ref{eq:6}) - (\ref{eq:7}) egyenletekben is láthatóan, ilyen esetben ez a két érték egy lecsengő $e$-ados függvényt követ, a mágnesezettség időben tehát folyamatosan csökken, várható értéke egy adott értékhez propagál. Optimálisan végtelenül hosszú futásidő esetén a függvény legutolsó pontja mutatná $\left< m \right>$ és $\left< m^{2} \right>$ pontos értékét. Ezt illesztéssel határoztam meg, amihez egy $A * e^{B * N} + C$ paraméteres függvényt használtam. Ezen függvény értéke $N = \infty$-ben $A * 0 + C = C$. Így kezdő illesztési paraméternek $C$-t, mint az megillesztendő görbe utolsó pontját vehetjük. $N = 0$-ban a függvény $A * e^{0} + C = A + C$ értéket vesz fel, melyből $A$-t az ismert $C$ alapján kifejezhetünk úgy, hogy az illesztendő függvény első pontjából vonjuk ki $C$-t. Az illesztett görbe értéke végtelenben lesz az $\left< m \right>$, valamint második esetben $\left< m^{2} \right>$ értékre adott becslésünk. Ez végtelenben $C$. Az illesztett görbék a (\ref{fig:7}) és (\ref{fig:8}) ábrákon láthatóak.
-\\ \\
-Az illesztések elégzése után az alábbi értékeket kaptam eredményül:
+A (\ref{fig:7}) és (\ref{fig:8}) ábrákon sorrendben a mágnesezettség és a mágnesezettség négyzet időátlagának változását ábrázoltam a lépéshossz függvényében, melyet ezen mennyiségek várható értékének megbecsüléséhez használtam. A feladat leírásában is szerepel megjegyzésként, miszerint a mágnesezettség értéke csak az egyensúlyi helyzetben értelmezett. Ezt figyelembe véve, egy manuálisan választott pontot kijelöltem az egyensúlyi helyzet alsó határának, és kizárólag az időben utána következő értékeket használtam fel a mágnesezettség és annak négyzetének időátlagát megadó számításokban. Tökéletesen pontos értéket akkor kapnánk mindkét mennyiségre, ha a szimulációt végtelenül hosszú ideig futtatnánk. Ekkor az ábrázolt $\left< m \right> \left( n \right)$ és $\left< m^{2} \right> \left( n \right)$ lépések számától függő görbe legutolsó pontja lenne a pontos becslésünk. Mivel ezt megvalósítani nem lehetséges, így szimplán viszonylag hosszú ideig futtattam a szimulációt, majd meghatároztam a (\ref{eq:8}) képletben is szereplő módszerrel az utolsó pont értékének hibáját. Ez az általam adott becslés az $\left< m \right>$ és $\left< m^{2} \right>$ értékekre. Ezekre a következő eredményeket kaptam:
 
 \begin{center}
-\begin{tabular}{c||c|c|c}
-\hline
-\multicolumn{4}{c}{Fitted parameters for $\left< m \right>$} -- 1D\\ \hline \hline
-Cases          & A         & B     & C = $\left< m \right>$ \\ \hline
-$T=603.581\ $K & 0.9589 & -0.00051 & 0.0391                 \\ \hline
-$T=301.791\ $K & 0.9527 & -0.00049 & 0.0453                 \\ \hline
-$T=96.573\ $K  & 0.9607 & -0.00052 & 0.0373                 \\ \hline
-$T=45.269\ $K  & 0.9492 & -0.00056 & 0.0488                 \\ \hline
+\begin{tabular}{c||c|c}
+    \hline
+    Hőmérsékletek [K] & $\left< m \right>$  & $\left< m^{2} \right>$ \\ \hline\hline
+    301.79            & $0.000 \pm 0.0001$  & $0.0033 \pm 0.00001$   \\ \hline
+    150.90            & $0.002 \pm 0.0001$  & $0.0031 \pm 0.00001$   \\ \hline
+    48.29             & $0.004 \pm 0.0001$  & $0.0033 \pm 0.00001$   \\ \hline
+    22.63             & $-0.004 \pm 0.0001$ & $0.0032 \pm 0.00001$   \\ \hline
 \end{tabular}
 \end{center}
-\captionof{table}{\normalfont Az $\left< m \right>$ egyik futtatásának és illesztésének paraméterei és eredményei}\label{tab:1}
-
-\begin{center}
-\begin{tabular}{c||c|c|c}
-\hline
-\multicolumn{4}{c}{Fitted parameters for $\left< m^{2} \right>$ -- 1D}\\ \hline \hline
-Cases          & A         & B     & C = $\left< m^{2} \right>$ \\ \hline
-$T=603.581\ $K & 0.9704 & -0.00063 & 0.0256                 \\ \hline
-$T=301.791\ $K & 0.9688 & -0.00063 & 0.0272                 \\ \hline
-$T=96.573\ $K  & 0.9709 & -0.00064 & 0.0251                 \\ \hline
-$T=45.269\ $K  & 0.9703 & -0.00063 & 0.0258                 \\ \hline
-\end{tabular}
-\end{center}
-\captionof{table}{\normalfont Az $\left< m^{2} \right>$ egyik futtatásának és illesztésének paraméterei és eredményei}\label{tab:2}
+\captionof{table}{\normalfont Az $\left< m \right>$ és $\left< m^{2} \right>$ átlagok értékei}\label{tab:1}
 \hfill \break
-Második variációban a feladat leírásában is szereplő megjegyzést is figyelembe vettem, miszerint a mágnesezettség értéke csak az egyensúlyi helyzetben értelmezett. Egy manuálisan választott pontot kijelöltem az egyensúlyi helyzet alsó határának, és csupán az időben utána következő értékeket használtam fel a mágnesezettség és annak négyzetének időátlagát megadó számításokban. Ilyen esetben ezen görbék már nem voltak illeszthetők, így szimplán az utolsó pontjukat vettem az $\left< m \right>$ és $\left< m^{2} \right>$ értékeinek. Ezekről készült grafikonok a (\ref{fig:9}) és (\ref{fig:10}) ábrákon láthatóak.
+Az ezeket bemutató grafikonok sorrendben a (\ref{fig:7}) és (\ref{fig:8}) ábrákon láthatóak. \\
+Alacsony hőmérsékleten az anyag hajlamos ún. \q{beakadni} egy szélsőségesebb spinállapotba. Ennek oka, hogy a szomszédos spinek szeretnek azonos állapotban tartózkodni, azonban alacsony hőmérsékleten az átfordulás rátája is nagyon kicsi. Ez azt eredményezi, hogy nagyobb arányban jönnek létre azonos spinállapotban levő domének az anyagok belül, így az $\left< m \right>$ átlag eltolódik véges távolságon vagy a pozitív, vagy a negatív irányba, ami mind a fenti táblázat adatain, mind pedig a grafikonokon jól látszik. Természetesen végtelenül hosszú időre az átlag ebben az esetben is a $0$-hoz tart $\left< m \right>$ esetén. Ezzel ellentétben magasabb hőmérsékleteken ilyen viselkedést már nem egyre kevésbé lehet megfigyelni, a mágnesezettség átlaga közel $0$ körül mozog végig már rövid idő után is.
 \\ \\
-Ezen utóbbi, egyensúlyi helyzet beállta után vizsgált esetre megvizsgáltam az $\left< m^{2} \right> - \left< m \right>^{2}$ értékét is. Ennek eredményét a (\ref{fig:11})-es ábrán közöltem.
+Továbbiakban vizsgáltam az $\left< m^{2} \right> - \left< m \right>^{2}$ értékét is. Ennek eredményét a (\ref{fig:9})-es ábrán közöltem. A kapott értékeket az alábbi táblázatban foglaltam össze:
+\begin{center}
+\begin{tabular}{c||c}
+    \hline
+    Hőmérsékletek [K] & $\left< m^{2} \right>$ - $\left< m \right>^{2}$ \\ \hline\hline
+    301.79            & $0.0036 \pm 0.00006$                            \\ \hline
+    150.90            & $0.0036 \pm 0.00006$                            \\ \hline
+    48.29             & $0.0034 \pm 0.00006$                            \\ \hline
+    22.63             & $0.0034 \pm 0.00006$                            \\ \hline
+\end{tabular}
+\end{center}
+\captionof{table}{\normalfont Az $\left< m^{2} \right> - \left< m \right>^{2}$ fluktuációk értékei}\label{tab:1}
+\hfill \break
 
 \subsection{2D Ising-modell}
-A feladat elvégzése után a 2D Ising-modellt is megvizsgáltam, csupán érdekesség gyanánt. Ebben egy 2D rács pontjaiba szórtam le diszkrét, kezdetben teljesen homogén módon $+1$ spinértékeket, és azok időfejlődését vizsgáltam a fentiekhez hasonló módon, mindenféle mágneses tér jelenléte nélkül. Az ebben az esetben készült grafikonok megtekinthetőek a (\ref{fig:12}) - (\ref{fig:22}) ábrákon, az 1D Ising-modellel megegyező sorrendben és azonos vizsgálati módszerek szerint. Az egyensúlyi helyzet itt is akkor állt be, amikor a spinállapot nagyjából egyenlő arányban $+1$ és $-1$ spinekből tevődött össze, és ekkor a mágnesezettség is $0$ körül oszcillált.
+A feladat elvégzése után a 2D Ising-modellt is megvizsgáltam, csupán érdekesség gyanánt. Ebben egy 2D rács pontjaiba szórtam le diszkrét, kezdetben teljesen homogén módon $+1$ spinértékeket, és azok időfejlődését vizsgáltam a fentiekhez hasonló módon $100\,000$ lépésre, mindenféle mágneses tér jelenléte nélkül. Az ebben az esetben készült grafikonok megtekinthetőek a (\ref{fig:12}) - (\ref{fig:22}) ábrákon, az 1D Ising-modellel megegyező sorrendben és azonos vizsgálati módszerek szerint. Az egyensúlyi helyzet itt is akkor állt be, amikor a spinállapot nagyjából egyenlő arányban $+1$ és $-1$ spinekből tevődött össze, és ekkor a mágnesezettség is $0$ körül oszcillált.
 \\ \\
 Az erről készült animációt\cite{yt} homogén $+1$ értékű spinekkel teli állapotból indítottam, és $10000$ lépés hosszan futtattam. Végeredményben vizuálisan is a fent tárgyalt eredmények látszódnak a videón.
