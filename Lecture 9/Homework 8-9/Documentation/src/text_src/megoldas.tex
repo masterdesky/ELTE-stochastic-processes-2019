@@ -1,0 +1,95 @@
+\section*{\bfseries\large\MakeUppercase{Megoldás}}
+
+\subsection{Megvalósítás}
+A feladatokat megvalósító programok forráskódjának mindegyikét egy Jupyter Notebook-ban futó Python 3.7 kernel alatt valósítottam meg, valamint az ábrákat is ebben készítettem. Ezeket GitHub-on mind elérhetővé is tettem\cite{github}.
+\\ \\
+Az első feladat során a \rrtt kellett szimuláljuk, tetszőleges $N$ csúcs/élszám darabszámra. Ennek szimulálása a következő lépések elvégzéséből tevődik össze:
+
+\begin{enumerate}
+    \item Kezdetben lehelyezünk egyetlen pontot az üres térbe. Triviálisan mivel ő az egyetlen, így fokszáma $0$, nem csatlakozhat semmilyen másik ponthoz (hisz eleve nincs másik pont).
+    \item Első lépésben lehelyezünk még egy pontot a térbe, és véletlenszerűen - azonos valószínűséggel - kiválasztunk egy már meglévőt (jelen esetben ebből egyetlen egy darab van), melyet egy éllel összekötünk az újonnan behozott csúccsal. Minden lehetséges esetben az első két pont szükségszerűen egymással lesz összekötve.
+    \item Második körben szintén véletlenszerűen választunk egy pontot - az eddig meglevő 2 közül -, majd egy harmadik pontot kötünk egy éllel hozzá.
+    \item A fentieket tetszőleges ideig folytatjuk. A szimulációt esetemben adott élszám elértéig futtattam.
+\end{enumerate}
+A második feladatban (\apm) megtett lépések a (\ref{sec:2})-es leírásban szereplőkkel megegyezőek.
+\\ \\
+A szimuláció futtatása mindkét feladat esetében összesen 3 darab adatsorral tért vissza. Ezek egy kezdeti értékkel voltak inicializálva, majd ezek minden lépésben frissültek, végül pedig a végleges értéküket használtam fel a további számításokban és ábrázolásokban. Ezek az adatsorok a következőek voltak, a szimuláció forráskodjában is használt nevük szerint:
+
+\begin{itemize}
+    \item[--] \texttt{graph\_rrt}: Amikor egy újabb pont érkezik a gráfba, az minden alkalommal pontosan 1 ponthoz csatolódik hozzá. Ez az \texttt{array} típusú adatsor sorrendben tartalmazza, hogy az újabb csúcsok melyik másik csúcshoz kapcsolódtak hozzá beérkezésükkor. Hossza egyenlő az összes él darabszámával, mely jelen esetben egyel kevesebb a rendszerben szereplő pontok végleges számánál.
+    \item[--] \texttt{count\_rrt}: Ez a - szintén - \texttt{array} típusú adatsor tartalmazza, hogy az egyes pontok fokszámát. Az első eleme az első pont fokszáma, a második eleme a második pont fokszáma és így tovább. Hossza megegyezik az összes, rendszerben levő pont számával, ami pontosan egyel több, mint a rendszerben levő élek száma ebben az esetben.
+    \item[--] \texttt{dist\_rrt}: Ez az \texttt{array} tartalmazza sorrendben az egyes fokszámmal rendelkező csúcsok számát. Első eleme a $0$ fokszámú csúcsok száma, második eleme az $1$ fokszámú csúcsok száma, és így tovább. Hossza egyenlő a maximális lehetséges fokszámmal. Ez megegyezik az összes él számával, ugyanis ebben a kis valószínűségű esetben minden csúcs ugyanahhoz az egyetlen ponthoz csatlakozik. Ekkor a központi csúcshoz csatlakozik az összes $N$ darab él, és így fokszáma is $N$.
+\end{itemize}
+A második modell esetén az eredetileg visszatérő adatsorok típusai az elsővel megegyezőek voltak, csak ott rendre \texttt{graph\_apm}, \texttt{count\_apm} és \texttt{dist\_apm} jelölésekkel. \\
+Az első modell esetén az \texttt{rrt} a \emph{Random Recursive Tree}, míg a második esetben az \texttt{apm} rövidítés az \emph{Anti-Preferential Model} kifejezés rövidítése.
+
+\subsection{Kiértékelés}
+Mindkét modell egy-egy növekedő hálózat, melynek egyes tulajdonságait (pl. $P_{k}$ eloszlásfüggvény) már az órán kiszámoltuk. A továbbiakban azokra fogok alapozni. \\
+A (\ref{fig:1}) és (\ref{fig:2}) ábrákon sorrendben a \rrt és az \apm alapvető karakterisztikáit ábrázoltam, $E=100$ él esetére. Nővekedő hálózat gyanánt ilyenkor $N = E+1 = 101$ csúcs lesz a hálózatban, hisz minden alkalommal egy beérkező fa, pontosan $1$ másik, már bent levő csúcshoz csatlakozik hozzá. \\
+Mindkét ábrán a felső grafikon az egyes pontok végleges $k$ fokszámait mutatja, a hálózatba történő beérkezési sorrendjükben, $1$-től indexelve. A középső grafikonok az adott $k$ fokszámú pontok $N_{k}$ darabszámát mutatják, kezdve a $k=0$ fokszámtól egészen az $E=100$ esetében maximálisan lehetséges $k=100$-ig. Az alsó grafikonokon a $P_k = \frac{N_{k}}{N}$ diszkrét eloszlásfüggvényt ábrázoltam, mely tulajdonképpen csak a középső grafikonok normáltja.
+\\ \\
+Mivel az első feladatban a \rrt esetében vizsgálnunk kell ennek a diszkrét, mért $P_{k}$ függvénynek az elméletileg várt folytonos $P_{k}$ függvényhez képesti hibáját, így itt ezt a függvényt is ábrázoltam az alsó grafikonon, egy szaggatott szürke vonallal. A két eloszlásfüggvény külsőre nagyon hasonló, azonban két fő különbség észrevehető rajta. Az első, hogy a \rrt esetén a $k=1$ fokszámú csúcsok magasan a legnagyobb arányban szerepelnek a hálózatban, míg az \apm esetében minden alkalommal közel azonos a $k=1$ és $k=2$ csúcsok darabszáma. Ezek közül is legtöbb esetben a $k=2$ fokszámú csúcsok vezetnek számosság terén. A második különbség, hogy az \apm esetén a fokszámeloszlás sokkal \q{simább}, nincsenek a $0$ darabszámú esetek sorozatát elérve apró fluktuációk, ahogy az a \rrt esetében a (\ref{fig:1})-es ábrán is láthatóan történik.
+\\ \\
+Az órán kiszámoltuk, hogy a nővekedő hálózat elméleti fokszámeloszlása a következő:
+
+\begin{equation}
+    P_{k} = e^{-k \ln \left( 2 \right)}
+\end{equation}
+A szimuláció hibáját az elméletitől való százalékos eltérésnek vettem. Feladatunk, hogy meghatározzuk azt az $N$-t, ami felett az első 10 fokszám hibája mindig kisebb, mint $10\%$. Ezt meghatározandó, vizsgáltam az első 10 elem hibáinak maximumát az $N$ növelésének függvényében. Egy tetszőleges futásra ($N=40\,000$) esetén kapott adatsorokat a (\ref{fig:3})-as ábrán közlöm. A kapott eredmények analízise a képaláiratban olvashatóak részletesebben. Összefoglalóként, az ilyen módon vett hiba csak fluktuációk során csökken $10\%$ alá, máskülönben - feltételezhetően - ahhoz propagál végtelenül hosszú futásidő során.
+\\ \\
+A fokszámok átlagos értékének számára már jóval konkrétabb, és az elméletből is várt eredményt kaptam. Mind a \rrt, mind pedig az \apm növekedő hálózat mivoltából kiindulva tudjuk, hogy a $k$ fokszám várható értéke $\left< k \right> = 2$, melyet az alábbi számításból kaphatunk meg:
+
+\begin{equation}
+    \left< k \right>
+    =
+    \sum_{i = 1}^{\infty} k_{i} * P_{i}
+    \equiv
+    \sum_{k = 1}^{\infty} k * P_{k}
+    =
+    \sum_{k = 1}^{\infty} k * e^{-k \ln \left( 2 \right)}
+    =
+    \sum_{k = 1}^{\infty} k * \left( e^{\ln \left( 2 \right)} \right)^{-k}
+    =
+    \sum_{k = 1}^{\infty} k * 2^{-k}
+\end{equation}
+Mely egy számelméletből régóta ismert összeg. Írjuk át az alábbi formába a kapottakat:
+
+\begin{equation}
+    \sum_{k = 1}^{\infty} k * 2^{-k}
+    =
+    \sum_{k = 1}^{\infty} k * \left( \frac{1}{2} \right)^{k}
+\end{equation}
+Melyre alkalmazhatjuk az alábbi ismert összefüggést:
+\begin{equation}
+    \left| x \right| < 1:
+    \quad
+    f \left( x \right)
+    =
+    \sum_{n = 1}^{\infty} x^{n}
+    =
+    \frac{x}{1 - x}
+\end{equation}
+\begin{equation}
+    xf' \left( x \right)
+    =
+    \sum_{n = 1}^{\infty} n * x^{n}
+    =
+    \frac{x}{(1 - x)^2}
+\end{equation}
+Ha most $n = k$ és $x = \frac{1}{2}$ értékeket veszünk, akkor felírhatjuk a következőt:
+
+\begin{equation}
+    \left< k \right>
+    =
+    \sum_{k = 1}^{\infty} k * \left( \frac{1}{2} \right)^{k}
+    =
+    \frac{\frac{1}{2}}{(1 - \frac{1}{2})^2}
+    =
+    \frac{\frac{1}{2}}{\frac{1}{4}}
+    =
+    2
+\end{equation}
+Tehát végtelenül sok él esetén azt várjuk, hogy az átlagos $k$ érték $2$-höz tart. Pontosan ezt figyelhetjük meg a szimulációban is, melyet a (\ref{fig:5})-ös és (\ref{fig:6})-os ábrán illusztráltam, rendre a \rrt és az \apm esetében.
+\\ \\
+Végül a maximális fokszámok alakulását kellett megvizsgálnunk, az $N$ csúcsok számának növelésének függvényében. Ezt a két modell esetében a (\ref{fig:7})-es és (\ref{fig:8})-as képeken ábrázoltam. A \rrt esetén megfigyelhető, hogy a maximális értékek a csúcsok/élszámok függvényében egy exponenciális, vagy esetleg gyökös növekedést mutatnak. Az \apm esetén a hosszú futásidő miatt csak $E=2000$ élig tudtam a szimulációt futtatni, itt még nem rajzolódik ki egyértelműen a \rrt esetében megfigyelhető mintázat.\\
+A maximális fokszám $\left< k_{max} \right>$ átlagát több, azonos $N$ csúcsszámú futtatásra számítva határoztam meg. Ezek eredményét a (\ref{fig:9})-es ábrán közöltem. A maximális fokszámok élszámfüggéséhez hasonló módon itt is egyértelműen egy exponenciális, vagy gyökös növekedés rajzolódik ki. Az érték hibáját itt kiszámolni felesleges, ugyanis a növekedési tendencia bőven az értékek oszcillációjánál nagyobb nagyságrendileg.

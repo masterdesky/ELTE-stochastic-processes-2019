@@ -1,0 +1,13 @@
+\section{} \label{sec:2}
+K:\ Szimuláljunk egy anti-preferenciális csatolódással növekedő hálózatot, amelyben az új csúcsok nem szeretnek a már sok éllel rendelkező csúcsokhoz kapcsolódni. Egy lépésben egy csúcsot adunk a hálózathoz, s az $N + 1$-edik csúcs csatolásának szabályai legyenek a következők:
+\begin{enumerate}
+    \item Véletlenszerűen kiválasztunk egyet a már meglévő $N$ csúcs közül.
+    \item Leszámoljuk a kiválasztott csúcs éleinek számát. Legyen ez a szám $k$.
+    \item A kiválasztott csúcshoz $w_{k} = k -2/A$ valószínűséggel csatolunk egy új csúcsot. Itt $A$ a normalizációs állandó $A = \sum_{l} l^{-2} N_{l}$, ahol $N_{l}$ az $l$ éllel rendelkező csúcsok száma.
+\end{enumerate}
+Feladatok:
+
+\begin{enumerate}[label=\roman*]
+    \item Mérjük meg a csúcsok fokszámeloszlását, $P_{k} = N_{k}/N$-t!
+    \item Vizsgáljuk a fokszámeloszlás nagy-$k$ aszimptotikáját, s hasonlítsuk össze az eredményt a véletlen rekurzív fára $(w_{k} \sim 1/N)$ kapottakkal!
+\end{enumerate}
