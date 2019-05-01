@@ -1,0 +1,196 @@
+\section{} \label{sec:1}
+K:\ Az eltolt lineáris preferenciával növekedő hálózatban egy $k$ fokszámú csúcshoz való csatolódás valószínűsége $(k + \lambda)/\sum_{l} \left( l + \lambda \right) N_{l}$, ahol $N_{l}$ a $l$ fokszámú csúcsok száma. Az előadáson megmutattuk, hogy $\lambda = 0$ (lineáris preferencia) esetén a fokszámeloszlás nagy-$k$-ra hatvány alakú
+
+\begin{equation*}
+    P_{k} \sim k^{-3}
+\end{equation*}
+Vigyük végig a lineáris preferenciára alkalmazott számolást a $\lambda = 1$-re és mutassuk meg, hogy ekkor az eloszlás nagy-$k$ alakja
+
+\begin{equation*}
+    P_{k} \sim k^{-4}
+\end{equation*}
+A fenti két eredmény azt sugallja, hogy (mint azt be is lehet bizonyítani) tetszőleges $\lambda > 0$-ra a következő eredmény igaz
+
+\begin{equation*}
+    P_{k} \sim k^{-\left(k + \lambda \right)}
+\end{equation*}
+
+\subsection*{\bfseries\normalsize\MakeUppercase{Megoldás}}
+A Barabási--Albert-modell esetén $w_{k} = \frac{k}{\sum_{l} l N_{l}} = \frac{k}{A}$ rátával számoltunk, mellyel a Master-egyenletek a következő alakúak voltak:
+
+\begin{equation} \label{eq:1}
+    \frac{d N_{k}}{dN}
+    =
+    -\frac{k}{A} N_{k} + \frac{k - 1}{A} N_{k-1}
+\end{equation}
+\begin{equation} \label{eq:2}
+    \frac{d N_{1}}{dN}
+    =
+    -\frac{1}{A} N_{1} + 1
+\end{equation}
+Általánosan ezeket az egyenleteket $w_{k} = = \frac{k + \lambda}{\sum_{l} \left( l + \lambda \right) N_{l}} = \frac{k + \lambda}{A_{\lambda}}$ esetre a következő formában írhatjuk fel:
+
+\begin{equation} \label{eq:3}
+    \frac{d N_{k}}{dN}
+    =
+    -\frac{k + \lambda}{A_{\lambda}} N_{k} + \frac{k + \lambda - 1}{A_{\lambda}} N_{k-1}
+\end{equation}
+\begin{equation} \label{eq:4}
+    \frac{d N_{1}}{dN}
+    =
+    -\frac{1}{A_{\lambda}} N_{1} + 1
+\end{equation}
+A gyakorlaton ismertetettek alapján tudjuk, hogy az $A_{\lambda}$ érték a következő módon egyszerűsíthető:
+
+\begin{equation} \label{eq:5}
+    A_{\lambda}
+    =
+    \sum_{l} \left( l + \lambda \right) N_{l}
+    =
+    \left( 2 + \lambda \right) N
+\end{equation}
+Ezt helyettesítsük be a fenti (\ref{eq:3})-as és (\ref{eq:4})-es egyenletekbe:
+
+\begin{equation} \label{eq:6}
+    \frac{d N_{k}}{dN}
+    =
+    -\frac{k + \lambda}{\left( 2 + \lambda \right) N} N_{k} + \frac{k + \lambda - 1}{\left( 2 + \lambda \right) N} N_{k-1}
+\end{equation}
+\begin{equation} \label{eq:7}
+    \frac{d N_{1}}{dN}
+    =
+    -\frac{1}{\left( 2 + \lambda \right) N} N_{1} + 1
+\end{equation}
+Definiáljuk a $P_{k}$ élszámeloszlást az alábbi módon:
+
+\begin{equation} \label{eq:8}
+    P_{k}
+    =
+    \frac{N_{k}}{N}
+\end{equation}
+Ezt újból visszahelyettesítve az előző egyenletebe:
+
+\begin{equation} \label{eq:9}
+    \frac{d N_{k}}{dN}
+    =
+    -\frac{k + \lambda}{\left( 2 + \lambda \right)} P_{k} + \frac{k + \lambda - 1}{\left( 2 + \lambda \right)} P_{k-1}
+\end{equation}
+\begin{equation} \label{eq:10}
+    \frac{d N_{1}}{dN}
+    =
+    -\frac{1}{\left( 2 + \lambda \right)} P_{1} + 1
+\end{equation}
+Melyet szintén a (\ref{eq:8})-as egyenlet átalakításából kapott $N_{k} = N P_{k}$ összefüggésből továbbvezetve:
+
+\begin{equation} \label{eq:11}
+    \frac{d \left( N P_{k} \right)}{dN}
+    =
+    -\frac{k + \lambda}{\left( 2 + \lambda \right)} P_{k} + \frac{k + \lambda - 1}{\left( 2 + \lambda \right)} P_{k-1}
+\end{equation}
+\begin{equation} \label{eq:12}
+    \frac{d \left( N P_{1} \right)}{dN}
+    =
+    -\frac{1}{\left( 2 + \lambda \right)} P_{1} + 1
+\end{equation}
+Elvégezve a bal oldalon álló deriváltakat:
+
+\begin{equation} \label{eq:13}
+    P_{k} + N \frac{d P_{k}}{dN}
+    =
+    -\frac{k + \lambda}{\left( 2 + \lambda \right)} P_{k} + \frac{k + \lambda - 1}{\left( 2 + \lambda \right)} P_{k-1}
+\end{equation}
+\begin{equation} \label{eq:14}
+    P_{1} + N \frac{d P_{1}}{dN}
+    =
+    -\frac{1}{\left( 2 + \lambda \right)} P_{1} + 1
+\end{equation}
+A megmaradt $P_{k}$ és $P_{1}$ értékeket átvisszük a jobb oldalra:
+
+\begin{equation} \label{eq:15}
+    N \frac{d P_{k}}{dN}
+    =
+    -\frac{k + 2 + 2 \lambda}{\left( 2 + \lambda \right)} P_{k} + \frac{k + \lambda - 1}{\left( 2 + \lambda \right)} P_{k-1}
+\end{equation}
+\begin{equation} \label{eq:16}
+    N \frac{d P_{1}}{dN}
+    =
+    -\frac{3 + \lambda}{\left( 2 + \lambda \right)} P_{1} + 1
+\end{equation}
+A feladat alapján a $\lambda = 1$ esetre kell meghatároznunk az élszámeloszlás értéket. Helyettesítsük be ez az értéket a kapott egyenletekbe:
+
+\begin{equation} \label{eq:17}
+    N \frac{d P_{k}}{dN}
+    =
+    -\frac{k + 2 + 2}{\left( 2 + 1 \right)} P_{k} + \frac{k + 1 - 1}{\left( 2 + 1 \right)} P_{k-1}
+    =
+    -\frac{k + 4}{3} P_{k} + \frac{k}{3} P_{k-1}
+\end{equation}
+\begin{equation} \label{eq:18}
+    N \frac{d P_{1}}{dN}
+    =
+    -\frac{3 + 1}{\left( 2 + 1 \right)} P_{1} + 1
+    =
+    -\frac{4}{3} P_{1} + 1
+\end{equation}
+Keressük a $P_{k}^{\left( \text{st.} \right)}$ stacionárius megoldást, mely esetében a deriváltak értéke $0$:
+
+\begin{equation} \label{eq:19}
+    0
+    =
+    -\frac{k + 4}{3} P_{k}^{\left( \text{st.} \right)} + \frac{k}{3} P_{k-1}^{\left( \text{st.} \right)}
+\end{equation}
+\begin{equation} \label{eq:20}
+    0
+    =
+    -\frac{4}{3} P_{1}^{\left( \text{st.} \right)} + 1
+\end{equation}
+A (\ref{eq:20})-as egyenletből egyértelmű a $P_{1}^{\left( \text{st.} \right)}$ értéke:
+
+\begin{equation} \label{eq:21}
+    P_{1}^{\left( \text{st.} \right)}
+    =
+    \frac{3}{4}
+\end{equation}
+Míg a (\ref{eq:19})-es egyenletből kiszámíthatjuk a $P_{k}^{\left( \text{st.} \right)}$ értéket is néhány átalakítás segítségével:
+
+\begin{equation} \label{eq:22}
+    P_{k}^{\left( \text{st.} \right)}
+    =
+    \frac{k}{k + 4} P_{k - 1}^{\left( \text{st.} \right)}
+    =
+    \frac{k \left( k - 1 \right)}{\left( k + 4 \right) \left( k + 3 \right)} P_{k - 2}^{\left( \text{st.} \right)}
+    =
+    \frac{k \left( k - 1 \right) * \dotsc * 1}{\left( k + 4 \right) \left( k + 3 \right) * \dotsc 5} P_{1}^{\left( \text{st.} \right)}
+\end{equation}
+Melybe behelyettesíthetjük a $P_{1}^{\left( \text{st.} \right)}$ értékét, majd egyszerűsíthetjük az egyenletet az azonos tagok kiejtésével a törtben:
+
+\begin{equation} \label{eq:23}
+    P_{k}^{\left( \text{st.} \right)}
+    =
+    \frac{k \left( k - 1 \right) * \dotsc * 1}{\left( k + 4 \right) \left( k + 3 \right) * \dotsc 5} * \frac{3}{4}
+    =
+    \frac{1}{\left( k + 4 \right) \left( k + 3 \right) \left( k + 2 \right) \left( k + 1 \right)} * \left( 4 * 3 * 2 * 1 \right) * \frac{3}{4}
+\end{equation}
+Összevonva a maradékot a következő végeredményt kapjuk:
+
+\begin{equation} \label{eq:24}
+    P_{k}^{\left( \text{st.} \right)}
+    =
+    \frac{18}{\left( k + 4 \right) \left( k + 3 \right) \left( k + 2 \right) \left( k + 1 \right)}
+\end{equation}
+Ha $k$ nagyon nagy, a mellette álló tagok elhagyhatóak:
+
+\begin{equation} \label{eq:25}
+    P_{k}^{\left( \text{st.} \right)}
+    =
+    \frac{18}{k^{4}}
+\end{equation}
+Tehát bebizonyítottuk a kezdeti feltevésünket, miszerint
+
+\begin{equation}
+    \boxed{
+    P_{k}
+    \sim
+    k^{-4}
+    }
+\end{equation}

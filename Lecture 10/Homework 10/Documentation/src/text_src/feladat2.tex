@@ -1,0 +1,51 @@
+\section{} \label{sec:2}
+K:\ Az előadáson vizsgált lineáris preferenciával növekedő hálózatban egy $k$ fokszámú csúcshoz való csatolódás valószínűsége $k/\sum_{l} l N_{l}$, ahol $N_{l}$ az $l$ fokszámú csúcsok száma. Az előadáson megmutattuk, hogy a fokszámeloszlás nagy-$k$-ra hatvány alakú $P_{k} \sim k^{-3}$.
+Feladatok:
+\begin{enumerate}[label=\roman*]
+    \item Vizsgáljuk meg, hogy a fenti eredmény függ-e a kezdeti feltételektől! Indítsunk szimulációkat
+    \begin{enumerate}
+        \item egy csúcsból,
+        \item öt lineárisan csatolt csúcsból $[N_{1} \left( t = 0 \right) = 2, N_{2} \left( 0 \right) = 3, N_{k \neq 1,2} = 0]$,
+        \itemöt kereszt alakban összekapcsolt csúcsból $[N_{1} \left( 0 \right) = 4, N_{4} \left( 0 \right) = 1, N_{k \neq 1,4} = 0]$,
+    \end{enumerate}
+    s hasonlítsuk össze a fokszámeloszlások nagy-$k$-s viselkedését.
+    \item Találjuk meg a maximális fokszámú csúcsot a fenti szimulációkban generált hálózatokban, s határozzuk meg a maximális fokszám átlagát $\left< k_{max} \right>$ elég nagy csúcsszám esetére. Függ-e $\left< k_{max} \right>$ a kezdeti feltételektől?
+\end{enumerate}
+
+\subsection*{\bfseries\normalsize\MakeUppercase{Megoldás}}
+
+\subsection{Megvalósítás}  \label{sub:2.1}
+A feladatot megvalósító program forráskódját egy Jupyter Notebook-ban futó Python 3.7 kernel alatt írtam meg, valamint az ábrákat is ebben készítettem. Ezeket GitHub-on mind elérhetővé is tettem\cite{github}.
+\\ \\
+A második feladat során a \pmdt kellett szimuláljuk, tetszőleges $N$, vagy $E$ csúcs/élszám darabszámra. A gráf szimulációjának működése az előző házifeladatban is ismertetett anti-preferenciális modellhez nagyon hasonló és a következő lépésekből áll:
+
+\begin{enumerate}
+    \item Véletlenszerűen kiválasztunk egyet a már meglévő $N$ csúcs közül.
+    \item Leszámoljuk a kiválasztott csúcs éleinek számát. Legyen ez a szám $k$.
+    \item A kiválasztott csúcshoz $w_{k} = k/A$ valószínűséggel csatolunk egy új csúcsot. Itt $A$ a normalizációs állandó $A = \sum_{l} l N_{l}$, ahol $N_{l}$ az $l$ éllel rendelkező csúcsok száma.
+\end{enumerate}
+Szintén az előző házifeladathoz hasonlóan a szimuláció futtatása összesen 3 darab adatsorral tért vissza. Ezek egy bemeneti paraméterrel választható módon a feladatban kirótt kezdeti feltételekkel voltak inicializálva, majd ezek minden lépésben frissültek. Végül a végleges értéküket használtam fel a további számításokban és ábrázolásokban. Ezek az adatsorok a következőek voltak, a szimuláció forráskódjában is használt nevük szerint:
+
+\begin{itemize}
+    \item[--] \texttt{graph\_pm}: Amikor egy újabb pont érkezik a gráfba, az minden alkalommal pontosan 1 ponthoz csatolódik hozzá. Ez az \texttt{array} típusú adatsor sorrendben tartalmazza, hogy az újabb csúcsok melyik másik csúcshoz kapcsolódtak hozzá beérkezésükkor. Hossza egyenlő az összes él darabszámával, mely jelen esetben egyel kevesebb a rendszerben szereplő pontok végleges számánál.
+    \item[--] \texttt{count\_pm}: Ez a - szintén - \texttt{array} típusú adatsor tartalmazza, hogy az egyes pontok fokszámát. Az első eleme az első pont fokszáma, a második eleme a második pont fokszáma és így tovább. Hossza megegyezik az összes, rendszerben levő pont számával, ami pontosan egyel több, mint a rendszerben levő élek száma ebben az esetben.
+    \item[--] \texttt{dist\_pm}: Ez az \texttt{array} tartalmazza sorrendben az egyes fokszámmal rendelkező csúcsok számát. Első eleme a $0$ fokszámú csúcsok száma, második eleme az $1$ fokszámú csúcsok száma, és így tovább. Hossza egyenlő a maximális lehetséges fokszámmal. Ez megegyezik az összes él számával, ugyanis ebben a kis valószínűségű esetben minden csúcs ugyanahhoz az egyetlen ponthoz csatlakozik. Ekkor a központi csúcshoz csatlakozik az összes $E$ darab él, és így fokszáma is $E$.
+\end{itemize}
+
+A szimulációt három kezdőfeltétel esetére kellett vizsgálnunk, melyek a következőek voltak:
+
+\begin{enumerate}
+    \item Egy darab csúcs kezdetben
+    \item 5 darab csúcs, lineárisan összekötve. A második csúcs az elsőhöz, a harmadik a másodikhoz, és így tovább.
+    \item 5 darab csúcs, kereszt alakban összekötve. Négy csúcs az elsőhöz kötve, egymással semmilyen kapcsolatban nem állva.
+\end{enumerate}
+
+\subsection{Kiértékelés} \label{sub:2.2}
+Az (\ref{fig:1})-es, (\ref{fig:2})-es és (\ref{fig:3})-as ábrákon a \pmd alapvető karakterisztikáit ábrázoltam, $E=100$ él esetére, mindhárom kezdőfeltétel mellett. Nővekedő hálózat gyanánt ilyenkor $N = E+1 = 101$ csúcs lesz a hálózatban, hisz minden alkalommal egy beérkező fa, pontosan $1$ másik, már bent levő csúcshoz csatlakozik hozzá. \\
+Az ábrákon a felső grafikon az egyes pontok végleges $k$ fokszámait mutatja, a hálózatba történő beérkezési sorrendjükben, $1$-től indexelve. A középső grafikokok az adott $k$ fokszámú pontok $N_{k}$ darabszámát mutatják, kezdve a $k=0$ fokszámtól egészen az $E=100$ esetében maximálisan lehetséges $k=100$-ig. Az alsó grafikonokon a $P_k = \frac{N_{k}}{N}$ diszkrét eloszlásfüggvényt ábrázoltam, mely tulajdonképpen csak a középső grafikon normáltja. Az utolsó függvény esetén vizsgálnunk kellet a $P_{k} = k^{-3}$ függvény, szimulált pontokra való illeszkedését. Ennek az eredményét a (\ref{fig:4})-es grafikonon ábrázoltam. A grafikonon látható pontok a szimuláció mért értékei, a görbék pedig a rájuk illesztett köbös függvények. Az eltérés jelentéktelen volt sajnos. A pontosság javulását és az esetleges különbség feltárását az összes élszám növelésével lehetne elérni, azonban ehhez már túl nagy futásidőre lenne szükség.
+\\ \\
+A maximális fokszám alakulását az élszám függvényében a (\ref{fig:5})-ös ábrán illusztráltam. Az egyes görbék az egyes kezdőfeltételek mellett kapott értékeket jelölik az élszámok függvényében, $E \in \left[ 100, 2000 \right]$ élszámértékekre. A vizsgált perióduson a grafikonon is láthatóan semmilyen eltérést nem észleltem a maximális értékekben, az esetleges különbségek is bőven a szóráshatáron belülre estek. \\
+Az egyetlen különbség a grafikonok kezdeti értéke, azonban szinte azonnal együtt kezdenek haladni a továbbiakban. Tekintve a lassú növekedést és erős oszcillációt, eredetileg is hasonló eredményt vártam, hisz relatíve csak apró különbség volt a kezdeti feltételek között.
+
+\subsection{Diszkuszió} \label{sub:2.3}
+A feladatok elvégzése után sajnos nem tudtam semmilyen különbséget kimutatni a különböző kezdőfeltételekkel történő futtatások között. Ha esetlegesen létezik valamilyen különbség ezen kezdőfeltételek között, akkor azt csakis az élszámok növelésével lehetne kimutatni. Különbség esetén egyes fokszámokszámának aránya jobban megváltozna magasabb élszám esetén, így az eloszlás is megváltozna. Ezt sajnos nem sikerült egyértelműen kimutatni, vagy cáfolni.
