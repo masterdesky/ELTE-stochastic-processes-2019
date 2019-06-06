@@ -26,7 +26,7 @@
 
 ### Movement of a pollen
 {IMAGE}
-- We're observing the position of a particle from time to time at ![equation](https://latex.codecogs.com/gif.latex?%5Cinline%20tau) intervals.
+- We're observing the position of a particle from time to time at ![equation](https://latex.codecogs.com/gif.latex?%5Ctau) intervals.
 - We assume, that the direction of the displacement is independent from the previous ones.  
   
 - We study the 1D random-walk of a particle in the following
