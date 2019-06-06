@@ -35,7 +35,7 @@ Let ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20P%20%5Cleft%28%
 We're search for the ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20P%20%5Cleft%28%20x%2C%20t%20&plus;%20%5Ctau%20%5Cright%20%29), which represents the probability, that the particle is staying in the ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20%5Cleft%20%5B%20x%2C%20x&plus;dx%20%5Cright%20%5D) interval, at ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20t%20&plus;%20%5Ctau) time.  
 If we assume, that a particle between two time intervals is "jumping" at ![equation](https://latex.codecogs.com/svg.latex?%5CDelta) distance from its previous location, we can introduce the definition: ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20d%5CDelta), which represents the probability of the jump length of a particle, which is in the ![equation](https://latex.codecogs.com/svg.latex?%5Cinline%20%5Cleft%5B%20%5CDelta%2C%20%5CDelta%20&plus;%20d%5CDelta%20%5Cright%5D) interval.  
 We have the following criterions for this system:
-1. ![equation](https://latex.codecogs.com/svg.latex?%5Cint_%7B-%20%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%5C%2C%20d%20%5CDelta)
+1. ![equation](https://latex.codecogs.com/gif.latex?%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20%5CPhi%20%28%5CDelta%29%20d%20%5CDelta%20%3D%201)
 2. ![equation](https://latex.codecogs.com/svg.latex?%5CPhi%20%5Cleft%28%20%5CDelta%20%5Cright%20%29%20%3D%20%5CPhi%20%5Cleft%28%20-%5CDelta%20%5Cright%20%29) --> There is no preferred dircetions in the system.
 
 There is 3 different case, where a particle could be found or not in the interval in question:
